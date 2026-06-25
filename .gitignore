@@ -1,0 +1,32 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.env
+venv/
+
+# Large / generated data files
+data.json
+math_tree_draft.json
+math_tree.json.broken
+sprites.json
+audit_log.json
+
+# Runtime / secrets
+contributions.json
+structure_overrides.json
+.git_index.json
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+
+# App bundle
+PathOfBuilding.app/
+
+# PoESkillTree subdir (very large)
+PoESkillTree/

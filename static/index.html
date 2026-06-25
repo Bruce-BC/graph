@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>수학 테크트리 저작 도구 - PoE 스타일</title>
+  
+  <!-- CSS -->
+  <link rel="stylesheet" href="style.css">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+  
+  <!-- D3.js for zooming and panning -->
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <!-- Marked.js (Markdown parsing for comments) -->
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <!-- MathJax for LaTeX mathematical equations and diagrams -->
+  <script type="text/javascript" async
+    src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
+  </script>
+  <!-- FontAwesome for Premium Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Google Identity Services for Google OAuth Sign-in -->
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+</head>
+<body>
+
+  <!-- Background Space effect -->
+  <div class="space-bg"></div>
+  <div class="space-nebula"></div>
+
+  <!-- Custom PoE Tooltip -->
+  <div id="poe-tooltip" class="poe-tooltip">
+    <div class="poe-tooltip-header">
+      <span class="poe-tooltip-title" id="tt-title">Node Title</span>
+    </div>
+    <div class="poe-tooltip-body" id="tt-stats"></div>
+    <div class="poe-tooltip-footer" id="tt-unalloc">
+      <div>Unallocating this node will give you:</div>
+      <div id="tt-unalloc-stats"></div>
+    </div>
+    <div class="poe-tooltip-id" id="tt-node-id" style="text-align:right; font-size:12px; color:#6a5e4c; padding-top: 6px; font-family: 'Fontin', sans-serif;"></div>
+  </div>
+
+  <!-- ── Node Search Overlay (Cmd+F) ── -->
+  <div id="searchOverlay" style="display:none;position:fixed;top:70px;left:50%;transform:translateX(-50%);z-index:10000;
+       background:rgba(15,10,5,0.97);border:1px solid #8a6a2e;border-radius:10px;
+       padding:14px 18px;width:420px;box-shadow:0 8px 40px rgba(0,0,0,0.8);backdrop-filter:blur(8px);">
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
+      <i class="fa-solid fa-magnifying-glass" style="color:#c8a96e;font-size:15px;"></i>
+      <input id="searchInput" type="text" placeholder="노드 이름 검색… (Esc: 닫기, Enter/↑↓: 탐색)"
+             autocomplete="off"
+             style="flex:1;background:transparent;border:none;outline:none;color:#e8d098;
+                    font-size:14px;font-family:'Noto Sans KR',sans-serif;caret-color:#c8a96e;">
+      <button onclick="closeSearchOverlay()" style="background:none;border:none;color:#666;cursor:pointer;font-size:16px;padding:0;">✕</button>
+    </div>
+    <div id="searchResults" style="max-height:320px;overflow-y:auto;"></div>
+    <div id="searchStatus" style="font-size:11px;color:#6a5e4c;margin-top:6px;text-align:right;"></div>
+  </div>
+
+  <!-- Right-click Context Menu (on node) -->
+  <div id="ctx-menu" style="display:none;position:fixed;z-index:11000;background:#1a1410;border:1px solid #8a6a2e;border-radius:6px;min-width:200px;box-shadow:0 4px 24px #000a;">
+    <div id="ctx-node-title" style="padding:8px 14px;font-size:13px;color:#c8a96e;border-bottom:1px solid #3a2e1e;font-weight:bold;">노드 이름</div>
+    <button class="ctx-item" id="ctx-edit-node"><i class="fa-solid fa-pen"></i> 노드 수정</button>
+    <div id="ctx-admin-section" style="display:none;border-top:1px solid #3a2e1e;margin-top:2px;padding-top:2px;">
+      <div style="padding:4px 14px;font-size:11px;color:#8a6a2e;">Admin 전용</div>
+      <button class="ctx-item ctx-admin" id="ctx-add-edge"><i class="fa-solid fa-link"></i> 이 노드에서 엣지 연결</button>
+      <button class="ctx-item ctx-admin ctx-danger" id="ctx-remove-node"><i class="fa-solid fa-trash"></i> 노드 삭제</button>
+    </div>
+    <button class="ctx-item" id="ctx-close" style="border-top:1px solid #3a2e1e;color:#666;"><i class="fa-solid fa-xmark"></i> 닫기</button>
+  </div>
+
+  <!-- Right-click Context Menu (on empty canvas) -->
+  <div id="canvas-ctx-menu" style="display:none;position:fixed;z-index:11000;background:#1a1410;border:1px solid #3a2e1e;border-radius:6px;min-width:180px;box-shadow:0 4px 24px #000a;">
+    <div style="padding:6px 14px;font-size:11px;color:#6a5e4c;border-bottom:1px solid #1e1810;">캔버스 메뉴</div>
+    <button class="ctx-item" id="canvas-ctx-add-node"><i class="fa-solid fa-plus"></i> 이 위치에 노드 추가</button>
+    <button class="ctx-item" id="canvas-ctx-reset-view"><i class="fa-solid fa-compress"></i> 뷰 초기화 (Space)</button>
+    <button class="ctx-item" id="canvas-ctx-close" style="color:#666;"><i class="fa-solid fa-xmark"></i> 닫기</button>
+  </div>
+
+  <!-- Inline Node Edit Popup (merged label + comment) -->
+  <div id="inlineEditPopup" style="display:none;position:fixed;z-index:11500;background:#1a1410;
+       border:1px solid #8a6a2e;border-radius:8px;padding:16px;min-width:340px;max-width:460px;
+       box-shadow:0 8px 40px rgba(0,0,0,0.9);">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;">
+      <span style="font-size:13px;color:#c8a96e;font-weight:bold;">노드 수정</span>
+      <button onclick="closeInlineEdit()" style="background:none;border:none;color:#666;cursor:pointer;font-size:15px;">✕</button>
+    </div>
+    <div id="inlineEditNodeId" style="font-size:11px;color:#6a5e4c;margin-bottom:10px;"></div>
+    <label style="font-size:11px;color:#8a6a2e;display:block;margin-bottom:4px;">노드 이름</label>
+    <input id="inlineEditLabel" type="text" style="width:100%;box-sizing:border-box;background:#0f0a05;
+      border:1px solid #3a2e1e;border-radius:4px;color:#e8d098;font-size:13px;
+      font-family:'Noto Sans KR',sans-serif;padding:7px 8px;outline:none;margin-bottom:10px;">
+    <label style="font-size:11px;color:#8a6a2e;display:block;margin-bottom:4px;">설명 (Markdown)</label>
+    <textarea id="inlineEditComment" rows="5" style="width:100%;box-sizing:border-box;background:#0f0a05;
+      border:1px solid #3a2e1e;border-radius:4px;color:#e8d098;font-size:12px;
+      font-family:'Noto Sans KR',sans-serif;padding:8px;resize:vertical;outline:none;
+      line-height:1.5;margin-bottom:10px;"></textarea>
+    <input id="inlineEditPrDesc" type="text" placeholder="변경 사유 (PR 제목)" style="width:100%;box-sizing:border-box;
+      background:#0f0a05;border:1px solid #3a2e1e;border-radius:4px;
+      color:#c8a96e;font-size:12px;padding:6px 8px;outline:none;">
+    <div style="display:flex;gap:8px;margin-top:10px;justify-content:flex-end;">
+      <button onclick="closeInlineEdit()" class="btn" style="font-size:12px;padding:4px 12px;">취소</button>
+      <button onclick="submitInlineEdit()" class="btn btn-primary" style="font-size:12px;padding:4px 12px;">저장</button>
+    </div>
+  </div>
+
+  <!-- Custom Node Add Popup -->
+  <div id="addNodePopup" style="display:none;position:fixed;z-index:11500;background:#1a1410;
+       border:1px solid #8a6a2e;border-radius:8px;padding:14px;min-width:280px;
+       box-shadow:0 8px 40px rgba(0,0,0,0.9);">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;">
+      <span style="font-size:13px;color:#c8a96e;font-weight:bold;">새 노드 추가</span>
+      <button onclick="closeAddNodePopup()" style="background:none;border:none;color:#666;cursor:pointer;font-size:15px;">✕</button>
+    </div>
+    <div style="font-size:11px;color:#6a5e4c;margin-bottom:8px;" id="addNodePosText"></div>
+    <input id="addNodeLabelInput" type="text" placeholder="노드 이름 입력..." style="width:100%;box-sizing:border-box;
+      background:#0f0a05;border:1px solid #3a2e1e;border-radius:4px;
+      color:#e8d098;font-size:13px;font-family:'Noto Sans KR',sans-serif;
+      padding:8px;outline:none;line-height:1.5;margin-bottom:8px;">
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px;">
+      <div id="addNodeIconPreview" style="width:32px;height:32px;border:1px solid #3a2e1e;border-radius:4px;background:#111;display:flex;align-items:center;justify-content:center;overflow:hidden;flex-shrink:0;">
+        <img id="addNodeIconImg" src="" alt="" style="width:100%;height:100%;object-fit:contain;display:none;">
+        <span id="addNodeIconPlaceholder" style="color:#444;font-size:18px;">🖼</span>
+      </div>
+      <button onclick="openIconPicker()" class="btn" style="font-size:11px;padding:4px 8px;">아이콘 선택...</button>
+    </div>
+    <div style="display:flex;gap:8px;justify-content:flex-end;">
+      <button onclick="closeAddNodePopup()" class="btn" style="font-size:12px;padding:4px 12px;">취소</button>
+      <button onclick="submitAddNode()" class="btn btn-primary" style="font-size:12px;padding:4px 12px;">추가</button>
+    </div>
+  </div>
+
+  <!-- Icon Picker Modal -->
+  <div id="iconPickerModal" class="modal-overlay hidden" style="z-index:12000;">
+    <div class="modal-box" style="max-width:500px; width:90%; display:flex; flex-direction:column; max-height:80vh;">
+      <div class="modal-header">
+        <h2 style="margin:0; font-size:16px; color:#e8d098;">아이콘 선택</h2>
+        <button class="modal-close" onclick="closeIconPicker()">✕</button>
+      </div>
+      <input type="text" id="iconSearchInput" placeholder="아이콘 이름 검색..." style="width:100%; box-sizing:border-box; background:#0f0a05; border:1px solid #3a2e1e; border-radius:4px; color:#e8d098; font-size:13px; padding:8px; outline:none; margin-bottom:10px;" oninput="filterIcons()">
+      <div id="iconGrid" style="display:grid; grid-template-columns:repeat(auto-fill, minmax(48px, 1fr)); gap:8px; overflow-y:auto; flex:1; padding-right:4px;">
+        <!-- Icons injected here -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Edge Edit Popup -->
+  <div id="edgeEditPopup" style="display:none;position:fixed;z-index:11500;background:#1a1410;
+       border:1px solid #8a6a2e;border-radius:8px;padding:14px;min-width:260px;
+       box-shadow:0 8px 40px rgba(0,0,0,0.9);">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;">
+      <span style="font-size:13px;color:#c8a96e;font-weight:bold;">엣지 곡률 설정</span>
+      <button onclick="closeEdgeEditPopup()" style="background:none;border:none;color:#666;cursor:pointer;font-size:15px;">✕</button>
+    </div>
+    <div style="font-size:11px;color:#6a5e4c;margin-bottom:8px;" id="edgeEditInfoText"></div>
+    <div style="margin-bottom:12px;">
+      <label style="font-size:12px;color:#e8d098;display:flex;justify-content:space-between;">
+        곡률 조절: <span id="edgeCurvatureVal" style="color:#a89068;">0.3</span>
+      </label>
+      <input type="range" id="edgeCurvatureSlider" min="-1" max="1" step="0.05" value="0.3" 
+             style="width:100%;margin-top:5px;accent-color:#c8a96e;"
+             oninput="document.getElementById('edgeCurvatureVal').innerText = this.value; window.updateEdgeCurvaturePreview && window.updateEdgeCurvaturePreview(this.value);">
+    </div>
+    <div style="display:flex;gap:8px;justify-content:flex-end;">
+      <button onclick="closeEdgeEditPopup()" class="btn" style="font-size:12px;padding:4px 12px;">취소</button>
+      <button onclick="submitEdgeEdit()" class="btn btn-primary" style="font-size:12px;padding:4px 12px;">저장</button>
+    </div>
+  </div>
+
+  <!-- Node Edit Modal (right-click → edit) -->
+  <div id="nodeEditModal" class="modal-overlay hidden">
+    <div class="modal-box" style="max-width:520px;">
+      <div class="modal-header">
+        <h3 id="nodeEditModalTitle">노드 정보 수정</h3>
+        <button class="btn-close" id="btnCloseNodeEdit"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div class="modal-body">
+        <label style="font-size:12px;color:#9a8d7a;">수정 대상 노드 ID</label>
+        <input id="editNodeId" class="form-control" readonly style="margin-bottom:10px;font-size:12px;color:#666;">
+        <label style="font-size:12px;color:#9a8d7a;" id="editFieldLabel">내용</label>
+        <textarea id="editNodeValue" class="form-control" rows="6" style="margin-bottom:10px;resize:vertical;"></textarea>
+        <label style="font-size:12px;color:#9a8d7a;">변경 사유 (PR 제목)</label>
+        <input id="editPrDesc" class="form-control" placeholder="예: Sentinel 노드 수학 설명 추가" style="margin-bottom:10px;">
+        <p id="editRoleNotice" style="font-size:12px;color:#c8a96e;"></p>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-primary" id="btnSubmitNodeEdit">저장 / PR 제출</button>
+        <button class="btn" id="btnCancelNodeEdit">취소</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header Header -->
+  <header class="app-header">
+    <div class="logo">
+      <i class="fa-solid fa-compass-drafting neon-icon"></i>
+      <h1>MATH TECH-TREE</h1>
+      <span class="version">PoE Edition</span>
+    </div>
+    
+    <div class="global-actions">
+      <!-- User Auth info bar -->
+      <div id="userInfoBar" class="user-info-bar">
+        <span id="txtUserRole" class="role-badge">Guest</span>
+        <span id="txtUserName">로그인이 필요합니다</span>
+      </div>
+
+      <!-- Google Sign In Button container -->
+      <div id="googleBtnContainer" class="google-btn-container"></div>
+      
+      <!-- Mock Login Button (Toggle for testing) -->
+      <button id="btnShowAuthModal" class="btn btn-save" title="테스트용 로그인">
+        <i class="fa-solid fa-user-lock"></i>
+      </button>
+
+      <button id="btnSaveAll" class="btn btn-primary hidden">
+        <i class="fa-solid fa-floppy-disk"></i> 저장 (Admin)
+      </button>
+
+      <button id="btnSubmitProposal" class="btn btn-export hidden">
+        <i class="fa-solid fa-paper-plane"></i> 제안 제출 (Contributor)
+      </button>
+
+      <button id="btnToggleSettings" class="btn" style="padding: 8px 12px; font-size: 16px;" title="설정 메뉴 열기">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+    </div>
+  </header>
+  
+  <!-- Sliding Settings Panel (Drawer) -->
+  <div id="settingsDrawer" class="settings-drawer">
+    <div class="drawer-header">
+      <h2><i class="fa-solid fa-gear"></i> 환경 설정</h2>
+      <button id="btnCloseSettings" class="btn-close"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+    
+    <div class="drawer-body">
+      <!-- Theme Selection -->
+      <div class="drawer-group">
+        <label><i class="fa-solid fa-palette"></i> 테마</label>
+        <select id="themeSelect" class="form-control">
+          <option value="poe">PoE Space</option>
+          <option value="cyber">Cyberpunk</option>
+          <option value="light">Light Board</option>
+          <option value="classic">Classic Dark</option>
+          <option value="phylo">Phylogenetic Tree</option>
+        </select>
+      </div>
+
+      <!-- Layout Selection -->
+      <div class="drawer-group">
+        <label><i class="fa-solid fa-diagram-project"></i> 레이아웃</label>
+        <select id="layoutSelect" class="form-control">
+          <option value="preset">수동 고정 배치</option>
+          <option value="force">Force (동적 분산)</option>
+          <option value="dagreLR">수평 위계형 (Dagre LR)</option>
+          <option value="dagreTB">수직 위계형 (Dagre TB)</option>
+        </select>
+      </div>
+
+      <!-- Orbit Selection -->
+      <div class="drawer-group">
+        <label><i class="fa-solid fa-rotate"></i> 궤도 운동 (노드)</label>
+        <select id="orbitSelect" class="form-control">
+          <option value="none" selected>정지 상태</option>
+          <option value="orbit">미세 회전 (Orbit)</option>
+          <option value="infinity">8자 회전 (Infinity)</option>
+          <option value="lissajous">불규칙 흔들림 (Lissajous)</option>
+        </select>
+      </div>
+
+      <!-- Subnode Options -->
+      <div class="drawer-group">
+        <label><i class="fa-solid fa-satellite"></i> 서브노드 시각화</label>
+        <select id="subnodeVisSelect" class="form-control">
+          <option value="show">표시 (Show)</option>
+          <option value="hide">숨김 (Hide)</option>
+        </select>
+      </div>
+
+      <div class="drawer-group">
+        <label><i class="fa-solid fa-sync"></i> 서브노드 회전</label>
+        <select id="subnodeRotSelect" class="form-control">
+          <option value="false" selected>정지</option>
+          <option value="true">회전</option>
+        </select>
+      </div>
+
+      <div class="drawer-group">
+        <label><i class="fa-solid fa-gauge-high"></i> 서브노드 회전 속도</label>
+        <input type="range" id="subnodeSpeedRange" min="0.1" max="5.0" step="0.1" value="1.0" class="drawer-slider">
+      </div>
+
+      <div class="drawer-divider"></div>
+
+      <!-- Edge Style Settings -->
+      <div class="drawer-group">
+        <label><i class="fa-solid fa-bezier-curve"></i> 엣지 스타일</label>
+        <select id="edgeStyleSelect" class="form-control">
+          <option value="straight">직선 (Straight)</option>
+          <option value="curve">곡선 (Bezier Curve)</option>
+        </select>
+      </div>
+      <div class="drawer-group" id="curvatureGroup" style="display:none;">
+        <label><i class="fa-solid fa-wave-square"></i> 곡률 <span id="curvatureVal">0.3</span></label>
+        <input type="range" id="curvatureRange" min="0.05" max="1.0" step="0.05" value="0.3" class="drawer-slider">
+      </div>
+
+      <div class="drawer-divider"></div>
+
+      <!-- PR Dim Opacity -->
+      <div class="drawer-group">
+        <label><i class="fa-solid fa-eye-slash"></i> PR 비교 시 비활성 노드 투명도 <span id="prDimVal">0.2</span></label>
+        <input type="range" id="prDimRange" min="0.0" max="0.9" step="0.05" value="0.2" class="drawer-slider">
+      </div>
+
+      <!-- Animation Toggle -->
+      <div class="drawer-group flex-row">
+        <span class="control-label">에지 흐름 애니메이션</span>
+        <label class="switch">
+          <input type="checkbox" id="animationToggle">
+          <span class="slider round"></span>
+        </label>
+      </div>
+
+      <div class="drawer-divider"></div>
+
+      <!-- Data Import / Export Buttons inside drawer -->
+      <div class="drawer-group">
+        <label><i class="fa-solid fa-file-import"></i> 가져오기 / 내보내기</label>
+        
+        <div style="display:flex; flex-direction:column; gap:8px; margin-top:8px;">
+          <!-- Import Action -->
+          <label for="importFile" class="btn btn-save" style="margin-bottom:0; width:100%; justify-content:center; cursor:pointer;">
+            <i class="fa-solid fa-file-import"></i> 가져오기 (다중 임포트)
+          </label>
+          <input type="file" id="importFile" accept=".csv,.tsv,.xlsx,.xls" multiple style="display:none;">
+
+          <div class="export-dropdown-container" style="width:100%;">
+            <button id="btnExportMenu" class="btn btn-export" style="width:100%; justify-content:center;">
+              <i class="fa-solid fa-file-export"></i> 포맷 내보내기 <i class="fa-solid fa-caret-down"></i>
+            </button>
+            <div id="exportMenu" class="dropdown-menu" style="width:100%; left:0; right:0;">
+              <a href="/api/export/excel"><i class="fa-solid fa-file-excel"></i> Excel로 내보내기</a>
+              <a href="/api/export/csv"><i class="fa-solid fa-file-csv"></i> CSV로 내보내기</a>
+              <a href="/api/export/tsv"><i class="fa-solid fa-file-lines"></i> TSV로 내보내기</a>
+              <div class="dropdown-divider"></div>
+              <a href="/api/export/obsidian"><i class="fa-solid fa-book-bookmark"></i> Obsidian Canvas로 내보내기</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="drawer-divider"></div>
+
+      <!-- Git Local Workspace Panel (Staging & Commits) -->
+      <div id="gitWorkspacePanel" class="drawer-group contributor-only">
+        <label><i class="fa-solid fa-code-branch"></i> Git 로컬 작업 공간</label>
+        
+        <!-- Unstaged Changes Checklist -->
+        <div class="git-section">
+          <span class="git-header-sm">변경 사항 (Unstaged Changes)</span>
+          <div id="gitUnstagedList" class="git-list">
+            <!-- Populated dynamically via change diff detection -->
+            <span style="font-size:10px; color:var(--text-secondary);">변경된 항목이 없습니다.</span>
+          </div>
+          <button id="btnGitAddAll" class="btn btn-save btn-compact" style="margin-top:5px; width:100%; justify-content:center;">
+            <i class="fa-solid fa-check-double"></i> 모두 스테이지에 추가 (git add .)
+          </button>
+        </div>
+
+        <!-- Staged Changes -->
+        <div class="git-section" style="margin-top:10px;">
+          <span class="git-header-sm">스테이지된 변경 (Staged Changes)</span>
+          <div id="gitStagedList" class="git-list">
+            <span style="font-size:10px; color:var(--text-secondary);">스테이지된 변경이 없습니다.</span>
+          </div>
+        </div>
+
+        <!-- Commit Form -->
+        <div class="git-section" style="margin-top:10px;">
+          <input type="text" id="gitCommitMsg" class="form-control" style="padding: 6px 10px; font-size:12px;" placeholder="커밋 메시지 입력 (git commit)">
+          <button id="btnGitCommit" class="btn btn-primary btn-compact" style="margin-top:6px; width:100%; justify-content:center;">
+            <i class="fa-solid fa-plus-circle"></i> 로컬 커밋 생성 (Commit)
+          </button>
+        </div>
+
+        <!-- Local Commit Logs -->
+        <div class="git-section" style="margin-top:10px;">
+          <span class="git-header-sm">대기 중인 로컬 커밋 로그</span>
+          <div id="gitCommitLogsList" class="git-list" style="max-height:80px;">
+            <span style="font-size:10px; color:var(--text-secondary);">제출할 커밋이 없습니다.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="drawer-divider admin-only hidden"></div>
+
+      <!-- Admin Proposals Review Panel -->
+      <div id="adminReviewPanel" class="drawer-group admin-only hidden">
+        <label><i class="fa-solid fa-code-pull-request"></i> 기여 제안 검토 (Admin)</label>
+        <div id="proposalList" class="proposal-list-container">
+          <!-- Pending proposals loaded via API -->
+          <span style="font-size:11px; color:var(--text-secondary);">대기 중인 제안이 없습니다.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Container -->
+  <main class="app-container">
+    
+    <!-- Canvas Area (Pure HTML5 Canvas) -->
+    <section class="canvas-area" style="overflow: hidden; position: relative;">
+      <canvas id="tree-canvas" style="width:100%; height:100%; display:block;"></canvas>
+      
+      <!-- Guide Banner / Legend -->
+      <div class="legend-panel">
+        <div class="legend-item"><span class="legend-color completed"></span>완료됨 (Completed)</div>
+        <div class="legend-item"><span class="legend-color in-progress"></span>진행중 (In Progress)</div>
+        <div class="legend-item"><span class="legend-color locked"></span>잠김 (Locked)</div>
+        <div class="legend-divider"></div>
+        <div class="legend-instructions">
+          <p><i class="fa-solid fa-circle-info"></i> <b>클릭</b>: 노드 할당/해제 토글</p>
+          <p><i class="fa-solid fa-circle-info"></i> <b>Shift + 클릭</b>: 다중 선택</p>
+          <p><i class="fa-solid fa-circle-info"></i> <b>[Space]</b>: 화면 초기화 (중앙 이동)</p>
+          <p><i class="fa-solid fa-circle-info"></i> <b>[Esc]</b>: 선택 해제</p>
+          <p><i class="fa-solid fa-circle-info"></i> <b>[F]</b>: 검색창 포커스</p>
+          <p><i class="fa-solid fa-circle-info"></i> <b>[Del] / [Backspace]</b>: 선택 노드 할당 해제</p>
+          <p><i class="fa-solid fa-circle-info"></i> <b>[Ctrl+S] / [Cmd+S]</b>: 현재 상태 저장</p>
+          <p><i class="fa-solid fa-circle-info"></i> <b>마우스 휠</b>: 줌 인/아웃</p>
+          <p><i class="fa-solid fa-circle-info"></i> <b>드래그</b>: 화면 이동</p>
+        </div>
+      </div>
+      
+      <!-- Character Stats Panel (Set Effects) -->
+      <div class="character-stats-panel">
+        <div class="stats-header">누적 스킬 효과 (Set Effects)</div>
+        <div id="character-stats-list" class="stats-list">
+           <div class="empty-stats">활성화된 스킬이 없습니다.</div>
+        </div>
+      </div>
+
+      <!-- Admin Floating Toolbar -->
+      <div id="adminToolbar" style="display:none;position:absolute;top:12px;left:50%;transform:translateX(-50%);z-index:500;display:flex;gap:8px;background:rgba(15,10,5,0.85);border:1px solid #8a6a2e;border-radius:8px;padding:8px 14px;backdrop-filter:blur(6px);">
+        <span style="font-size:12px;color:#c8a96e;padding:4px 6px;"><i class="fa-solid fa-shield-halved"></i> Admin</span>
+        <button id="btnAdminAddNode" class="btn" style="font-size:12px;padding:4px 10px;"><i class="fa-solid fa-plus"></i> 노드 추가</button>
+        <button id="btnAdminEdgeMode" class="btn" style="font-size:12px;padding:4px 10px;" title="클릭 모드에서: 첫 번째 노드 → 두 번째 노드 클릭으로 연결"><i class="fa-solid fa-link"></i> 엣지 연결</button>
+        <button id="btnAdminDeleteNode" class="btn" style="font-size:12px;padding:4px 10px;color:#e74c3c;border-color:#e74c3c;"><i class="fa-solid fa-trash"></i> 노드 삭제</button>
+        <button id="btnOpenPrPanelAdmin" class="btn btn-export" style="font-size:12px;padding:4px 10px;"><i class="fa-solid fa-code-pull-request"></i> PR 관리</button>
+      </div>
+    </section>
+
+    <!-- Sidebar Control Panel -->
+    <aside class="sidebar-panel">
+      <!-- Default state: Node not selected -->
+      <div id="empty-state" class="sidebar-section active">
+        <div class="empty-message">
+          <i class="fa-solid fa-crosshairs empty-icon"></i>
+          <h3>노드를 선택하거나 생성하세요</h3>
+          <p>지도상에서 노드를 클릭하여 코멘트를 수정하고 상태를 변경하거나, 빈 영역을 더블클릭하여 새 노드를 추가하세요.</p>
+        </div>
+      </div>
+
+      <!-- Node Editing Panel -->
+      <div id="editor-state" class="sidebar-section">
+        <div class="section-header">
+          <h2 id="editor-title">과목 설정</h2>
+          <button id="btnDeleteNode" class="btn btn-danger" title="노드 삭제">
+            <i class="fa-solid fa-trash"></i> 삭제
+          </button>
+        </div>
+
+        <div class="form-group">
+          <label for="nodeLabel">과목 이름</label>
+          <input type="text" id="nodeLabel" class="form-control" placeholder="예: 미적분학, 확률론">
+        </div>
+
+        <div class="form-row">
+          <div class="form-group half">
+            <label for="nodeImportance">중요도</label>
+            <select id="nodeImportance" class="form-control">
+              <option value="High">상 (High)</option>
+              <option value="Medium">중 (Medium)</option>
+              <option value="Low">하 (Low)</option>
+            </select>
+          </div>
+          <div class="form-group half">
+            <label for="nodeStatus">학습 상태</label>
+            <select id="nodeStatus" class="form-control">
+              <option value="Completed">완료 (Completed)</option>
+              <option value="In Progress">진행중 (In Progress)</option>
+              <option value="Locked">잠김 (Locked)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group half">
+            <label for="nodeShape">노드 모양</label>
+            <select id="nodeShape" class="form-control">
+              <option value="circle">원형 (Circle)</option>
+              <option value="rect">사각형 (Square)</option>
+              <option value="hexagon">육각형 (Hexagon)</option>
+              <option value="diamond">마름모 (Diamond)</option>
+            </select>
+          </div>
+          <div class="form-group half">
+            <label>서브노드 관리</label>
+            <button id="btnToggleSubnodes" class="btn btn-save btn-block" style="padding: 10px 0;"><i class="fa-solid fa-list-check"></i> 목록 펼치기/접기</button>
+          </div>
+        </div>
+
+        <!-- Subnodes list container (Collapsible) -->
+        <div id="subnodes-container" class="subnodes-list-area hidden">
+          <div class="subnodes-header">
+            <h3>서브노드(체크포인트) 목록</h3>
+            <button id="btnAddSubnode" class="btn btn-save" style="padding: 2px 8px; font-size: 11px;"><i class="fa-solid fa-plus"></i> 추가</button>
+          </div>
+          <div id="subnodes-list-body" class="subnodes-list-body">
+            <!-- Dynamically populated subnode elements -->
+          </div>
+        </div>
+
+        <!-- Rich Comment / Markdown Area -->
+        <div class="form-group flex-fill" style="margin-top: 10px;">
+          <div class="comment-header">
+            <label>세부 학습 코멘트 (Markdown / LaTeX 수식 지원)</label>
+            <div class="tab-buttons">
+              <button id="btnTabEdit" class="tab-btn active">편집</button>
+              <button id="btnTabPreview" class="tab-btn">미리보기</button>
+            </div>
+          </div>
+          
+          <div class="comment-container">
+            <textarea id="nodeComment" class="form-control markdown-editor" placeholder="# LaTeX 수식 입력 예시&#10;- 인라인 수식: $E = mc^2$&#10;- 디스플레이 수식:&#10;$$f(x) = \int_{-\infty}^{\infty} e^{-x^2} dx$$&#10;- 이미지 복사(Ctrl+V) 시 마크다운으로 자동 삽입됩니다."></textarea>
+            <div id="commentPreview" class="markdown-preview hidden"></div>
+          </div>
+        </div>
+
+        <div class="form-actions">
+          <button id="btnApplyNodeChanges" class="btn btn-primary btn-block">적용</button>
+        </div>
+      </div>
+
+      <!-- PR Panel Sidebar Section -->
+      <div id="pr-sidebar-section" class="sidebar-section" style="display:none;">
+        <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid #3a2e1e; padding-bottom:8px; margin-bottom:10px;">
+          <h3 style="margin:0; font-size:15px; font-weight:600; color:#e8d098;">PR List</h3>
+          <label style="font-size:11px; color:#8a6a2e; display:flex; align-items:center; gap:4px; cursor:pointer;">
+            <input type="checkbox" id="prShowNodeNameToggle" checked onchange="loadPrSidebar()"> 
+            노드 이름으로 보기
+          </label>
+        </div>
+        <div id="prSidebarList" style="flex:1; overflow-y:auto; padding-right:5px; max-height:calc(100vh - 200px);">
+          <p style="color:#666;font-size:13px;">로딩 중...</p>
+        </div>
+      </div>
+    </aside>
+  </main>
+
+  <!-- Proposal Submit Modal -->
+  <div id="proposalModal" class="modal-backdrop hidden">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3><i class="fa-solid fa-paper-plane"></i> 기여 제안 제출</h3>
+        <button id="btnCloseProposalModal" class="btn-close"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label for="proposalDesc">제안 설명 (Admin 검토용)</label>
+          <textarea id="proposalDesc" class="form-control" style="height:100px; resize:none;" placeholder="예: 미적분학 단원에 '다변수미적분' 서브노드를 추가하고, 대수학 노드와 연결선을 보완했습니다."></textarea>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button id="btnCancelProposal" class="btn btn-save">취소</button>
+        <button id="btnSubmitProposalConfirm" class="btn btn-primary">제출하기</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mock Login Modal -->
+  <div id="mockLoginModal" class="modal-backdrop hidden">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3><i class="fa-solid fa-user-lock"></i> 테스트용 Mock 로그인</h3>
+        <button id="btnCloseMockModal" class="btn-close"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label for="mockName">이름</label>
+          <input type="text" id="mockName" class="form-control" value="기여자A">
+        </div>
+        <div class="form-group">
+          <label for="mockEmail">이메일</label>
+          <input type="email" id="mockEmail" class="form-control" value="contributor@test.com">
+        </div>
+        <div class="form-group">
+          <label for="mockRole">권한 역할</label>
+          <select id="mockRole" class="form-control">
+            <option value="contributor">Contributor (기여자 - 제안 제출 가능)</option>
+            <option value="admin">Admin (관리자 - 제안 승인/반려 및 직접 저장 가능)</option>
+          </select>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button id="btnMockLoginConfirm" class="btn btn-primary btn-block">로그인</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <script src="canvas_engine.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

@@ -417,22 +417,11 @@ input:checked + .slider:before {
 
 /* Character Stats Panel (Set Effects) */
 .character-stats-panel {
-  position: absolute;
-  top: 25px;
-  right: 25px;
-  background-color: var(--panel-bg);
-  border: 1px solid var(--panel-border);
-  border-radius: 8px;
-  padding: 15px;
-  width: 280px;
-  max-height: calc(100% - 50px);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
-  pointer-events: auto;
-  z-index: 5;
-  backdrop-filter: blur(10px);
   display: flex;
   flex-direction: column;
+  height: 100%;
   color: var(--text-primary);
+  padding: 0;
 }
 
 .stats-header {
@@ -477,7 +466,7 @@ input:checked + .slider:before {
 
 /* Sidebar panel */
 .sidebar-panel {
-  width: 420px;
+  width: 480px;
   background-color: var(--panel-bg);
   border-left: 1px solid var(--panel-border);
   box-shadow: -10px 0 30px rgba(0, 0, 0, 0.5);

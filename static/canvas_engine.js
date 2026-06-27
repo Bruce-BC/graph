@@ -16,6 +16,7 @@ class CanvasGraph {
     this.edgeStyle = 'straight'; // 'straight' | 'curve'
     this.curvature = 0.3;
     this.prDimOpacity = 0.2;
+    this.highlightedEdge = null; // edge object currently highlighted (right-clicked)
     
     // Initialize zoom transform (center tree, zoom out since coordinates are large now)
     this.transform = d3.zoomIdentity.translate(this.canvas.width/2, this.canvas.height/2).scale(0.08);
@@ -285,26 +286,35 @@ class CanvasGraph {
        }
     }
     
-    // 2. Draw Edges
-    ctx.lineWidth = 42; 
+     // 2. Draw Edges
     for(let e of this.dataObj.edges) {
         if(!e.sourceNode || !e.targetNode) continue;
         let n1 = e.sourceNode;
         let n2 = e.targetNode;
-        
+
+        const isHighlighted = this.highlightedEdge && this.highlightedEdge === e;
         let isAllocated = (n1.status === 'Completed' && n2.status === 'Completed');
-        ctx.strokeStyle = isAllocated ? 'rgba(212, 175, 55, 0.9)' : 'rgba(100, 100, 100, 0.5)';
-        
-        if (isAllocated) {
+
+        if (isHighlighted) {
+            ctx.lineWidth = 70;
+            ctx.strokeStyle = 'rgba(255, 80, 80, 1.0)';
+            ctx.shadowBlur = 35;
+            ctx.shadowColor = 'rgba(255, 60, 60, 1.0)';
+            ctx.setLineDash([]);
+        } else if (isAllocated) {
+            ctx.lineWidth = 42;
+            ctx.strokeStyle = 'rgba(212, 175, 55, 0.9)';
             ctx.shadowBlur = 15;
             ctx.shadowColor = 'rgba(212, 175, 55, 0.8)';
             ctx.setLineDash([60, 30]);
             ctx.lineDashOffset = -(now / 15) % 90;
         } else {
+            ctx.lineWidth = 42;
+            ctx.strokeStyle = 'rgba(100, 100, 100, 0.5)';
             ctx.shadowBlur = 0;
             ctx.setLineDash([]);
         }
-        
+
         // Arc connection (same group + same orbit → draw arc)
         if (n1.group === n2.group && n1.orbit === n2.orbit && n1.orbit > 0 && n1.group !== "") {
             let group = this.dataObj.groups[n1.group];
@@ -330,7 +340,6 @@ class CanvasGraph {
         ctx.beginPath();
         ctx.moveTo(n1.x, n1.y);
         if (this.edgeStyle === 'curve' || e.curvature !== undefined) {
-            // Quadratic bezier: control point perpendicular to midpoint
             const mx = (n1.x + n2.x) / 2;
             const my = (n1.y + n2.y) / 2;
             const dx = n2.x - n1.x;
@@ -367,11 +376,18 @@ class CanvasGraph {
             this.images[iconFile] = new Image();
             this.images[iconFile].onload = () => this.render();
             this.images[iconFile].onerror = () => {
-                // Fall back to active icon if inactive is missing
-                if (iconFile !== n.icon) {
-                    this.images[iconFile] = this.images[n.icon] || new Image();
-                    this.render();
+                if (this.images[iconFile].isFallback) return; // Prevent infinite fallback loops
+                
+                let statusStr = isAllocated ? 'Active' : 'Inactive';
+                let fallbackSrc = `/icons/normal${statusStr}_Art_2DArt_SkillIcons_passives_life1.png.png`;
+                if (n.type === 'Notable') {
+                    fallbackSrc = `/icons/notable${statusStr}_Art_2DArt_SkillIcons_passives_life1.png.png`;
+                } else if (n.type === 'Keystone') {
+                    fallbackSrc = `/icons/keystone${statusStr}_Art_2DArt_SkillIcons_passives_AnointOnlyKeystone.png.png`;
                 }
+                
+                this.images[iconFile].isFallback = true;
+                this.images[iconFile].src = fallbackSrc;
             };
             this.images[iconFile].src = '/icons/' + iconFile;
         }

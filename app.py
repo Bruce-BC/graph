@@ -372,6 +372,22 @@ def save_node_description(body: DescriptionSaveRequest, user: dict = Depends(get
         })
         return {"status": "pr_submitted", "pr_id": pr["id"]}
 
+@app.post("/api/graph/reset_progress")
+def reset_graph_progress(user: dict = Depends(get_current_user)):
+    if user.get("role") != "admin":
+        raise HTTPException(status_code=403, detail="Admin only")
+    data = load_data()
+    count = 0
+    for node in data["nodes"]:
+        if node.get("status") == "Completed":
+            node["status"] = "Locked"
+            count += 1
+    save_data(data)
+    append_audit({
+        "type": "reset_progress", "user": user, "reset_count": count, "timestamp": time.time()
+    })
+    return {"status": "success", "reset_count": count}
+
 # ── Admin-only structure changes (add/remove node/edge) ────────────────────────
 # Uses structure_overrides.json — never touches math_tree.json directly.
 class StructureChange(BaseModel):

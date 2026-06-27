@@ -1,4 +1,6 @@
+// ==========================================
 // State Management
+// ==========================================
 let graph = null;
 let graphData = { nodes: [], edges: [] };
 let baseGraphData = { nodes: [], edges: [] };
@@ -43,9 +45,8 @@ const exportMenu = document.getElementById('exportMenu');
 const importFile = document.getElementById('importFile');
 
 // Subnode Collapsible Elements
-const btnToggleSubnodes = document.getElementById('btnToggleSubnodes');
-const subnodesContainer = document.getElementById('subnodes-container');
-const btnAddSubnode = document.getElementById('btnAddSubnode');
+const btnToggleStats = document.getElementById('btnToggleStats');
+const btnResetProgress = document.getElementById('btnResetProgress');
 const subnodesListBody = document.getElementById('subnodes-list-body');
 const subnodeVisSelect = document.getElementById('subnodeVisSelect');
 const subnodeRotSelect = document.getElementById('subnodeRotSelect');
@@ -124,59 +125,58 @@ async function fetchGraphData() {
 
 // Update Character Stats Panel (Set Effects)
 function updateCharacterStats() {
-    const statsPanel = document.getElementById('character-stats-list');
-    if(!statsPanel) return;
-    
-    let allStats = {};
-    
-    graphData.nodes.forEach(n => {
-        if (n.status === 'Completed' && n.stats) {
-            n.stats.forEach(stat => {
-                // Try to extract a numeric prefix to aggregate
-                const match = stat.match(/^([+-]?\d+)(.*)/);
-                if (match) {
-                    const val = parseInt(match[1]);
-                    const suffix = match[2];
-                    if (allStats[suffix]) {
-                        allStats[suffix] += val;
-                    } else {
-                        allStats[suffix] = val;
-                    }
-                } else {
-                    if (allStats[stat]) {
-                        allStats[stat] += 1;
-                    } else {
-                        allStats[stat] = 1;
-                    }
-                }
-            });
-        }
-    });
-    
-    statsPanel.innerHTML = '';
-    const keys = Object.keys(allStats);
-    if (keys.length === 0) {
-        statsPanel.innerHTML = '<div class="empty-stats">활성화된 스킬이 없습니다.</div>';
-        return;
-    }
-    
-    keys.sort().forEach(key => {
-        const div = document.createElement('div');
-        div.className = 'stat-item';
-        const val = allStats[key];
-        
-        if (key.startsWith(' ') || key.startsWith('%')) {
-            div.textContent = (val > 0 ? '+' : '') + val + key;
+  const statsPanel = document.getElementById('character-stats-list');
+  if (!statsPanel) return;
+
+  let allStats = {};
+
+  graphData.nodes.forEach(n => {
+    if (n.status === 'Completed' && n.stats) {
+      n.stats.forEach(stat => {
+        const match = stat.match(/^([+-]?\d+)(.*)/);
+        if (match) {
+          const val = parseInt(match[1]);
+          const suffix = match[2];
+          if (allStats[suffix]) {
+            allStats[suffix] += val;
+          } else {
+            allStats[suffix] = val;
+          }
         } else {
-            div.textContent = val > 1 ? `${key} (x${val})` : key;
+          if (allStats[stat]) {
+            allStats[stat] += 1;
+          } else {
+            allStats[stat] = 1;
+          }
         }
-        
-        if (div.textContent.toLowerCase().includes('reduced') || div.textContent.includes('-')) {
-            div.style.color = '#ff6b6b';
-        }
-        
-        statsPanel.appendChild(div);
-    });
+      });
+    }
+  });
+
+  statsPanel.innerHTML = '';
+  const keys = Object.keys(allStats);
+  if (keys.length === 0) {
+    statsPanel.innerHTML = '<div class="empty-stats">활성화된 스킬이 없습니다.</div>';
+    return;
+  }
+
+  keys.sort().forEach(key => {
+    const div = document.createElement('div');
+    div.className = 'stat-item';
+    const val = allStats[key];
+
+    if (key.startsWith(' ') || key.startsWith('%')) {
+      div.textContent = (val > 0 ? '+' : '') + val + key;
+    } else {
+      div.textContent = val > 1 ? `${key} (x${val})` : key;
+    }
+
+    if (div.textContent.toLowerCase().includes('reduced') || div.textContent.includes('-')) {
+      div.style.color = '#ff6b6b';
+    }
+
+    statsPanel.appendChild(div);
+  });
 }
 
 // Save Graph via API (role-based)
@@ -187,7 +187,6 @@ async function saveGraphData() {
     return;
   }
 
-  // Collect current status changes from graphData
   const changes = {};
   graphData.nodes.forEach(n => { changes[n.id] = n.status; });
 
@@ -233,12 +232,10 @@ function showToast(msg, type = 'info') {
   toast._timeout = setTimeout(() => { toast.style.opacity = '0'; }, 3000);
 }
 
-// ── Right-click context menu ────────────────────────────────────────────────
+// Context Menu Setup
 let ctxTargetNode = null;
 let edgeModeActive = false;
 let edgeModeSourceNode = null;
-
-// Track where canvas was right-clicked (in graph coordinates)
 let canvasCtxPos = { x: 0, y: 0 };
 
 function setupContextMenu() {
@@ -247,13 +244,11 @@ function setupContextMenu() {
 
   document.getElementById('ctx-close')?.addEventListener('click', closeCtxMenu);
   document.getElementById('ctx-edit-node')?.addEventListener('click', () => { openInlineEdit(ctxTargetNode); closeCtxMenu(); });
-  // Legacy IDs kept for backward compat (may no longer exist in HTML)
   document.getElementById('ctx-edit-label')?.addEventListener('click', () => { openInlineEdit(ctxTargetNode); closeCtxMenu(); });
   document.getElementById('ctx-edit-comment')?.addEventListener('click', () => { openInlineEdit(ctxTargetNode); closeCtxMenu(); });
   document.getElementById('ctx-add-edge')?.addEventListener('click', () => { startEdgeMode(ctxTargetNode); closeCtxMenu(); });
   document.getElementById('ctx-remove-node')?.addEventListener('click', () => { adminRemoveNode(ctxTargetNode); closeCtxMenu(); });
 
-  // Canvas right-click menu
   const canvasMenu = document.getElementById('canvas-ctx-menu');
   document.getElementById('canvas-ctx-close')?.addEventListener('click', closeCanvasCtxMenu);
   document.getElementById('canvas-ctx-reset-view')?.addEventListener('click', () => {
@@ -266,7 +261,6 @@ function setupContextMenu() {
     closeCanvasCtxMenu();
   });
 
-  // Close menus on outside click
   document.addEventListener('click', (e) => {
     if (menu && !menu.contains(e.target)) closeCtxMenu();
     if (canvasMenu && !canvasMenu.contains(e.target)) closeCanvasCtxMenu();
@@ -281,7 +275,7 @@ function openCtxMenu(node, clientX, clientY) {
   const isAdmin = currentUser?.role === 'admin';
   const adminSection = document.getElementById('ctx-admin-section');
   if (adminSection) adminSection.style.display = isAdmin ? 'block' : 'none';
-  // Keep menu inside viewport
+
   const vw = window.innerWidth, vh = window.innerHeight;
   const mw = 210, mh = isAdmin ? 200 : 130;
   menu.style.left = Math.min(clientX, vw - mw) + 'px';
@@ -312,12 +306,11 @@ function closeCanvasCtxMenu() {
   if (menu) menu.style.display = 'none';
 }
 
-// ── Custom Node Add UI ───────────────────────────────────────────────────────
+// Node Add Popup UI
 let pendingAddNodePos = null;
 
 function openAddNodePopup(x, y) {
   pendingAddNodePos = { x, y };
-  // Reset icon selection
   window.selectedIconNode = null;
   const previewImg = document.getElementById('addNodeIconImg');
   const placeholder = document.getElementById('addNodeIconPlaceholder');
@@ -332,22 +325,21 @@ function openAddNodePopup(x, y) {
   posText.textContent = `위치: (${Math.round(x)}, ${Math.round(y)})`;
   input.value = '';
   popup.style.display = 'block';
-  
-  // Center popup
+
   const vw = window.innerWidth, vh = window.innerHeight;
   popup.style.left = Math.max(16, (vw - 300) / 2) + 'px';
   popup.style.top = Math.max(16, (vh - 200) / 2) + 'px';
-  
+
   setTimeout(() => input.focus(), 50);
 }
 
-window.closeAddNodePopup = function() {
+window.closeAddNodePopup = function () {
   const popup = document.getElementById('addNodePopup');
   if (popup) popup.style.display = 'none';
   pendingAddNodePos = null;
 };
 
-window.submitAddNode = async function() {
+window.submitAddNode = async function () {
   if (!pendingAddNodePos) return;
   const input = document.getElementById('addNodeLabelInput');
   const label = input.value.trim();
@@ -355,9 +347,8 @@ window.submitAddNode = async function() {
     showToast('노드 이름을 입력하세요.', 'error');
     return;
   }
-  
+
   let iconToUse = window.selectedIconNode || 'normalActive_Art_2DArt_SkillIcons_passives_AtlasTrees_AulBloodlineNode.png.png';
-  
   const { x, y } = pendingAddNodePos;
   const newNode = {
     id: `custom_${Date.now()}`,
@@ -376,7 +367,7 @@ window.submitAddNode = async function() {
     subnodes: [],
     stats: []
   };
-  
+
   try {
     const res = await fetch('/api/graph/structure', {
       method: 'POST',
@@ -391,84 +382,78 @@ window.submitAddNode = async function() {
       const d = await res.json();
       showToast('노드 추가 실패: ' + (d.detail || '오류'), 'error');
     }
-  } catch(err) {
+  } catch (err) {
     showToast('네트워크 오류: ' + err.message, 'error');
   }
-}
+};
 
-// Admin: Add node at specific canvas coordinates
 function adminAddNodeAtPos(x, y) {
   openAddNodePopup(x, y);
 }
 
-// ── Inline Node Edit Popup (merged label + comment) ────────────────────────
+// Inline Node Edit Popup
 function openNodeEditModal(field) {
-  // Legacy shim — just open unified popup
   openInlineEdit(ctxTargetNode);
 }
 
 function openInlineEdit(node) {
   if (!node) return;
   ctxTargetNode = node;
-  const popup  = document.getElementById('inlineEditPopup');
+  const popup = document.getElementById('inlineEditPopup');
   const nodeId = document.getElementById('inlineEditNodeId');
-  const labelEl   = document.getElementById('inlineEditLabel');
+  const labelEl = document.getElementById('inlineEditLabel');
   const commentEl = document.getElementById('inlineEditComment');
   const prDesc = document.getElementById('inlineEditPrDesc');
   if (!popup) return;
 
   nodeId.textContent = `ID: ${node.serial_id || node.id}  ·  ${node.label || ''}`;
-  if (labelEl)   labelEl.value   = node.label   || '';
-  if (commentEl) commentEl.value = node.comment  || '';
+  if (labelEl) labelEl.value = node.label || '';
+  if (commentEl) commentEl.value = node.comment || '';
   prDesc.value = '';
 
   const role = currentUser?.role || 'guest';
-  prDesc.placeholder = role === 'admin'
-    ? '(Admin: 즉시 반영됨)'
-    : '변경 사유 — PR로 제출됩니다';
+  prDesc.placeholder = role === 'admin' ? '(Admin: 즉시 반영됨)' : '변경 사유 — PR로 제출됩니다';
 
   popup.style.display = 'block';
   const vw = window.innerWidth, vh = window.innerHeight;
   popup.style.left = Math.max(16, (vw - 460) / 2) + 'px';
-  popup.style.top  = Math.max(16, (vh - 360) / 2) + 'px';
+  popup.style.top = Math.max(16, (vh - 360) / 2) + 'px';
   if (labelEl) labelEl.focus();
 }
 
-window.closeInlineEdit = function() {
+window.closeInlineEdit = function () {
   const popup = document.getElementById('inlineEditPopup');
   if (popup) popup.style.display = 'none';
 };
 
-window.submitInlineEdit = async function() {
+window.submitInlineEdit = async function () {
   if (!ctxTargetNode) return;
-  const labelEl   = document.getElementById('inlineEditLabel');
+  const labelEl = document.getElementById('inlineEditLabel');
   const commentEl = document.getElementById('inlineEditComment');
-  const prDesc    = document.getElementById('inlineEditPrDesc').value.trim();
-  const newLabel   = labelEl?.value.trim()   ?? '';
+  const prDesc = document.getElementById('inlineEditPrDesc').value.trim();
+  const newLabel = labelEl?.value.trim() ?? '';
   const newComment = commentEl?.value.trim() ?? '';
   const role = currentUser?.role || 'guest';
   if (role === 'guest') { showToast('로그인이 필요합니다.', 'error'); return; }
 
   try {
-    // Save label
     const resLabel = await fetch('/api/graph/description', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ node_id: ctxTargetNode.id, field: 'label', value: newLabel, pr_description: prDesc || undefined })
     });
-    // Save comment
     const resComment = await fetch('/api/graph/description', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ node_id: ctxTargetNode.id, field: 'comment', value: newComment, pr_description: prDesc || undefined })
     });
-    const dataLabel   = await resLabel.json();
+    const dataLabel = await resLabel.json();
     const dataComment = await resComment.json();
 
     if (resLabel.ok && resComment.ok) {
       const localNode = graphData.nodes.find(n => n.id === ctxTargetNode.id);
       if (localNode) { localNode.label = newLabel; localNode.comment = newComment; }
-      ctxTargetNode.label   = newLabel;
+      ctxTargetNode.label = newLabel;
       ctxTargetNode.comment = newComment;
       if (graph) graph.render();
       if (dataLabel.status === 'saved') {
@@ -481,13 +466,12 @@ window.submitInlineEdit = async function() {
       const err = dataLabel.detail || dataComment.detail || '저장 실패';
       showToast('오류: ' + err, 'error');
     }
-  } catch(err) {
+  } catch (err) {
     showToast('네트워크 오류', 'error');
   }
 };
 
 function setupNodeEditModal() {
-  // Legacy modal — kept for compatibility but inline popup is primary
   document.getElementById('btnCloseNodeEdit')?.addEventListener('click', () => {
     document.getElementById('nodeEditModal').classList.add('hidden');
   });
@@ -496,7 +480,7 @@ function setupNodeEditModal() {
   });
 }
 
-// ── Admin: Edge connect mode ─────────────────────────────────────────────────
+// Admin: Edge Connect Mode
 function startEdgeMode(sourceNode) {
   edgeModeActive = true;
   edgeModeSourceNode = sourceNode;
@@ -513,11 +497,9 @@ function cancelEdgeMode() {
 }
 
 async function adminAddEdge(sourceNode, targetNode) {
-  // Admin can connect any two nodes freely
-  // Only check for duplicate edge
   const alreadyExists = graphData.edges.some(
     e => (e.source === sourceNode.id && e.target === targetNode.id) ||
-         (e.source === targetNode.id && e.target === sourceNode.id)
+      (e.source === targetNode.id && e.target === sourceNode.id)
   );
   if (alreadyExists) {
     showToast('⚠️ 이미 연결된 노드입니다.', 'error');
@@ -532,53 +514,139 @@ async function adminAddEdge(sourceNode, targetNode) {
       body: JSON.stringify({ action: 'add_edge', data: { id: edgeId, source: sourceNode.id, target: targetNode.id } })
     });
     if (res.ok) {
-      await fetchGraphData(); // Reload to reflect change
-      showToast('✅ 엣지가 추가되었습니다.', 'success');
+      await fetchGraphData();
+      showToast('✅ 엣지가 추가되었습니다. 곡률을 설정하세요.', 'success');
+      openEdgeConnectCurvaturePopup(edgeId, sourceNode, targetNode);
     } else {
       const d = await res.json();
       showToast('오류: ' + (d.detail || '엣지 추가 실패'), 'error');
     }
-  } catch(err) {
+  } catch (err) {
     showToast('네트워크 오류: ' + err.message, 'error');
   }
   cancelEdgeMode();
 }
 
-// ── Icon Picker Logic ─────────────────────────────────────────────────────────
-window.selectedIconNode = null;
+// Edge Connect Curvature Popup
+let edgeConnectTarget = null;
+
+function openEdgeConnectCurvaturePopup(edgeId, sourceNode, targetNode) {
+  const popup = document.getElementById('edgeConnectCurvaturePopup');
+  const info = document.getElementById('edgeConnectInfoText');
+  const slider = document.getElementById('edgeConnectCurvatureSlider');
+  const valEl = document.getElementById('edgeConnectCurvatureVal');
+  if (!popup) return;
+
+  const edgeRef = graph?.dataObj?.edges?.find(e => e.id === edgeId);
+  edgeConnectTarget = { id: edgeId, edgeRef, sourceNode, targetNode };
+
+  // ── Parallel edge overlay detection ──────────────────────────────────────
+  // Check if there's already another edge between the same two nodes (reverse direction)
+  const parallelEdge = graph?.dataObj?.edges?.find(e =>
+    e.id !== edgeId &&
+    ((e.source == sourceNode.id && e.target == targetNode.id) ||
+     (e.source == targetNode.id && e.target == sourceNode.id))
+  );
+
+  const warnEl = document.getElementById('edgeConnectOverlapWarning');
+  let suggestedCurvature = 0;
+  if (parallelEdge) {
+    // Suggest opposite curvature to avoid overlap
+    const existingCurv = parallelEdge.curvature ?? 0;
+    suggestedCurvature = existingCurv >= 0 ? -0.3 : 0.3;
+    if (warnEl) {
+      warnEl.style.display = 'block';
+      warnEl.textContent = `⚠️ 평행 엣지 감지! 곡률 ${suggestedCurvature > 0 ? '+' : ''}${suggestedCurvature} 자동 제안`;
+    }
+  } else {
+    if (warnEl) warnEl.style.display = 'none';
+  }
+
+  info.textContent = `${sourceNode.label || sourceNode.id} ↔ ${targetNode.label || targetNode.id}`;
+  slider.value = suggestedCurvature;
+  valEl.innerText = String(suggestedCurvature);
+
+  if (edgeRef && graph) {
+    edgeRef.curvature = suggestedCurvature || undefined;
+    graph.highlightedEdge = edgeRef;
+    graph.render();
+  }
+
+  popup.style.display = 'block';
+  const vw = window.innerWidth, vh = window.innerHeight;
+  popup.style.left = Math.max(16, (vw - 290) / 2) + 'px';
+  popup.style.top  = Math.max(16, (vh - 240) / 2) + 'px';
+}
+
+window.updateNewEdgeCurvaturePreview = function (val) {
+  if (!edgeConnectTarget?.edgeRef || !graph) return;
+  edgeConnectTarget.edgeRef.curvature = parseFloat(val);
+  graph.render();
+};
+
+window.skipEdgeConnectCurvature = function () {
+  if (graph) { graph.highlightedEdge = null; graph.render(); }
+  const popup = document.getElementById('edgeConnectCurvaturePopup');
+  if (popup) popup.style.display = 'none';
+  edgeConnectTarget = null;
+};
+
+window.saveEdgeConnectCurvature = async function () {
+  if (!edgeConnectTarget) return;
+  const slider = document.getElementById('edgeConnectCurvatureSlider');
+  const curvature = parseFloat(slider.value);
+  if (curvature === 0) { skipEdgeConnectCurvature(); return; }
+  try {
+    const res = await fetch('/api/graph/structure', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ action: 'edit_edge_curvature', data: { id: edgeConnectTarget.id, curvature } })
+    });
+    if (res.ok) {
+      if (edgeConnectTarget.edgeRef) edgeConnectTarget.edgeRef.curvature = curvature;
+      showToast('✅ 곡률이 저장되었습니다.', 'success');
+    } else {
+      showToast('곡률 저장 실패', 'error');
+    }
+  } catch (e) {
+    showToast('네트워크 오류', 'error');
+  }
+  skipEdgeConnectCurvature();
+};
+
+// Icon Picker Logic
 let allIconsCache = [];
 
-window.openIconPicker = async function() {
+window.openIconPicker = async function () {
   const modal = document.getElementById('iconPickerModal');
   if (!modal) return;
   modal.classList.remove('hidden');
   document.getElementById('iconSearchInput').value = '';
-  
+
   if (allIconsCache.length === 0) {
     try {
       const res = await fetch('/api/icons');
       if (res.ok) allIconsCache = await res.json();
-    } catch(err) {
+    } catch (err) {
       console.error('Failed to load icons', err);
     }
   }
   window.filterIcons();
 };
 
-window.closeIconPicker = function() {
+window.closeIconPicker = function () {
   const modal = document.getElementById('iconPickerModal');
   if (modal) modal.classList.add('hidden');
 };
 
-window.filterIcons = function() {
+window.filterIcons = function () {
   const q = document.getElementById('iconSearchInput').value.toLowerCase();
   const grid = document.getElementById('iconGrid');
   grid.innerHTML = '';
-  
+
   const filtered = allIconsCache.filter(icon => icon.toLowerCase().includes(q));
-  // Render up to 200 items for performance
   const limit = Math.min(filtered.length, 200);
-  
+
   for (let i = 0; i < limit; i++) {
     const icon = filtered[i];
     const img = document.createElement('img');
@@ -591,7 +659,7 @@ window.filterIcons = function() {
     img.style.border = '1px solid #3a2e1e';
     img.style.borderRadius = '4px';
     img.title = icon;
-    
+
     img.onclick = () => {
       window.selectedIconNode = icon;
       const previewImg = document.getElementById('addNodeIconImg');
@@ -604,10 +672,10 @@ window.filterIcons = function() {
   }
 };
 
-// ── Edge Edit Popup (Right-click edge) ───────────────────────────────────────
+// Edge Edit Popup
 let edgeEditTarget = null;
 
-window.updateEdgeCurvaturePreview = function(val) {
+window.updateEdgeCurvaturePreview = function (val) {
   if (edgeEditTarget && graph) {
     edgeEditTarget.curvature = parseFloat(val);
     graph.render();
@@ -625,55 +693,81 @@ function openEdgeEditPopup(edge, x, y) {
   const n1 = edge.sourceNode?.label || edge.source;
   const n2 = edge.targetNode?.label || edge.target;
   infoText.textContent = `연결: ${n1} ↔ ${n2}`;
-  
+
   const currentCurv = edge.curvature !== undefined ? edge.curvature : (graph ? graph.curvature : 0.3);
   slider.value = currentCurv;
   valText.innerText = currentCurv;
-  
+
   popup.style.display = 'block';
   popup.style.left = Math.min(x, window.innerWidth - 280) + 'px';
   popup.style.top = Math.min(y, window.innerHeight - 150) + 'px';
 }
 
-window.closeEdgeEditPopup = function() {
+window.closeEdgeEditPopup = function () {
   const popup = document.getElementById('edgeEditPopup');
   if (popup) popup.style.display = 'none';
+  if (graph) { graph.highlightedEdge = null; graph.render(); }
   edgeEditTarget = null;
 };
 
-window.submitEdgeEdit = async function() {
+window.submitEdgeEdit = async function () {
   if (!edgeEditTarget) return;
   const slider = document.getElementById('edgeCurvatureSlider');
   const val = parseFloat(slider.value);
-  
-  // Find edge ID or use source-target as fallback
   const edgeId = edgeEditTarget.id || `${edgeEditTarget.source}-${edgeEditTarget.target}`;
-  
+
   try {
     const res = await fetch('/api/graph/structure', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ 
-        action: 'edit_edge_curvature', 
-        data: { id: edgeId, curvature: val } 
-      })
+      body: JSON.stringify({ action: 'edit_edge_curvature', data: { id: edgeId, curvature: val } })
     });
     if (res.ok) {
       showToast('✅ 엣지 곡률이 저장되었습니다.', 'success');
+      if (edgeEditTarget) edgeEditTarget.curvature = val;
       closeEdgeEditPopup();
       await fetchGraphData();
     } else {
       const d = await res.json();
       showToast('저장 실패: ' + (d.detail || '오류'), 'error');
     }
-  } catch(err) {
+  } catch (err) {
     showToast('네트워크 오류: ' + err.message, 'error');
   }
-}
+};
 
-async function adminRemoveNode(node) {
+window.deleteHighlightedEdge = async function () {
+  const edge = edgeEditTarget || graph?.highlightedEdge;
+  if (!edge) return;
+  if (currentUser?.role !== 'admin') { showToast('Admin만 삭제할 수 있습니다.', 'error'); return; }
+  
+  const n1 = edge.sourceNode?.label || edge.source;
+  const n2 = edge.targetNode?.label || edge.target;
+  if (!confirm(`엣지 [${n1} ↔ ${n2}]를 삭제하시겠습니까?`)) return;
+
+  const edgeId = edge.id || `${edge.source}-${edge.target}`;
+  try {
+    const res = await fetch('/api/graph/structure', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ action: 'remove_edge', data: { id: edgeId } })
+    });
+    if (res.ok) {
+      showToast('🗑 엣지가 삭제되었습니다.', 'success');
+      closeEdgeEditPopup();
+      await fetchGraphData();
+    } else {
+      const d = await res.json();
+      showToast('삭제 실패: ' + (d.detail || '오류'), 'error');
+    }
+  } catch (err) {
+    showToast('네트워크 오류: ' + err.message, 'error');
+  }
+};
+
+async function adminRemoveNode(node, silent = false) {
   if (!node || currentUser?.role !== 'admin') return;
-  if (!confirm(`"${node.label}" 노드를 삭제하시겠습니까? 연결된 엣지도 모두 제거됩니다.`)) return;
+  if (!silent && !confirm(`"${node.label}" 노드를 삭제하시겠습니까? 연결된 엣지도 모두 제거됩니다.`)) return;
   try {
     const res = await fetch('/api/graph/structure', {
       method: 'POST',
@@ -689,18 +783,15 @@ async function adminRemoveNode(node) {
       const d = await res.json();
       showToast('오류: ' + (d.detail || '삭제 실패'), 'error');
     }
-  } catch(err) {
+  } catch (err) {
     showToast('네트워크 오류', 'error');
   }
 }
 
-// ── Admin Toolbar setup ──────────────────────────────────────────────────────
+// Admin Toolbar setup
 function setupAdminToolbar() {
-  // Node Add — use center of current viewport
   document.getElementById('btnAdminAddNode')?.addEventListener('click', () => {
     if (currentUser?.role !== 'admin') { showToast('Admin만 가능합니다.', 'error'); return; }
-    
-    // Place new node at the current viewport center (in graph coordinates)
     let cx = 0, cy = 0;
     if (graph && graph.transform) {
       cx = (-graph.transform.x) / graph.transform.k + (graph.canvas.width / 2) / graph.transform.k;
@@ -720,22 +811,17 @@ function setupAdminToolbar() {
     adminRemoveNode(selectedNode);
   });
 
-  // PR panel button → show sidebar PR section
   document.getElementById('btnOpenPrPanelAdmin')?.addEventListener('click', showPrSidebar);
   document.getElementById('btnRefreshPr')?.addEventListener('click', () => loadPrSidebar());
 }
 
-// ── PR Sidebar Panel ──────────────────────────────────────────────────────────
+// PR Sidebar Panel
 let prHighlightedNodes = [];
 
 function showPrSidebar() {
-  // Hide other sections, show PR section
   document.querySelectorAll('.sidebar-section').forEach(s => s.classList.remove('active'));
   const prSection = document.getElementById('pr-sidebar-section');
-  if (prSection) {
-    prSection.style.display = 'block';
-    prSection.classList.add('active');
-  }
+  if (prSection) { prSection.style.display = 'block'; prSection.classList.add('active'); }
   loadPrSidebar();
 }
 
@@ -745,20 +831,14 @@ function clearPrHighlights() {
     graph.setItemState(id, 'pr_highlight', false);
     graph.setItemState(id, 'pr_dim', false);
   });
-  // Also clear dim on all nodes
-  graphData.nodes.forEach(n => {
-    graph.setItemState(n.id, 'pr_dim', false);
-  });
+  graphData.nodes.forEach(n => graph.setItemState(n.id, 'pr_dim', false));
   prHighlightedNodes = [];
 }
 
 function highlightPrNodes(nodeIds) {
   if (!graph) return;
   clearPrHighlights();
-
   const highlightSet = new Set(nodeIds);
-
-  // Highlight changed nodes, dim all others
   graphData.nodes.forEach(n => {
     if (highlightSet.has(n.id)) {
       graph.setItemState(n.id, 'pr_highlight', true);
@@ -769,14 +849,12 @@ function highlightPrNodes(nodeIds) {
       graph.setItemState(n.id, 'pr_dim', true);
     }
   });
-
-  // Pan to first highlighted node
   if (nodeIds.length > 0) {
     const node = graph.findById(nodeIds[0]);
     if (node && graph.transform) {
       const canvas = document.getElementById('tree-canvas');
-      const targetX = canvas.width/2 - node.x * graph.transform.k;
-      const targetY = canvas.height/2 - node.y * graph.transform.k;
+      const targetX = canvas.width / 2 - node.x * graph.transform.k;
+      const targetY = canvas.height / 2 - node.y * graph.transform.k;
       graph.d3canvas.transition().duration(500).call(
         graph.zoom.transform,
         d3.zoomIdentity.translate(targetX, targetY).scale(graph.transform.k)
@@ -796,7 +874,6 @@ async function loadPrSidebar() {
       return;
     }
     const prs = await res.json();
-    const pending = prs.filter(p => p.status === 'pending');
 
     if (prs.length === 0) {
       list.innerHTML = '<p style="color:#666;font-size:13px;padding:8px;">제출된 PR이 없습니다.</p>';
@@ -804,100 +881,203 @@ async function loadPrSidebar() {
     }
 
     const useName = document.getElementById('prShowNodeNameToggle')?.checked;
-    const getNodeLabel = (id) => {
-      if (!useName) return id;
-      const n = graph?.findById(id);
-      return n ? n.label : id;
+    const getLabel = (id) => {
+      if (!id) return '?';
+      if (!useName) return String(id);
+      const n = graphData?.nodes?.find(x => x.id == id);
+      return n ? (n.label || String(id)) : String(id);
     };
 
     list.innerHTML = prs.map(pr => {
       const ts = new Date(pr.timestamp * 1000).toLocaleString('ko-KR');
       const statusColor = pr.status === 'merged' ? '#4ade80' : pr.status === 'rejected' ? '#f87171' : '#f0c060';
+      const statusBg = pr.status === 'merged' ? '#0a1a0a' : pr.status === 'rejected' ? '#1a0a0a' : '#1a1400';
       const statusLabel = pr.status === 'merged' ? '✅ Merged' : pr.status === 'rejected' ? '❌ Rejected' : '⏳ Pending';
 
-      let addedIds = [];
-      let removedIds = [];
-      let editedIds = [];
-      let affectedIds = [];
-      let changeDesc = '';
+      const changes = { addedNodes: [], removedNodes: [], editedNodes: [], addedEdges: [], removedEdges: [], fieldEdits: [] };
 
       if (pr.type === 'status') {
-        editedIds = Object.keys(pr.changes || {});
-        affectedIds = editedIds;
-        changeDesc = `상태 변경: ${affectedIds.length}개 노드`;
+        for (const [nid, info] of Object.entries(pr.changes || {})) {
+          changes.editedNodes.push({ id: nid, from: info.from, to: info.to });
+        }
       } else if (pr.type === 'description') {
-        if(pr.changes?.node_id) editedIds.push(pr.changes.node_id);
-        affectedIds = editedIds;
-        changeDesc = `설명 수정: ${pr.changes?.node_id}`;
+        const nid = pr.changes?.node_id;
+        const field = pr.changes?.field;
+        const val = pr.changes?.value;
+        if (nid) changes.fieldEdits.push({ id: nid, field, value: val });
       } else {
-        changeDesc = `커밋: ${(pr.commits || []).length}개`;
-        for (let c of (pr.commits || [])) {
-          for (let change of (c.changes || [])) {
-            if (change.type === 'node') {
-              if (change.action === 'add') addedIds.push(change.id);
-              if (change.action === 'delete') removedIds.push(change.id);
-              if (change.action === 'modify') editedIds.push(change.id);
+        for (const c of (pr.commits || [])) {
+          for (const ch of (c.changes || [])) {
+            if (ch.type === 'node') {
+              if (ch.action === 'add') changes.addedNodes.push(ch.id);
+              if (ch.action === 'delete') changes.removedNodes.push(ch.id);
+              if (ch.action === 'modify') changes.editedNodes.push({ id: ch.id });
+            } else if (ch.type === 'edge') {
+              if (ch.action === 'add') changes.addedEdges.push(ch);
+              if (ch.action === 'delete') changes.removedEdges.push(ch);
             }
           }
         }
-        affectedIds = [...addedIds, ...removedIds, ...editedIds];
+        if (pr.graphData?.nodes && changes.addedNodes.length === 0 && changes.removedNodes.length === 0) {
+          for (const n of (pr.graphData.nodes || [])) changes.addedNodes.push(n.id);
+          for (const e of (pr.graphData.edges || [])) changes.addedEdges.push(e);
+        }
       }
 
-      // Deduplicate lists
-      addedIds = [...new Set(addedIds)];
-      removedIds = [...new Set(removedIds)];
-      editedIds = [...new Set(editedIds)];
-      
-      let detailsHtml = '';
-      if (addedIds.length > 0) detailsHtml += `<div style="margin-top:4px;">🟢 <b>추가:</b> ${addedIds.map(getNodeLabel).join(', ')}</div>`;
-      if (removedIds.length > 0) detailsHtml += `<div style="margin-top:4px;">🔴 <b>삭제:</b> ${removedIds.map(getNodeLabel).join(', ')}</div>`;
-      if (editedIds.length > 0) detailsHtml += `<div style="margin-top:4px;">🟡 <b>수정:</b> ${editedIds.map(getNodeLabel).join(', ')}</div>`;
+      const rows = [];
 
-      if (detailsHtml) {
-        detailsHtml = `
-          <div class="pr-details" style="display:none; margin-top:8px; padding-top:8px; border-top:1px dashed #3a2e1e; color:#a89068; font-size:11px; line-height:1.4;">
-            ${detailsHtml}
-          </div>
-        `;
+      for (const id of [...new Set(changes.addedNodes)]) {
+        const label = getLabel(id);
+        rows.push(`<div style="display:flex;align-items:baseline;gap:5px;margin-top:5px;cursor:pointer;" onclick="event.stopPropagation(); window.focusPrItem('node', '${id}')">
+          <span style="font-size:16px;line-height:1;">🟢</span>
+          <span><b style="color:#4ade80;">노드 추가</b> &nbsp;<span style="background:#0f2010;border:1px solid #4ade8044;border-radius:3px;padding:1px 6px;font-size:11px;color:#a0e8a0;">${label}</span></span>
+        </div>`);
       }
 
-      const idsJson = JSON.stringify(affectedIds).replace(/"/g, '&quot;');
-      return `<div class="pr-card" data-ids="${idsJson}" style="border:1px solid #3a2e1e;border-radius:6px;margin-bottom:10px;padding:10px;background:#0f0a05;cursor:pointer;transition:border-color 0.2s;"
-              onmouseenter="this.style.borderColor='#8a6a2e'" onmouseleave="this.style.borderColor='#3a2e1e'"
-              onclick="prCardClick(this, '${idsJson.replace(/'/g, "\\'")}')">
-        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:5px;">
-          <span style="font-size:12px;font-weight:bold;color:#c8a96e;line-height:1.3;">${pr.description || '(제목 없음)'}</span>
-          <div style="display:flex;align-items:center;">
-             <span style="color:${statusColor};font-size:11px;white-space:nowrap;margin-left:6px;margin-right:6px;">${statusLabel}</span>
-             ${detailsHtml ? `<button onclick="event.stopPropagation(); const d = this.closest('.pr-card').querySelector('.pr-details'); d.style.display = d.style.display === 'none' ? 'block' : 'none';" style="background:none;border:none;color:#8a6a2e;cursor:pointer;font-size:13px;padding:0;width:16px;height:16px;display:flex;align-items:center;justify-content:center;">➕</button>` : ''}
+      for (const id of [...new Set(changes.removedNodes)]) {
+        const label = getLabel(id);
+        rows.push(`<div style="display:flex;align-items:baseline;gap:5px;margin-top:5px;cursor:pointer;" onclick="event.stopPropagation(); window.focusPrItem('node', '${id}')">
+          <span style="font-size:16px;line-height:1;">🔴</span>
+          <span><b style="color:#f87171;">노드 삭제</b> &nbsp;<span style="background:#200f0f;border:1px solid #f8717144;border-radius:3px;padding:1px 6px;font-size:11px;color:#fca5a5;text-decoration:line-through;">${label}</span></span>
+        </div>`);
+      }
+
+      for (const item of changes.editedNodes) {
+        const id = item.id || item;
+        const label = getLabel(id);
+        const detail = item.from && item.to ? ` <span style="color:#888;">${item.from} → ${item.to}</span>` : '';
+        rows.push(`<div style="display:flex;align-items:baseline;gap:5px;margin-top:5px;cursor:pointer;" onclick="event.stopPropagation(); window.focusPrItem('node', '${id}')">
+          <span style="font-size:16px;line-height:1;">🟡</span>
+          <span><b style="color:#f0c060;">노드 수정</b> &nbsp;<span style="background:#1a1200;border:1px solid #f0c06044;border-radius:3px;padding:1px 6px;font-size:11px;color:#fde68a;">${label}</span>${detail}</span>
+        </div>`);
+      }
+
+      for (const fe of changes.fieldEdits) {
+        const label = getLabel(fe.id);
+        const fieldName = fe.field === 'label' ? '이름' : fe.field === 'comment' ? '설명' : fe.field;
+        rows.push(`<div style="display:flex;align-items:baseline;gap:5px;margin-top:5px;cursor:pointer;" onclick="event.stopPropagation(); window.focusPrItem('node', '${fe.id}')">
+          <span style="font-size:16px;line-height:1;">✏️</span>
+          <span><b style="color:#a78bfa;">${fieldName} 수정</b> &nbsp;<span style="background:#120f1a;border:1px solid #a78bfa44;border-radius:3px;padding:1px 6px;font-size:11px;color:#c4b5fd;">${label}</span>
+          ${fe.value ? `<span style="color:#666;font-size:10px;margin-left:4px;">"${String(fe.value).slice(0, 30)}${fe.value.length > 30 ? '...' : ''}"</span>` : ''}</span>
+        </div>`);
+      }
+
+      for (const e of changes.addedEdges) {
+        const sid = e.source || e.from || '';
+        const tid = e.target || e.to || '';
+        const s = getLabel(sid || '?');
+        const t = getLabel(tid || '?');
+        rows.push(`<div style="display:flex;align-items:baseline;gap:5px;margin-top:5px;cursor:pointer;" onclick="event.stopPropagation(); window.focusPrItem('edge', '${sid}', '${tid}')">
+          <span style="font-size:14px;line-height:1;">🔗</span>
+          <span><b style="color:#67e8f9;">엣지 추가</b> &nbsp;<span style="background:#0a1a1f;border:1px solid #67e8f944;border-radius:3px;padding:1px 6px;font-size:11px;color:#a5f3fc;">${s} ↔ ${t}</span></span>
+        </div>`);
+      }
+
+      for (const e of changes.removedEdges) {
+        const sid = e.source || e.from || '';
+        const tid = e.target || e.to || '';
+        const s = getLabel(sid || '?');
+        const t = getLabel(tid || '?');
+        rows.push(`<div style="display:flex;align-items:baseline;gap:5px;margin-top:5px;cursor:pointer;" onclick="event.stopPropagation(); window.focusPrItem('edge', '${sid}', '${tid}')">
+          <span style="font-size:14px;line-height:1;">⛔</span>
+          <span><b style="color:#fb923c;">엣지 삭제</b> &nbsp;<span style="background:#1a0f0a;border:1px solid #fb923c44;border-radius:3px;padding:1px 6px;font-size:11px;color:#fed7aa;text-decoration:line-through;">${s} ↔ ${t}</span></span>
+        </div>`);
+      }
+
+      const changeSummary = [
+        changes.addedNodes.length ? `+${changes.addedNodes.length}노드` : '',
+        changes.removedNodes.length ? `-${changes.removedNodes.length}노드` : '',
+        changes.editedNodes.length ? `~${changes.editedNodes.length}수정` : '',
+        changes.addedEdges.length ? `+${changes.addedEdges.length}엣지` : '',
+        changes.removedEdges.length ? `-${changes.removedEdges.length}엣지` : '',
+        changes.fieldEdits.length ? `~${changes.fieldEdits.length}필드` : '',
+      ].filter(Boolean).join('  ');
+
+      const affectedIds = [
+        ...changes.addedNodes, ...changes.removedNodes,
+        ...changes.editedNodes.map(x => x.id || x),
+        ...changes.fieldEdits.map(x => x.id)
+      ].filter(Boolean);
+      const idsJson = JSON.stringify([...new Set(affectedIds)]).replace(/"/g, '&quot;');
+
+      const hasDetail = rows.length > 0;
+      const detailsHtml = hasDetail ? `
+        <div class="pr-details" style="display:none;margin-top:8px;padding:8px;background:#050302;border-radius:4px;border:1px solid #2a1e0e;">
+          ${rows.join('')}
+        </div>` : '';
+
+      return `
+      <div class="pr-card" data-ids="${idsJson}" onclick="prCardClick(this, '${idsJson.replace(/'/g, "\\'")}')"
+           style="border:1px solid #2a2010;border-radius:8px;margin-bottom:10px;padding:0;background:${statusBg};
+                  cursor:pointer;transition:border-color 0.2s,box-shadow 0.2s;overflow:hidden;"
+           onmouseenter="this.style.borderColor='#8a6a2e';this.style.boxShadow='0 2px 12px #c8a96e22';"
+           onmouseleave="this.style.borderColor='#2a2010';this.style.boxShadow='none';">
+
+        <div style="display:flex;align-items:center;justify-content:space-between;padding:8px 12px;
+                    background:linear-gradient(90deg,#1a1208,transparent);border-bottom:1px solid #2a2010;">
+          <span style="font-size:12px;font-weight:bold;color:#c8a96e;flex:1;margin-right:8px;line-height:1.3;">${pr.description || '(제목 없음)'}</span>
+          <div style="display:flex;align-items:center;gap:6px;flex-shrink:0;">
+            <span style="color:${statusColor};font-size:11px;font-weight:bold;white-space:nowrap;">${statusLabel}</span>
+            ${hasDetail ? `<button onclick="event.stopPropagation();const d=this.closest('.pr-card').querySelector('.pr-details');d.style.display=d.style.display==='none'?'block':'none';this.textContent=d.style.display==='none'?'▼':'▲';" style="background:#1a1410;border:1px solid #3a2e1e;border-radius:4px;color:#8a6a2e;cursor:pointer;font-size:10px;padding:2px 6px;">▼</button>` : ''}
           </div>
         </div>
-        <div style="font-size:11px;color:#7a6d5a;margin-bottom:4px;">${pr.contributor?.name || '알 수 없음'} · ${ts}</div>
-        <div style="font-size:11px;color:#9a8d7a;margin-bottom:6px;">${changeDesc}</div>
-        ${detailsHtml}
+
+        <div style="padding:8px 12px 4px;">
+          <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:4px;">
+            <span style="font-size:10px;color:#7a6d5a;">${pr.contributor?.name || '알 수 없음'}</span>
+            <span style="font-size:10px;color:#4a4030;">|</span>
+            <span style="font-size:10px;color:#6a5e4c;">${ts}</span>
+          </div>
+          ${changeSummary ? `<div style="font-size:10px;color:#8a7a5a;letter-spacing:0.5px;">${changeSummary}</div>` : ''}
+        </div>
+
+        <div style="padding:0 12px 8px;">${detailsHtml}</div>
+
         ${pr.status === 'pending' ? `
-          <div style="display:flex;gap:6px;margin-top:4px;">
-            <button class="btn btn-primary" style="font-size:11px;padding:3px 10px;" onclick="event.stopPropagation();approvePr('${pr.id}')">✅ Merge</button>
-            <button class="btn" style="font-size:11px;padding:3px 10px;color:#f87171;border-color:#f87171;" onclick="event.stopPropagation();rejectPr('${pr.id}')">❌ Reject</button>
-          </div>` : ''}
+        <div style="display:flex;gap:6px;padding:8px 12px;border-top:1px solid #2a1e0e;background:#080604;">
+          <button class="btn btn-primary" style="font-size:11px;padding:4px 12px;flex:1;" onclick="event.stopPropagation();approvePr('${pr.id}')">✅ Merge</button>
+          <button class="btn" style="font-size:11px;padding:4px 12px;flex:1;color:#f87171;border-color:#f87171;" onclick="event.stopPropagation();rejectPr('${pr.id}')">❌ Reject</button>
+        </div>` : ''}
       </div>`;
     }).join('');
-  } catch(err) {
+  } catch (err) {
     list.innerHTML = '<p style="color:#f87171;font-size:13px;">PR 목록을 불러오는데 실패했습니다.</p>';
   }
 }
 
-window.prCardClick = function(el, idsJson) {
+window.prCardClick = function (el, idsJson) {
   try {
     const ids = JSON.parse(idsJson.replace(/&quot;/g, '"'));
     highlightPrNodes(ids);
-    // Visual feedback on card
     document.querySelectorAll('.pr-card').forEach(c => c.style.background = '#0f0a05');
     el.style.background = '#1a1208';
-  } catch(e) {}
+  } catch (e) { }
 };
 
-window.approvePr = async function(prId) {
+window.focusPrItem = function(type, id1, id2) {
+  if (!graph) return;
+  if (type === 'node') {
+    const item = graph.findById(id1);
+    if (item) {
+      graph.focusItem(item, true, { easing: 'easeCubic', duration: 400 });
+      // Blink or highlight the node slightly
+      graph.setItemState(item, 'selected', true);
+      setTimeout(() => graph.setItemState(item, 'selected', false), 1500);
+    }
+  } else if (type === 'edge') {
+    const edges = graph.getEdges();
+    const edge = edges.find(e => {
+      const model = e.getModel();
+      return (model.source === id1 && model.target === id2) || (model.source === id2 && model.target === id1);
+    });
+    if (edge) {
+      // Focus on the center of the edge (focusItem mostly works for nodes, but G6 supports it for edges too, or we get edge center)
+      graph.focusItem(edge, true, { easing: 'easeCubic', duration: 400 });
+    }
+  }
+};
+
+window.approvePr = async function (prId) {
   const res = await fetch(`/api/admin/contributions/${prId}/approve`, { method: 'POST' });
   if (res.ok) {
     showToast('✅ PR이 Merge되었습니다.', 'success');
@@ -907,7 +1087,7 @@ window.approvePr = async function(prId) {
   } else { showToast('Merge 실패', 'error'); }
 };
 
-window.rejectPr = async function(prId) {
+window.rejectPr = async function (prId) {
   const res = await fetch(`/api/admin/contributions/${prId}/reject`, { method: 'POST' });
   if (res.ok) {
     showToast('PR이 Reject되었습니다.', 'info');
@@ -924,11 +1104,10 @@ function initGraph() {
   }
 
   const container = document.getElementById('tree-canvas');
-  if(!container) return;
+  if (!container) return;
   const width = container.parentElement.clientWidth;
   const height = container.parentElement.clientHeight || 800;
 
-  // Format nodes
   const formattedNodes = graphData.nodes.map(n => ({
     id: n.id,
     label: n.label,
@@ -954,179 +1133,166 @@ function initGraph() {
     id: e.id,
     source: e.source,
     target: e.target,
-    curvature: e.curvature  // preserve per-edge curvature override
+    curvature: e.curvature
   }));
 
-  graph = new CanvasGraph({ width, height });
+  if (!graph) {
+    // Ensure CanvasGraph is instantiated correctly with the target container element if required by implementation
+    graph = new CanvasGraph({ container, width, height });
+
+    graph.on('node:click', (evt) => {
+      const { item } = evt;
+      const model = item.getModel();
+
+      if (edgeModeActive && edgeModeSourceNode) {
+        if (model.id !== edgeModeSourceNode.id) {
+          adminAddEdge(edgeModeSourceNode, model);
+        } else {
+          showToast('같은 노드는 연결할 수 없습니다.', 'error');
+          cancelEdgeMode();
+        }
+        return;
+      }
+
+      const isMultiSelect = evt.originalEvent.shiftKey || evt.originalEvent.metaKey || evt.originalEvent.ctrlKey;
+      if (isMultiSelect) {
+        const idx = selectedNodes.indexOf(model.id);
+        if (idx > -1) {
+          selectedNodes.splice(idx, 1);
+          graph.setItemState(item, 'selected', false);
+        } else {
+          selectedNodes.push(model.id);
+          graph.setItemState(item, 'selected', true);
+        }
+        if (selectedNodes.length > 0) {
+          selectNode(selectedNodes[selectedNodes.length - 1], true);
+        } else {
+          clearSelection();
+        }
+      } else {
+        const newStatus = model.status === 'Completed' ? 'Locked' : 'Completed';
+        model.status = newStatus;
+
+        const dataNode = graphData.nodes.find(n => n.id === model.id);
+        if (dataNode) dataNode.status = newStatus;
+
+        graph.setItemState(item, 'status', newStatus);
+
+        selectedNodes = [model.id];
+        selectNode(model.id, false);
+        updateCharacterStats();
+      }
+    });
+
+    graph.on('canvas:click', () => {
+      clearSelection();
+      closeInlineEdit();
+      closeAddNodePopup();
+      closeEdgeEditPopup();
+      if (edgeModeActive) cancelEdgeMode();
+    });
+
+    const tooltip = document.getElementById('poe-tooltip');
+    const ttTitle = document.getElementById('tt-title');
+    const ttStats = document.getElementById('tt-stats');
+
+    graph.on('node:mouseenter', (evt) => {
+      const model = evt.item.getModel();
+      if (!tooltip) return;
+
+      ttTitle.textContent = model.label || 'Unknown';
+      ttTitle.style.color = (model.importance === 'High') ? '#e7b655' :
+        (model.importance === 'Medium') ? '#d4af37' : '#fff';
+
+      const stats = model.stats || [];
+      if (stats.length > 0) {
+        ttStats.innerHTML = `<p style="font-size:12px;color:#9a8d7a;margin:2px 0 6px">📊 스킬 효과</p><ul style="margin:0;padding-left:18px">`
+          + stats.map(s => `<li>${s}</li>`).join('') + '</ul>';
+      } else {
+        ttStats.innerHTML = '<p style="color:#6a5e4c;font-size:12px">속성 없음</p>';
+      }
+      const ttNodeId = document.getElementById('tt-node-id');
+      if (ttNodeId) ttNodeId.innerText = model.serial_id || '';
+
+      tooltip.classList.add('visible');
+      const x = evt.originalEvent.clientX + 15;
+      const y = evt.originalEvent.clientY + 15;
+      tooltip.style.left = x + 'px';
+      tooltip.style.top = y + 'px';
+    });
+
+    graph.on('node:mousemove', (evt) => {
+      if (!tooltip) return;
+      const x = evt.originalEvent.clientX + 15;
+      const y = evt.originalEvent.clientY + 15;
+      tooltip.style.left = x + 'px';
+      tooltip.style.top = y + 'px';
+    });
+
+    graph.on('node:mouseleave', () => {
+      if (tooltip) tooltip.classList.remove('visible');
+    });
+
+    graph.on('node:contextmenu', (evt) => {
+      if (!evt.item) return;
+      const e = evt.originalEvent;
+      e.preventDefault();
+      e.stopPropagation();
+      closeCtxMenu();
+      closeCanvasCtxMenu();
+      const node = evt.item.getModel ? evt.item.getModel() : evt.item;
+
+      if (!edgeModeActive) {
+        if (currentUser?.role === 'admin') {
+          openCtxMenu(node, e.clientX, e.clientY);
+        }
+      }
+    });
+
+    graph.on('edge:contextmenu', (evt) => {
+      if (!evt.item) return;
+      const e = evt.originalEvent;
+      e.preventDefault();
+      e.stopPropagation();
+      closeCtxMenu();
+      closeCanvasCtxMenu();
+
+      if (graph) {
+        graph.highlightedEdge = evt.item;
+        graph.render();
+      }
+
+      openEdgeEditPopup(evt.item, e.clientX, e.clientY);
+    });
+
+    const canvasEl = document.getElementById('tree-canvas');
+    canvasEl?.addEventListener('contextmenu', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      const coords = graph.getCanvasCoords(e);
+      const hitNode = graph.hitTestNode(coords.x, coords.y);
+      if (hitNode) return;
+      const hitEdge = graph.hitTestEdge(coords.x, coords.y);
+      if (hitEdge) return;
+      closeCtxMenu();
+      openCanvasCtxMenu(e.clientX, e.clientY, coords.x, coords.y);
+    });
+  } else {
+    // If graph already exists, update size if necessary
+    if (typeof graph.changeSize === 'function') {
+      graph.changeSize(width, height);
+    }
+  }
+
+  // Always update data
   graph.changeData({ nodes: formattedNodes, edges: formattedEdges, groups: graphData.groups });
 
   if (animationEnabled && currentOrbit !== 'none') {
     startOrbitMotion();
   }
-
-  // Event Listeners
-  graph.on('node:click', (evt) => {
-    const { item } = evt;
-    const model = item.getModel();
-
-    // ── Edge connect mode (admin) ──
-    if (edgeModeActive && edgeModeSourceNode) {
-      if (model.id !== edgeModeSourceNode.id) {
-        adminAddEdge(edgeModeSourceNode, model);
-      } else {
-        showToast('같은 노드는 연결할 수 없습니다.', 'error');
-        cancelEdgeMode();
-      }
-      return;
-    }
-
-    const isMultiSelect = evt.originalEvent.shiftKey || evt.originalEvent.metaKey || evt.originalEvent.ctrlKey;
-    if (isMultiSelect) {
-      const idx = selectedNodes.indexOf(model.id);
-      if (idx > -1) {
-        selectedNodes.splice(idx, 1);
-        graph.setItemState(item, 'selected', false);
-      } else {
-        selectedNodes.push(model.id);
-        graph.setItemState(item, 'selected', true);
-      }
-      if (selectedNodes.length > 0) {
-        selectNode(selectedNodes[selectedNodes.length - 1], true);
-      } else {
-        clearSelection();
-      }
-    } else {
-      // Toggle allocation
-      const newStatus = model.status === 'Completed' ? 'Locked' : 'Completed';
-      model.status = newStatus;
-      
-      const dataNode = graphData.nodes.find(n => n.id === model.id);
-      if (dataNode) dataNode.status = newStatus;
-      
-      graph.setItemState(item, 'status', newStatus);
-      
-      selectedNodes = [model.id];
-      selectNode(model.id, false);
-      updateCharacterStats();
-    }
-  });
-
-  graph.on('canvas:click', () => {
-    clearSelection();
-    closeInlineEdit();
-    closeAddNodePopup();
-    closeEdgeEditPopup();
-    if (edgeModeActive) cancelEdgeMode();
-  });
-
-  const tooltip = document.getElementById('poe-tooltip');
-  const ttTitle = document.getElementById('tt-title');
-  const ttStats = document.getElementById('tt-stats');
-  const ttUnallocStats = document.getElementById('tt-unalloc-stats');
-  const ttUnalloc = document.getElementById('tt-unalloc');
-
-  graph.on('node:mouseenter', (evt) => {
-    const model = evt.item.getModel();
-    if (!tooltip) return;
-    
-    ttTitle.textContent = model.label || 'Unknown';
-    ttTitle.style.color = (model.importance === 'High') ? '#e7b655' : 
-                          (model.importance === 'Medium') ? '#d4af37' : '#fff';
-
-    // Render stats as a clean list (not the full comment markdown)
-    const stats = model.stats || [];
-    if (stats.length > 0) {
-      ttStats.innerHTML = `<p style="font-size:12px;color:#9a8d7a;margin:2px 0 6px">📊 스킬 효과</p><ul style="margin:0;padding-left:18px">` 
-        + stats.map(s => `<li>${s}</li>`).join('') + '</ul>';
-    } else {
-      ttStats.innerHTML = '<p style="color:#6a5e4c;font-size:12px">속성 없음</p>';
-    }
-    const ttNodeId = document.getElementById('tt-node-id');
-    if(ttNodeId) ttNodeId.innerText = model.serial_id || '';
-    
-    if (model.status === 'Completed') {
-      ttUnalloc.style.display = 'block';
-      ttUnallocStats.innerHTML = '';
-      stats.forEach(s => {
-        const div = document.createElement('div');
-        div.textContent = s;
-        div.style.color = '#d20000';
-        div.style.marginBottom = '2px';
-        ttUnallocStats.appendChild(div);
-      });
-    } else {
-      ttUnalloc.style.display = 'none';
-    }
-
-    tooltip.classList.add('visible');
-    const x = evt.originalEvent.clientX + 15;
-    const y = evt.originalEvent.clientY + 15;
-    tooltip.style.left = x + 'px';
-    tooltip.style.top = y + 'px';
-  });
-
-  graph.on('node:mousemove', (evt) => {
-    if (!tooltip) return;
-    const x = evt.originalEvent.clientX + 15;
-    const y = evt.originalEvent.clientY + 15;
-    tooltip.style.left = x + 'px';
-    tooltip.style.top = y + 'px';
-  });
-
-  graph.on('node:mouseleave', () => {
-    if (tooltip) tooltip.classList.remove('visible');
-  });
-
-  // Right-click context menu via canvas_engine event (on node)
-  graph.on('node:contextmenu', (evt) => {
-    if (!evt.item) return;
-    const e = evt.originalEvent;
-    e.preventDefault();
-    e.stopPropagation(); // prevent bubbling to canvasEl contextmenu listener
-    closeCtxMenu();
-    closeCanvasCtxMenu();
-    const node = evt.item.getModel ? evt.item.getModel() : evt.item;
-    
-    // Open dropdown context menu
-    if (!edgeModeActive) {
-      if (currentUser?.role === 'admin') {
-        openCtxMenu(node, e.clientX, e.clientY);
-      }
-    }
-  });
-
-  // Right-click context menu on edge
-  graph.on('edge:contextmenu', (evt) => {
-    if (!evt.item) return;
-    const e = evt.originalEvent;
-    e.preventDefault();
-    e.stopPropagation(); // prevent bubbling to canvasEl contextmenu listener
-    closeCtxMenu();
-    closeCanvasCtxMenu();
-    
-    if (currentUser?.role === 'admin' && !edgeModeActive) {
-       openEdgeEditPopup(evt.item, e.clientX, e.clientY);
-    }
-  });
-
-  // Right-click on empty canvas
-  const canvasEl = document.getElementById('tree-canvas');
-  canvasEl?.addEventListener('contextmenu', (e) => {
-    // canvas_engine handles node/edge right-clicks internally and stops propagation
-    // so this only fires for empty canvas clicks
-    e.preventDefault();
-    e.stopPropagation();
-    const coords = graph.getCanvasCoords(e);
-    const hitNode = graph.hitTestNode(coords.x, coords.y);
-    if (hitNode) return; // node handled by node:contextmenu
-    const hitEdge = graph.hitTestEdge(coords.x, coords.y);
-    if (hitEdge) return; // edge handled by edge:contextmenu
-    closeCtxMenu();
-    openCanvasCtxMenu(e.clientX, e.clientY, coords.x, coords.y);
-  });
 }
 
-// Refresh Graph elements
+// Refresh Graph Elements
 function updateGraphData() {
   if (!graph) return;
   const formattedNodes = graphData.nodes.map(n => ({
@@ -1153,19 +1319,19 @@ function updateGraphData() {
     source: e.source,
     target: e.target,
     type: 'poe-edge',
-    curvature: e.curvature  // preserve per-edge curvature override
+    curvature: e.curvature
   }));
 
   graph.changeData({ nodes: formattedNodes, edges: formattedEdges });
-  
+
   if (animationEnabled && currentOrbit !== 'none') {
     startOrbitMotion();
   }
-  
+
   if (typeof updateGitWorkspace === 'function') {
     updateGitWorkspace();
   }
-  
+
   updateCharacterStats();
 }
 
@@ -1183,94 +1349,90 @@ function startOrbitMotion() {
 
   function tick() {
     if (!graph) return;
-    
-    // Slow tick speed for satellite rotation
+
     orbitTime += 0.015;
-    
-    graph.getNodes().forEach(node => {
-      const model = node.getModel();
-      const initPos = initialPositions[model.id];
-      if (!initPos) return;
 
-      // 1. Move parent nodes gently if orbit is enabled
-      let dx = 0;
-      let dy = 0;
-      const amplitude = 8;
+    try {
+      graph.getNodes().forEach(node => {
+        const model = node.getModel();
+        const initPos = initialPositions[model.id];
+        if (!initPos) return;
 
-      if (animationEnabled && currentOrbit !== 'none') {
-        if (currentOrbit === 'orbit') {
-          dx = Math.cos(orbitTime + parseInt(model.id.replace(/\D/g, '') || 0)) * amplitude;
-          dy = Math.sin(orbitTime + parseInt(model.id.replace(/\D/g, '') || 0)) * amplitude;
-        } else if (currentOrbit === 'infinity') {
-          const t = orbitTime + parseInt(model.id.replace(/\D/g, '') || 0);
-          dx = Math.cos(t) * amplitude;
-          dy = (Math.sin(2 * t) / 2) * amplitude * 1.5;
-        } else if (currentOrbit === 'lissajous') {
-          const t = orbitTime + parseInt(model.id.replace(/\D/g, '') || 0);
-          dx = Math.sin(3 * t) * amplitude;
-          dy = Math.sin(2 * t) * amplitude;
+        let dx = 0;
+        let dy = 0;
+        const amplitude = 8;
+
+        if (animationEnabled && currentOrbit !== 'none') {
+          if (currentOrbit === 'orbit') {
+            dx = Math.cos(orbitTime + parseInt(model.id.replace(/\D/g, '') || 0)) * amplitude;
+            dy = Math.sin(orbitTime + parseInt(model.id.replace(/\D/g, '') || 0)) * amplitude;
+          } else if (currentOrbit === 'infinity') {
+            const t = orbitTime + parseInt(model.id.replace(/\D/g, '') || 0);
+            dx = Math.cos(t) * amplitude;
+            dy = (Math.sin(2 * t) / 2) * amplitude * 1.5;
+          } else if (currentOrbit === 'lissajous') {
+            const t = orbitTime + parseInt(model.id.replace(/\D/g, '') || 0);
+            dx = Math.sin(3 * t) * amplitude;
+            dy = Math.sin(2 * t) * amplitude;
+          }
+
+          graph.updateItem(node, {
+            x: initPos.x + dx,
+            y: initPos.y + dy
+          });
         }
 
-        graph.updateItem(node, {
-          x: initPos.x + dx,
-          y: initPos.y + dy
-        });
-      }
+        // Add defensive checking for engine wrapper structure
+        if (subnodesVisible && typeof node.getContainer === 'function') {
+          const group = node.getContainer();
+          if (group && typeof group.find === 'function') {
+            const subnodesCount = model.subnodes ? model.subnodes.length : 0;
+            const baseSize = model.importance === 'High' ? 60 : (model.importance === 'Medium' ? 46 : 32);
+            const size = Math.min(100, baseSize + (subnodesCount * 5));
+            const trackRadius = (size / 2) + 24;
+            const satelliteSpeed = subnodesRotationEnabled ? (orbitTime * 1.8 * subnodesRotationSpeed) : 0;
 
-      // 2. Animate satellite subnodes physically orbiting around the parent node center
-      if (subnodesVisible) {
-        const group = node.getContainer();
-        const subnodesCount = model.subnodes ? model.subnodes.length : 0;
-        const baseSize = model.importance === 'High' ? 60 : (model.importance === 'Medium' ? 46 : 32);
-        const size = Math.min(100, baseSize + (subnodesCount * 5));
-        const trackRadius = (size / 2) + 24;
+            for (let i = 0; i < subnodesCount; i++) {
+              const glowShape = group.find(item => item.get && item.get('name') === `sub-sat-glow-${i}`);
+              const bodyShape = group.find(item => item.get && item.get('name') === `sub-sat-body-${i}`);
+              const textShape = group.find(item => item.get && item.get('name') === `sub-sat-text-${i}`);
 
-        // Satellite rotation offset speed
-        const satelliteSpeed = subnodesRotationEnabled ? (orbitTime * 1.8 * subnodesRotationSpeed) : 0;
+              if (glowShape && bodyShape && typeof glowShape.attr === 'function') {
+                const initialAngle = glowShape.get('initialAngle') || 0;
+                const currentAngle = initialAngle + satelliteSpeed;
+                const satX = trackRadius * Math.cos(currentAngle);
+                const satY = trackRadius * Math.sin(currentAngle);
 
-        for (let i = 0; i < subnodesCount; i++) {
-          const glowShape = group.find(item => item.get('name') === `sub-sat-glow-${i}`);
-          const bodyShape = group.find(item => item.get('name') === `sub-sat-body-${i}`);
-          const textShape = group.find(item => item.get('name') === `sub-sat-text-${i}`);
-          
-          if (glowShape && bodyShape) {
-            const initialAngle = glowShape.get('initialAngle') || 0;
-            // Calculate dynamic orbital angle
-            const currentAngle = initialAngle + satelliteSpeed;
-
-            const satX = trackRadius * Math.cos(currentAngle);
-            const satY = trackRadius * Math.sin(currentAngle);
-
-            // Update local coordinates inside parent node group
-            glowShape.attr({ x: satX, y: satY });
-            bodyShape.attr({ x: satX, y: satY });
-            
-            if (textShape) {
-              textShape.attr({ x: satX, y: satY - 10 });
+                glowShape.attr({ x: satX, y: satY });
+                bodyShape.attr({ x: satX, y: satY });
+                if (textShape && typeof textShape.attr === 'function') {
+                  textShape.attr({ x: satX, y: satY - 10 });
+                }
+              }
             }
           }
         }
-      }
 
-      // 3. Selection Pulse Animation: highlight currently selected nodes with a subtle breathe scale/pulse
-      if (selectedNodes.includes(model.id)) {
-        const group = node.getContainer();
-        const glowShape = group.find(item => item.get('name') === 'glow-shape');
-        if (glowShape) {
-          const pulseScale = 1.0 + Math.sin(orbitTime * 5) * 0.12; // breathing rate
-          glowShape.attr('opacity', 0.4 + Math.sin(orbitTime * 5) * 0.15);
-          glowShape.attr('transform', `scale(${pulseScale})`);
+        if (typeof node.getContainer === 'function') {
+          const group = node.getContainer();
+          if (group && typeof group.find === 'function') {
+            const glowShape = group.find(item => item.get && item.get('name') === 'glow-shape');
+            if (glowShape && typeof glowShape.attr === 'function') {
+              if (selectedNodes.includes(model.id)) {
+                const pulseScale = 1.0 + Math.sin(orbitTime * 5) * 0.12;
+                glowShape.attr('opacity', 0.4 + Math.sin(orbitTime * 5) * 0.15);
+                glowShape.attr('transform', `scale(${pulseScale})`);
+              } else {
+                glowShape.attr('transform', 'scale(1)');
+                glowShape.attr('opacity', currentTheme === 'light' ? 0.08 : 0.25);
+              }
+            }
+          }
         }
-      } else {
-        // Reset scale transform on unselected node glows
-        const group = node.getContainer();
-        const glowShape = group.find(item => item.get('name') === 'glow-shape');
-        if (glowShape) {
-          glowShape.attr('transform', 'scale(1)');
-          glowShape.attr('opacity', currentTheme === 'light' ? 0.08 : 0.25);
-        }
-      }
-    });
+      });
+    } catch (err) {
+      console.warn("Animation loop exception muted:", err);
+    }
 
     orbitAnimationFrameId = requestAnimationFrame(tick);
   }
@@ -1278,7 +1440,7 @@ function startOrbitMotion() {
   orbitAnimationFrameId = requestAnimationFrame(tick);
 }
 
-// Render Subnodes List inside editor sidebar
+// Render Subnodes List
 function renderSubnodesList() {
   subnodesListBody.innerHTML = '';
   if (!selectedNode || !selectedNode.subnodes) return;
@@ -1286,35 +1448,32 @@ function renderSubnodesList() {
   selectedNode.subnodes.forEach((sub, idx) => {
     const item = document.createElement('div');
     item.className = 'subnode-item';
-    
+
     item.innerHTML = `
       <input type="text" class="subnode-input" value="${sub.label}" data-idx="${idx}">
       <span class="subnode-status ${sub.status}" data-idx="${idx}">${sub.status}</span>
       <button class="subnode-delete" data-idx="${idx}"><i class="fa-solid fa-circle-xmark"></i></button>
     `;
 
-    // Bind rename event
     item.querySelector('.subnode-input').addEventListener('change', (e) => {
       const i = e.target.getAttribute('data-idx');
       selectedNode.subnodes[i].label = e.target.value.trim() || '세부 단원';
       updateGraphData();
     });
 
-    // Bind status toggle
     item.querySelector('.subnode-status').addEventListener('click', (e) => {
       const i = e.target.getAttribute('data-idx');
       const curStatus = selectedNode.subnodes[i].status;
       let nextStatus = 'Locked';
       if (curStatus === 'Locked') nextStatus = 'In Progress';
       else if (curStatus === 'In Progress') nextStatus = 'Completed';
-      
+
       selectedNode.subnodes[i].status = nextStatus;
       e.target.className = `subnode-status ${nextStatus}`;
       e.target.textContent = nextStatus;
       updateGraphData();
     });
 
-    // Bind delete event
     item.querySelector('.subnode-delete').addEventListener('click', (e) => {
       const i = e.currentTarget.getAttribute('data-idx');
       selectedNode.subnodes.splice(i, 1);
@@ -1326,34 +1485,41 @@ function renderSubnodesList() {
   });
 }
 
-// Add a subnode to currently selected node
-function addSubnode() {
-  if (!selectedNode) return;
-  if (!selectedNode.subnodes) {
-    selectedNode.subnodes = [];
-  }
-  const newSub = {
-    id: `sub-${Date.now()}`,
-    label: '세부 체크포인트',
-    status: 'Locked'
-  };
-  selectedNode.subnodes.push(newSub);
-  renderSubnodesList();
-  updateGraphData();
+if (btnToggleStats) {
+  btnToggleStats.addEventListener('click', () => {
+    const list = document.getElementById('character-stats-list');
+    if (list.style.display === 'none') {
+      list.style.display = 'flex';
+      btnToggleStats.innerHTML = '<i class="fa-solid fa-eye-slash"></i> 숨기기';
+    } else {
+      list.style.display = 'none';
+      btnToggleStats.innerHTML = '<i class="fa-solid fa-eye"></i> 보이기';
+    }
+  });
 }
 
-// Toggle subnodes visibility
-btnToggleSubnodes.addEventListener('click', () => {
-  subnodesContainer.classList.toggle('hidden');
-  const isHidden = subnodesContainer.classList.contains('hidden');
-  btnToggleSubnodes.innerHTML = isHidden 
-    ? `<i class="fa-solid fa-list-check"></i> 목록 펼치기`
-    : `<i class="fa-solid fa-list-check"></i> 목록 접기`;
-});
+if (btnResetProgress) {
+  btnResetProgress.addEventListener('click', async () => {
+    if (!confirm('정말로 스킬트리의 누적 스킬 효과(진척도)를 모두 초기화하시겠습니까? (커스텀 노드는 삭제되지 않습니다)')) return;
+    try {
+      const res = await fetch('/api/graph/reset_progress', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' }
+      });
+      if (res.ok) {
+        showToast('스킬트리가 초기화되었습니다.', 'success');
+        fetchGraphData();
+      } else {
+        showToast('초기화에 실패했습니다.', 'error');
+      }
+    } catch (e) {
+      console.error(e);
+      showToast('오류가 발생했습니다.', 'error');
+    }
+  });
+}
 
-btnAddSubnode.addEventListener('click', addSubnode);
-
-// Select node details
+// Select Node Logic
 function selectNode(id, appendMode = false) {
   selectedNode = graphData.nodes.find(n => n.id === id);
   if (!selectedNode) return;
@@ -1367,7 +1533,6 @@ function selectNode(id, appendMode = false) {
       }
     });
   } else {
-    // Sync states on G6 nodes matching selectedNodes
     graph.getNodes().forEach(n => {
       const nid = n.getModel().id;
       if (selectedNodes.includes(nid)) {
@@ -1387,22 +1552,21 @@ function selectNode(id, appendMode = false) {
   selectStatus.value = selectedNode.status;
   selectShape.value = selectedNode.shape || 'circle';
   textComment.value = selectedNode.comment || '';
-  
-  // Fill subnodes list
-  renderSubnodesList();
 
+  renderSubnodesList();
   showEditTab();
 }
 
 function clearSelection() {
   selectedNode = null;
   selectedNodes = [];
-  graph.getNodes().forEach(n => graph.clearItemStates(n));
+  if (graph && typeof graph.getNodes === 'function') {
+    graph.getNodes().forEach(n => graph.clearItemStates(n));
+  }
   editorState.classList.remove('active');
   emptyState.classList.add('active');
 }
 
-// Markdown tabs
 function showEditTab() {
   btnTabEdit.classList.add('active');
   btnTabPreview.classList.remove('active');
@@ -1415,12 +1579,10 @@ function showPreviewTab() {
   btnTabPreview.classList.add('active');
   textComment.classList.add('hidden');
   previewComment.classList.remove('hidden');
-  
-  // 1. Compile Markdown using marked
+
   const compiledHtml = marked.parse(textComment.value || '*코멘트가 없습니다.*');
   previewComment.innerHTML = compiledHtml;
-  
-  // 2. Trigger MathJax typesetting for rendering LaTeX equations
+
   if (window.MathJax) {
     MathJax.Hub.Queue(["Typeset", MathJax.Hub, previewComment]);
   }
@@ -1441,16 +1603,13 @@ textComment.addEventListener('paste', async (e) => {
           method: 'POST',
           body: formData
         });
-        
+
         if (response.ok) {
           const res = await response.json();
-          // Insert image markdown at cursor position
           const cursorPos = textComment.selectionStart;
           const text = textComment.value;
           const imgMarkdown = `\n![이미지](${res.url})\n`;
           textComment.value = text.substring(0, cursorPos) + imgMarkdown + text.substring(cursorPos);
-          
-          // Switch to preview if desired or show alert
           alert('클립보드 이미지가 업로드되어 마크다운에 추가되었습니다.');
         } else {
           alert('이미지 업로드에 실패했습니다.');
@@ -1463,7 +1622,6 @@ textComment.addEventListener('paste', async (e) => {
   }
 });
 
-// Side Panel Apply Changes
 btnApply.addEventListener('click', () => {
   if (!selectedNode) return;
 
@@ -1474,15 +1632,14 @@ btnApply.addEventListener('click', () => {
   selectedNode.comment = textComment.value;
 
   editorTitle.textContent = selectedNode.label;
-  
+
   updateGraphData();
   alert('노드 수정 내용이 일시 저장되었습니다. (전체 저장을 눌러 영구 저장하세요)');
 });
 
-// Delete Selected Node & Connected Edges
 btnDelete.addEventListener('click', () => {
   if (!selectedNode) return;
-  
+
   if (confirm(`'${selectedNode.label}' 과목을 정말로 테크트리에서 제거하시겠습니까?`)) {
     const idToDelete = selectedNode.id;
     graphData.nodes = graphData.nodes.filter(n => n.id !== idToDelete);
@@ -1492,35 +1649,24 @@ btnDelete.addEventListener('click', () => {
   }
 });
 
-// Save All to server
 btnSaveAll.addEventListener('click', saveGraphData);
-
-// Tab Controls
 btnTabEdit.addEventListener('click', showEditTab);
 btnTabPreview.addEventListener('click', showPreviewTab);
 
-// Animation Switch Toggle
 animToggle.addEventListener('click', (e) => {
   animationEnabled = e.target.checked;
-  
-  // Toggle edge animations
+
   graph.getEdges().forEach(edge => {
+    if (typeof edge.getContainer !== 'function') return;
     const group = edge.getContainer();
-    const flowShape = group.find(item => item.get('name') === 'flow-shape');
-    if (flowShape) {
+    const flowShape = group.find(item => item.get && item.get('name') === 'flow-shape');
+    if (flowShape && typeof flowShape.animate === 'function') {
       if (animationEnabled) {
         const shape = group.get('children')[0];
         const length = shape.getTotalLength();
         flowShape.animate(
-          (ratio) => {
-            return {
-              lineDashOffset: -length * ratio
-            };
-          },
-          {
-            repeat: true,
-            duration: 3000
-          }
+          (ratio) => { return { lineDashOffset: -length * ratio }; },
+          { repeat: true, duration: 3000 }
         );
       } else {
         flowShape.stopAnimate();
@@ -1529,7 +1675,6 @@ animToggle.addEventListener('click', (e) => {
     }
   });
 
-  // Toggle orbit animation
   if (animationEnabled && currentOrbit !== 'none') {
     startOrbitMotion();
   } else {
@@ -1541,20 +1686,17 @@ animToggle.addEventListener('click', (e) => {
   }
 });
 
-// Theme Select Handler
 themeSelect.addEventListener('change', (e) => {
   currentTheme = e.target.value;
   document.body.className = `theme-${currentTheme}`;
   initGraph();
 });
 
-// Layout Select Handler
 layoutSelect.addEventListener('change', (e) => {
   currentLayout = e.target.value;
   initGraph();
 });
 
-// Orbit Select Handler
 orbitSelect.addEventListener('change', (e) => {
   currentOrbit = e.target.value;
   if (currentOrbit === 'none') {
@@ -1568,29 +1710,24 @@ orbitSelect.addEventListener('change', (e) => {
   }
 });
 
-// Subnode Visualization Select Handler
 subnodeVisSelect.addEventListener('change', (e) => {
   subnodesVisible = (e.target.value === 'show');
   initGraph();
 });
 
-// Subnode Orbit Rotation Enable Handler
 subnodeRotSelect.addEventListener('change', (e) => {
   subnodesRotationEnabled = (e.target.value === 'true');
 });
 
-// Subnode Orbit Speed Range Handler
 subnodeSpeedRange.addEventListener('input', (e) => {
   subnodesRotationSpeed = parseFloat(e.target.value);
 });
 
-// Export Dropdown Click Handler
 btnExportMenu.addEventListener('click', (e) => {
   e.stopPropagation();
   exportMenu.classList.toggle('show');
 });
 
-// Settings Drawer Toggle Handlers
 const btnToggleSettings = document.getElementById('btnToggleSettings');
 const btnCloseSettings = document.getElementById('btnCloseSettings');
 const settingsDrawer = document.getElementById('settingsDrawer');
@@ -1606,14 +1743,11 @@ btnCloseSettings.addEventListener('click', () => {
 
 window.addEventListener('click', (e) => {
   exportMenu.classList.remove('show');
-  
-  // Close settings drawer when clicking outside it
   if (settingsDrawer.classList.contains('open') && !settingsDrawer.contains(e.target) && !btnToggleSettings.contains(e.target)) {
     settingsDrawer.classList.remove('open');
   }
 });
 
-// File Batch Import Handler
 importFile.addEventListener('change', async (e) => {
   const files = e.target.files;
   if (!files || files.length === 0) return;
@@ -1645,7 +1779,7 @@ importFile.addEventListener('change', async (e) => {
   }
 });
 
-// ── Node Search Overlay ───────────────────────────────────────────────────────
+// Node Search Overlay
 let searchResultIndex = -1;
 let searchResultNodes = [];
 
@@ -1659,7 +1793,7 @@ function openSearchOverlay() {
   renderSearchResults('');
 }
 
-window.closeSearchOverlay = function() {
+window.closeSearchOverlay = function () {
   const overlay = document.getElementById('searchOverlay');
   if (overlay) overlay.style.display = 'none';
   searchResultIndex = -1;
@@ -1693,13 +1827,13 @@ function renderSearchResults(query) {
   list.innerHTML = searchResultNodes.map((n, i) => {
     const statusColor = n.status === 'Completed' ? '#4ade80' : n.status === 'In Progress' ? '#f0c060' : '#6a5e4c';
     const statusDot = `<span style="width:7px;height:7px;border-radius:50%;background:${statusColor};display:inline-block;margin-right:6px;flex-shrink:0;"></span>`;
-    const highlight = (txt) => txt.replace(new RegExp(query.replace(/[.*+?^${}()|[\]\\]/g,'\\$&'), 'gi'), m => `<mark style="background:#8a5a00;color:#ffd78a;border-radius:2px;">${m}</mark>`);
+    const highlight = (txt) => txt.replace(new RegExp(query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'gi'), m => `<mark style="background:#8a5a00;color:#ffd78a;border-radius:2px;">${m}</mark>`);
     return `<div class="search-result-item" data-idx="${i}"
-              style="display:flex;align-items:center;padding:7px 10px;border-radius:6px;cursor:pointer;
-                     margin-bottom:2px;transition:background 0.1s;font-size:13px;"
-              onmouseenter="this.style.background='rgba(200,169,110,0.12)'"
-              onmouseleave="this.style.background=''"
-              onclick="searchJumpTo(${i})">
+                style="display:flex;align-items:center;padding:7px 10px;border-radius:6px;cursor:pointer;
+                       margin-bottom:2px;transition:background 0.1s;font-size:13px;"
+                onmouseenter="this.style.background='rgba(200,169,110,0.12)'"
+                onmouseleave="this.style.background=''"
+                onclick="searchJumpTo(${i})">
       ${statusDot}
       <span style="flex:1;color:#e8d098;">${highlight(n.label || n.name || n.id)}</span>
       <span style="color:#6a5e4c;font-size:11px;margin-left:8px;">${n.serial_id || ''}</span>
@@ -1708,17 +1842,15 @@ function renderSearchResults(query) {
   searchResultIndex = -1;
 }
 
-window.searchJumpTo = function(idx) {
+window.searchJumpTo = function (idx) {
   const node = searchResultNodes[idx];
   if (!node || !graph) return;
   searchResultIndex = idx;
 
-  // Highlight in results
   document.querySelectorAll('.search-result-item').forEach((el, i) => {
     el.style.background = i === idx ? 'rgba(200,169,110,0.2)' : '';
   });
 
-  // Pan canvas to node
   const canvas = document.getElementById('tree-canvas');
   const k = graph.transform.k;
   const targetX = canvas.width / 2 - node.x * k;
@@ -1728,12 +1860,11 @@ window.searchJumpTo = function(idx) {
     d3.zoomIdentity.translate(targetX, targetY).scale(Math.max(k, 0.3))
   );
 
-  // Highlight node on canvas
   graph.setItemState(node.id, 'selected', true);
   selectNode(node.id, false);
 };
 
-// Setup search input events
+// Search keyboard binding setup
 document.addEventListener('DOMContentLoaded', () => {
   const input = document.getElementById('searchInput');
   if (!input) return;
@@ -1757,18 +1888,16 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // Keyboard Shortcuts (PoE Style)
-window.addEventListener('keydown', (e) => {
+window.addEventListener('keydown', async (e) => {
   const activeEl = document.activeElement;
   const inInput = activeEl && (activeEl.tagName === 'INPUT' || activeEl.tagName === 'TEXTAREA' || activeEl.isContentEditable);
 
-  // Cmd+F / Ctrl+F — open search overlay (intercept browser Find)
   if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'f') {
     e.preventDefault();
     openSearchOverlay();
     return;
   }
 
-  // Esc — close search or clear selection
   if (e.key === 'Escape') {
     const overlay = document.getElementById('searchOverlay');
     if (overlay && overlay.style.display !== 'none') {
@@ -1783,40 +1912,42 @@ window.addEventListener('keydown', (e) => {
     return;
   }
 
-  if (inInput) return; // Don't intercept other keys while typing
+  if (inInput) return;
 
-  // Space: Reset Zoom & Center
   if (e.code === 'Space') {
     e.preventDefault();
     if (graph && graph.resetView) graph.resetView();
   }
 
-  // Delete/Backspace: Admin → delete selected nodes; others → unallocate (set Locked)
   if (e.key === 'Delete' || e.key === 'Backspace') {
-    // Ignore if focus is in an input/textarea to not interfere with text editing
     const tag = document.activeElement?.tagName;
     if (tag === 'INPUT' || tag === 'TEXTAREA') return;
 
+    // ── Priority 1: delete highlighted edge ──────────────────────────────
+    if (graph?.highlightedEdge && currentUser?.role === 'admin') {
+      e.preventDefault();
+      await deleteHighlightedEdge();
+      return;
+    }
+
+    // ── Priority 2: delete/unallocate selected nodes ──────────────────────
     if (selectedNodes.length > 0) {
       e.preventDefault();
       if (currentUser?.role === 'admin') {
-        // Admin: hard-delete all selected nodes
         const labels = selectedNodes.map(id => {
           const n = graphData.nodes.find(x => x.id === id);
           return n ? (n.label || n.id) : id;
         }).join(', ');
         if (!confirm(`선택된 ${selectedNodes.length}개 노드를 삭제하시겠습니까?\n[${labels}]\n연결된 엣지도 모두 제거됩니다.`)) return;
 
-        // Delete each node sequentially
         const idsToDelete = [...selectedNodes];
         selectedNodes = [];
         for (const id of idsToDelete) {
           const nodeObj = graphData.nodes.find(n => n.id === id);
-          if (nodeObj) await adminRemoveNode(nodeObj, true /* silent */);
+          if (nodeObj) await adminRemoveNode(nodeObj, true);
         }
         showToast(`🗑️ ${idsToDelete.length}개 노드가 삭제되었습니다.`, 'success');
       } else {
-        // Non-admin: just set status to Locked
         selectedNodes.forEach(id => {
           const nodeObj = graphData.nodes.find(n => n.id === id);
           if (nodeObj) {
@@ -1833,28 +1964,25 @@ window.addEventListener('keydown', (e) => {
     }
   }
 
-  // Ctrl+S / Cmd+S: Save graph
   if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 's') {
     e.preventDefault();
     saveGraphData();
   }
 });
 
-// Resize window handler
 window.addEventListener('resize', () => {
-  if (graph) {
+  if (graph && typeof graph.changeSize === 'function') {
     const container = document.getElementById('g6-container');
-    graph.changeSize(container.scrollWidth, container.scrollHeight || 600);
+    if (container) graph.changeSize(container.scrollWidth, container.scrollHeight || 600);
   }
 });
 
-// Load everything on start
+// App Initiation Entrypoint
 fetchGraphData();
 setupContextMenu();
 setupNodeEditModal();
 setupAdminToolbar();
 
-// ── Edge Style & Curvature wiring ───────────────────────────────────────────
 document.getElementById('edgeStyleSelect')?.addEventListener('change', (e) => {
   const style = e.target.value;
   const curGroup = document.getElementById('curvatureGroup');
@@ -1869,7 +1997,6 @@ document.getElementById('curvatureRange')?.addEventListener('input', (e) => {
   if (graph) { graph.curvature = val; graph.render(); }
 });
 
-// ── PR Dim Opacity wiring ───────────────────────────────────────────────────
 document.getElementById('prDimRange')?.addEventListener('input', (e) => {
   const val = parseFloat(e.target.value);
   const label = document.getElementById('prDimVal');
@@ -1878,8 +2005,9 @@ document.getElementById('prDimRange')?.addEventListener('input', (e) => {
 });
 
 
-// COLLABORATIVE WIKI & AUTH LOGIC FOR APP.JS
-
+// ==========================================
+// Collaborative Wiki & Auth Logic
+// ==========================================
 async function checkAuthStatus() {
   try {
     const res = await fetch('/api/auth/me');
@@ -1901,35 +2029,33 @@ function updateAuthUI() {
   const contributorOnlyEls = document.querySelectorAll('.contributor-only');
   const gitWorkspacePanel = document.getElementById('gitWorkspacePanel');
 
-  txtRole.textContent = currentUser.role;
-  txtRole.className = `role-badge ${currentUser.role}`;
-  
+  if (txtRole) {
+    txtRole.textContent = currentUser.role;
+    txtRole.className = `role-badge ${currentUser.role}`;
+  }
+
   if (currentUser.role === 'guest') {
-    txtName.textContent = '로그인이 필요합니다';
-    btnSave.classList.add('hidden');
-    btnSubmitProp.classList.add('hidden');
+    if (txtName) txtName.textContent = '로그인이 필요합니다';
+    btnSave?.classList.add('hidden');
+    btnSubmitProp?.classList.add('hidden');
     adminOnlyEls.forEach(el => el.classList.add('hidden'));
     contributorOnlyEls.forEach(el => el.classList.add('hidden'));
     if (gitWorkspacePanel) gitWorkspacePanel.classList.add('hidden');
   } else {
-    txtName.textContent = `${currentUser.name} (${currentUser.email || 'OAuth User'})`;
-    
-    // Non-guest logged in users get the git workspace panel
+    if (txtName) txtName.textContent = `${currentUser.name} (${currentUser.email || 'OAuth User'})`;
     if (gitWorkspacePanel) gitWorkspacePanel.classList.remove('hidden');
-    
+
     if (currentUser.role === 'admin') {
-      btnSave.classList.remove('hidden');
-      btnSubmitProp.classList.add('hidden');
+      btnSave?.classList.remove('hidden');
+      btnSubmitProp?.classList.add('hidden');
       adminOnlyEls.forEach(el => el.classList.remove('hidden'));
       contributorOnlyEls.forEach(el => el.classList.add('hidden'));
-      // Show admin toolbar
       const toolbar = document.getElementById('adminToolbar');
       if (toolbar) toolbar.style.display = 'flex';
       loadAdminProposals();
     } else {
-      // Contributor role
-      btnSave.classList.remove('hidden'); // Ctrl+S triggers PR submission
-      btnSubmitProp.classList.remove('hidden');
+      btnSave?.classList.remove('hidden');
+      btnSubmitProp?.classList.remove('hidden');
       adminOnlyEls.forEach(el => el.classList.add('hidden'));
       contributorOnlyEls.forEach(el => el.classList.remove('hidden'));
       const toolbar = document.getElementById('adminToolbar');
@@ -1937,25 +2063,22 @@ function updateAuthUI() {
     }
   }
 
-  // Configure G6 behaviors depending on permissions (Read-only for guests)
-  if (graph) {
+  if (graph && typeof graph.removeBehaviors === 'function') {
     if (currentUser.role === 'guest') {
       graph.removeBehaviors(['drag-node', 'create-edge'], 'default');
-      // Read-only info sidebar delete button
-      document.getElementById('btnDeleteNode').classList.add('hidden');
+      document.getElementById('btnDeleteNode')?.classList.add('hidden');
     } else {
       graph.addBehaviors(['drag-node', 'create-edge'], 'default');
-      document.getElementById('btnDeleteNode').classList.remove('hidden');
+      document.getElementById('btnDeleteNode')?.classList.remove('hidden');
     }
   }
-  
+
   if (typeof updateGitWorkspace === 'function') {
     updateGitWorkspace();
   }
 }
 
-// Google Sign-In Callback handler
-window.handleCredentialResponse = async function(response) {
+window.handleCredentialResponse = async function (response) {
   try {
     const res = await fetch('/api/auth/google-login', {
       method: 'POST',
@@ -1974,41 +2097,38 @@ window.handleCredentialResponse = async function(response) {
   }
 };
 
-// Initialize Google One Tap / Sign In button
 function initGoogleAuth() {
   if (typeof google === 'undefined') {
     setTimeout(initGoogleAuth, 500);
     return;
   }
-  
+
   google.accounts.id.initialize({
-    client_id: "YOUR_GOOGLE_CLIENT_ID.apps.googleusercontent.com", // Fallback or local testing client id
+    client_id: "YOUR_GOOGLE_CLIENT_ID.apps.googleusercontent.com",
     callback: window.handleCredentialResponse
   });
-  
-  google.accounts.id.renderButton(
-    document.getElementById("googleBtnContainer"),
-    { theme: "outline", size: "medium" }
-  );
-  
-  google.accounts.id.prompt(); // One Tap prompt
+
+  const container = document.getElementById("googleBtnContainer");
+  if (container) {
+    google.accounts.id.renderButton(container, { theme: "outline", size: "medium" });
+  }
+  google.accounts.id.prompt();
 }
 
-// Mock authentication helper dialog hooks
 const btnShowAuth = document.getElementById('btnShowAuthModal');
 const mockLoginModal = document.getElementById('mockLoginModal');
 const btnCloseMock = document.getElementById('btnCloseMockModal');
 const btnMockConfirm = document.getElementById('btnMockLoginConfirm');
 
-btnShowAuth.addEventListener('click', () => {
-  mockLoginModal.classList.remove('hidden');
+btnShowAuth?.addEventListener('click', () => {
+  mockLoginModal?.classList.remove('hidden');
 });
 
-btnCloseMock.addEventListener('click', () => {
-  mockLoginModal.classList.add('hidden');
+btnCloseMock?.addEventListener('click', () => {
+  mockLoginModal?.classList.add('hidden');
 });
 
-btnMockConfirm.addEventListener('click', async () => {
+btnMockConfirm?.addEventListener('click', async () => {
   const name = document.getElementById('mockName').value.trim() || '기여자';
   const email = document.getElementById('mockEmail').value.trim() || 'contributor@test.com';
   const role = document.getElementById('mockRole').value;
@@ -2022,7 +2142,7 @@ btnMockConfirm.addEventListener('click', async () => {
     if (res.ok) {
       currentUser = await res.json();
       updateAuthUI();
-      mockLoginModal.classList.add('hidden');
+      mockLoginModal?.classList.add('hidden');
       alert(`테스트 계정으로 로그인했습니다 (${currentUser.role})`);
     }
   } catch (err) {
@@ -2030,26 +2150,24 @@ btnMockConfirm.addEventListener('click', async () => {
   }
 });
 
-// Proposal Modal Form Control
-const btnSubmitProp = document.getElementById('btnSubmitProposal');
 const proposalModal = document.getElementById('proposalModal');
 const btnCloseProp = document.getElementById('btnCloseProposalModal');
 const btnCancelProp = document.getElementById('btnCancelProposal');
 const btnSubmitPropConfirm = document.getElementById('btnSubmitProposalConfirm');
 
-btnSubmitProp.addEventListener('click', () => {
-  proposalModal.classList.remove('hidden');
+btnSubmitProp?.addEventListener('click', () => {
+  proposalModal?.classList.remove('hidden');
 });
 
-btnCloseProp.addEventListener('click', () => {
-  proposalModal.classList.add('hidden');
+btnCloseProp?.addEventListener('click', () => {
+  proposalModal?.classList.add('hidden');
 });
 
-btnCancelProp.addEventListener('click', () => {
-  proposalModal.classList.add('hidden');
+btnCancelProp?.addEventListener('click', () => {
+  proposalModal?.classList.add('hidden');
 });
 
-btnSubmitPropConfirm.addEventListener('click', async () => {
+btnSubmitPropConfirm?.addEventListener('click', async () => {
   const description = document.getElementById('proposalDesc').value.trim();
   if (!description) {
     alert('기여 제안 내용을 설명해주세요!');
@@ -2071,7 +2189,7 @@ btnSubmitPropConfirm.addEventListener('click', async () => {
       })
     });
     if (res.ok) {
-      proposalModal.classList.add('hidden');
+      proposalModal?.classList.add('hidden');
       document.getElementById('proposalDesc').value = '';
       localCommits = [];
       updateGitWorkspace();
@@ -2086,17 +2204,17 @@ btnSubmitPropConfirm.addEventListener('click', async () => {
   }
 });
 
-// Admin review proposals fetching
 async function loadAdminProposals() {
   const proposalList = document.getElementById('proposalList');
+  if (!proposalList) return;
   proposalList.innerHTML = '<span style="font-size:11px; color:var(--text-secondary);">로딩 중...</span>';
-  
+
   try {
     const res = await fetch('/api/admin/contributions');
     if (res.ok) {
       const proposals = await res.json();
       const pending = proposals.filter(p => p.status === 'pending');
-      
+
       if (pending.length === 0) {
         proposalList.innerHTML = '<span style="font-size:11px; color:var(--text-secondary);">대기 중인 제안이 없습니다.</span>';
         return;
@@ -2118,12 +2236,12 @@ async function loadAdminProposals() {
             <button class="btn btn-danger btn-reject" data-id="${prop.id}">반려</button>
           </div>
         `;
-        
+
         card.addEventListener('click', (e) => {
           if (e.target.tagName === 'BUTTON') return;
           previewProposalDiff(prop);
         });
-        
+
         card.querySelector('.btn-approve').addEventListener('click', async (e) => {
           const id = e.target.getAttribute('data-id');
           if (confirm('이 제안을 승인하고 공식 테크트리에 머지하시겠습니까?')) {
@@ -2149,12 +2267,10 @@ async function loadAdminProposals() {
 
 async function reviewProposal(id, action) {
   try {
-    const res = await fetch(`/api/admin/contributions/${id}/${action}`, {
-      method: 'POST'
-    });
+    const res = await fetch(`/api/admin/contributions/${id}/${action}`, { method: 'POST' });
     if (res.ok) {
       alert(`제안이 성공적으로 ${action === 'approve' ? '승인 및 머지' : '반려'}되었습니다.`);
-      fetchGraphData(); // reload tree
+      fetchGraphData();
     } else {
       alert('요청 처리 실패');
     }
@@ -2163,23 +2279,22 @@ async function reviewProposal(id, action) {
   }
 }
 
-// Run auth button renders
 setTimeout(initGoogleAuth, 100);
 
-// --- Git Version Control Engine ---
 
+// ==========================================
+// Git Version Control Engine
+// ==========================================
 function isNodeModified(n1, n2) {
   if (n1.label !== n2.label) return true;
   if (n1.importance !== n2.importance) return true;
   if (n1.status !== n2.status) return true;
   if (n1.shape !== n2.shape) return true;
   if (n1.comment !== n2.comment) return true;
-  
-  // Compare positions (approximate to avoid float jitter)
+
   if (Math.abs((n1.x || 0) - (n2.x || 0)) > 2.0) return true;
   if (Math.abs((n1.y || 0) - (n2.y || 0)) > 2.0) return true;
-  
-  // Compare subnodes
+
   const subs1 = n1.subnodes || [];
   const subs2 = n2.subnodes || [];
   if (subs1.length !== subs2.length) return true;
@@ -2188,7 +2303,7 @@ function isNodeModified(n1, n2) {
     if (subs1[i].label !== subs2[i].label) return true;
     if (subs1[i].status !== subs2[i].status) return true;
   }
-  
+
   return false;
 }
 
@@ -2200,7 +2315,7 @@ function applyCommits(base, commits) {
       const ctype = change.type;
       const targetId = change.id;
       const cdata = change.data;
-      
+
       if (ctype === 'node') {
         if (action === 'add') {
           g.nodes = g.nodes.filter(n => n.id !== targetId);
@@ -2231,12 +2346,10 @@ function applyCommits(base, commits) {
 
 function diffGraph(oldG, newG) {
   const changes = [];
-  
-  // 1. Diff Nodes
+
   const oldNodesMap = new Map(oldG.nodes.map(n => [n.id, n]));
   const newNodesMap = new Map(newG.nodes.map(n => [n.id, n]));
-  
-  // Added or Modified Nodes
+
   for (const [id, newNode] of newNodesMap) {
     const oldNode = oldNodesMap.get(id);
     if (!oldNode) {
@@ -2257,8 +2370,7 @@ function diffGraph(oldG, newG) {
       }
     }
   }
-  
-  // Deleted Nodes
+
   for (const [id, oldNode] of oldNodesMap) {
     if (!newNodesMap.has(id)) {
       changes.push({
@@ -2269,12 +2381,10 @@ function diffGraph(oldG, newG) {
       });
     }
   }
-  
-  // 2. Diff Edges
+
   const oldEdgesMap = new Map(oldG.edges.map(e => [e.id, e]));
   const newEdgesMap = new Map(newG.edges.map(e => [e.id, e]));
-  
-  // Added Edges
+
   for (const [id, newEdge] of newEdgesMap) {
     if (!oldEdgesMap.has(id)) {
       changes.push({
@@ -2285,8 +2395,7 @@ function diffGraph(oldG, newG) {
       });
     }
   }
-  
-  // Deleted Edges
+
   for (const [id, oldEdge] of oldEdgesMap) {
     if (!newEdgesMap.has(id)) {
       changes.push({
@@ -2297,7 +2406,7 @@ function diffGraph(oldG, newG) {
       });
     }
   }
-  
+
   return changes;
 }
 
@@ -2316,27 +2425,26 @@ function toggleStageChange(change, isChecked) {
 function updateGitWorkspace() {
   const panel = document.getElementById('gitWorkspacePanel');
   if (!panel) return;
-  
+
   if (currentUser.role === 'guest') {
     panel.classList.add('hidden');
     return;
   }
-  
+
   const commitBase = applyCommits(baseGraphData, localCommits);
   const allWorkingChanges = diffGraph(commitBase, graphData);
-  
-  // Filter out stagedChanges that are no longer valid working changes
-  stagedChanges = stagedChanges.filter(sc => 
+
+  stagedChanges = stagedChanges.filter(sc =>
     allWorkingChanges.some(wc => wc.type === sc.type && wc.id === sc.id && wc.action === sc.action)
   );
-  
-  // Unstaged changes are those in allWorkingChanges not in stagedChanges
-  const unstagedList = allWorkingChanges.filter(wc => 
+
+  const unstagedList = allWorkingChanges.filter(wc =>
     !stagedChanges.some(sc => sc.type === wc.type && sc.id === wc.id && sc.action === wc.action)
   );
-  
-  // Render Unstaged Changes List
+
   const unstagedContainer = document.getElementById('gitUnstagedList');
+  if (!unstagedContainer) return;
+
   if (allWorkingChanges.length === 0 && stagedChanges.length === 0) {
     unstagedContainer.innerHTML = '<span style="font-size:10px; color:var(--text-secondary);">변경된 항목이 없습니다.</span>';
   } else if (unstagedList.length === 0) {
@@ -2346,7 +2454,7 @@ function updateGitWorkspace() {
     unstagedList.forEach((change) => {
       const item = document.createElement('div');
       item.className = 'git-change-item';
-      
+
       let labelText = `${change.type === 'node' ? '노드' : '연결선'} [${change.id}]`;
       if (change.type === 'node') {
         const nodeObj = change.data || commitBase.nodes.find(n => n.id === change.id);
@@ -2359,10 +2467,10 @@ function updateGitWorkspace() {
           labelText = `연결선: ${srcNode ? srcNode.label : edgeObj.source} -> ${tgtNode ? tgtNode.label : edgeObj.target}`;
         }
       }
-      
+
       const badgeClass = change.action;
       const badgeText = change.action === 'add' ? 'ADD' : (change.action === 'modify' ? 'MOD' : 'DEL');
-      
+
       item.innerHTML = `
         <label>
           <input type="checkbox" class="git-stage-checkbox">
@@ -2370,81 +2478,82 @@ function updateGitWorkspace() {
         </label>
         <span class="git-badge ${badgeClass}">${badgeText}</span>
       `;
-      
+
       item.querySelector('.git-stage-checkbox').addEventListener('change', (e) => {
         toggleStageChange(change, e.target.checked);
       });
-      
+
       unstagedContainer.appendChild(item);
     });
   }
-  
-  // Render Staged Changes List
+
   const stagedContainer = document.getElementById('gitStagedList');
-  if (stagedChanges.length === 0) {
-    stagedContainer.innerHTML = '<span style="font-size:10px; color:var(--text-secondary);">스테이지된 변경이 없습니다.</span>';
-  } else {
-    stagedContainer.innerHTML = '';
-    stagedChanges.forEach((change) => {
-      const item = document.createElement('div');
-      item.className = 'git-change-item';
-      
-      let labelText = `${change.type === 'node' ? '노드' : '연결선'} [${change.id}]`;
-      if (change.type === 'node') {
-        const nodeObj = change.data || commitBase.nodes.find(n => n.id === change.id);
-        if (nodeObj) labelText = `노드: ${nodeObj.label}`;
-      } else if (change.type === 'edge') {
-        const edgeObj = change.data || commitBase.edges.find(e => e.id === change.id);
-        if (edgeObj) {
-          const srcNode = graphData.nodes.find(n => n.id === edgeObj.source) || commitBase.nodes.find(n => n.id === edgeObj.source);
-          const tgtNode = graphData.nodes.find(n => n.id === edgeObj.target) || commitBase.nodes.find(n => n.id === edgeObj.target);
-          labelText = `연결선: ${srcNode ? srcNode.label : edgeObj.source} -> ${tgtNode ? tgtNode.label : edgeObj.target}`;
+  if (stagedContainer) {
+    if (stagedChanges.length === 0) {
+      stagedContainer.innerHTML = '<span style="font-size:10px; color:var(--text-secondary);">스테이지된 변경이 없습니다.</span>';
+    } else {
+      stagedContainer.innerHTML = '';
+      stagedChanges.forEach((change) => {
+        const item = document.createElement('div');
+        item.className = 'git-change-item';
+
+        let labelText = `${change.type === 'node' ? '노드' : '연결선'} [${change.id}]`;
+        if (change.type === 'node') {
+          const nodeObj = change.data || commitBase.nodes.find(n => n.id === change.id);
+          if (nodeObj) labelText = `노드: ${nodeObj.label}`;
+        } else if (change.type === 'edge') {
+          const edgeObj = change.data || commitBase.edges.find(e => e.id === change.id);
+          if (edgeObj) {
+            const srcNode = graphData.nodes.find(n => n.id === edgeObj.source) || commitBase.nodes.find(n => n.id === edgeObj.source);
+            const tgtNode = graphData.nodes.find(n => n.id === edgeObj.target) || commitBase.nodes.find(n => n.id === edgeObj.target);
+            labelText = `연결선: ${srcNode ? srcNode.label : edgeObj.source} -> ${tgtNode ? tgtNode.label : edgeObj.target}`;
+          }
         }
-      }
-      
-      const badgeClass = change.action;
-      const badgeText = change.action === 'add' ? 'ADD' : (change.action === 'modify' ? 'MOD' : 'DEL');
-      
-      item.innerHTML = `
-        <label>
-          <input type="checkbox" class="git-stage-checkbox" checked>
-          <span>${labelText}</span>
-        </label>
-        <span class="git-badge ${badgeClass}">${badgeText}</span>
-      `;
-      
-      item.querySelector('.git-stage-checkbox').addEventListener('change', (e) => {
-        toggleStageChange(change, e.target.checked);
+
+        const badgeClass = change.action;
+        const badgeText = change.action === 'add' ? 'ADD' : (change.action === 'modify' ? 'MOD' : 'DEL');
+
+        item.innerHTML = `
+          <label>
+            <input type="checkbox" class="git-stage-checkbox" checked>
+            <span>${labelText}</span>
+          </label>
+          <span class="git-badge ${badgeClass}">${badgeText}</span>
+        `;
+
+        item.querySelector('.git-stage-checkbox').addEventListener('change', (e) => {
+          toggleStageChange(change, e.target.checked);
+        });
+
+        stagedContainer.appendChild(item);
       });
-      
-      stagedContainer.appendChild(item);
-    });
+    }
   }
-  
-  // Render Commits list
+
   const logsContainer = document.getElementById('gitCommitLogsList');
-  if (localCommits.length === 0) {
-    logsContainer.innerHTML = '<span style="font-size:10px; color:var(--text-secondary);">제출할 커밋이 없습니다.</span>';
-  } else {
-    logsContainer.innerHTML = '';
-    localCommits.forEach((commit) => {
-      const item = document.createElement('div');
-      item.className = 'git-commit-log-item';
-      item.innerHTML = `
-        <div style="display:flex; justify-content:space-between; align-items:center;">
-          <strong>[${commit.id.substring(7,13)}] ${commit.message}</strong>
-          <span style="font-size:9px; color:var(--text-secondary);">${new Date(commit.timestamp * 1000).toLocaleTimeString()}</span>
-        </div>
-        <div style="font-size:9px; color:var(--text-secondary); padding-left:5px; margin-top:2px;">
-          총 ${commit.changes.length}개 항목 수정됨
-        </div>
-      `;
-      logsContainer.appendChild(item);
-    });
+  if (logsContainer) {
+    if (localCommits.length === 0) {
+      logsContainer.innerHTML = '<span style="font-size:10px; color:var(--text-secondary);">제출할 커밋이 없습니다.</span>';
+    } else {
+      logsContainer.innerHTML = '';
+      localCommits.forEach((commit) => {
+        const item = document.createElement('div');
+        item.className = 'git-commit-log-item';
+        item.innerHTML = `
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <strong>[${commit.id.substring(7, 13)}] ${commit.message}</strong>
+            <span style="font-size:9px; color:var(--text-secondary);">${new Date(commit.timestamp * 1000).toLocaleTimeString()}</span>
+          </div>
+          <div style="font-size:9px; color:var(--text-secondary); padding-left:5px; margin-top:2px;">
+            총 ${commit.changes.length}개 항목 수정됨
+          </div>
+        `;
+        logsContainer.appendChild(item);
+      });
+    }
   }
 }
 
-// Stage All Button Event
 const btnGitAddAll = document.getElementById('btnGitAddAll');
 if (btnGitAddAll) {
   btnGitAddAll.addEventListener('click', () => {
@@ -2460,7 +2569,6 @@ if (btnGitAddAll) {
   });
 }
 
-// Commit Button Event
 const btnGitCommit = document.getElementById('btnGitCommit');
 const gitCommitMsgInput = document.getElementById('gitCommitMsg');
 if (btnGitCommit) {
@@ -2474,7 +2582,7 @@ if (btnGitCommit) {
       alert('커밋 메시지를 입력해주세요!');
       return;
     }
-    
+
     const commitId = 'commit-' + Math.random().toString(36).substring(2, 11) + '-' + Date.now();
     const newCommit = {
       id: commitId,
@@ -2483,28 +2591,25 @@ if (btnGitCommit) {
       timestamp: Date.now() / 1000,
       changes: JSON.parse(JSON.stringify(stagedChanges))
     };
-    
+
     localCommits.push(newCommit);
     stagedChanges = [];
-    gitCommitMsgInput.value = '';
+    if (gitCommitMsgInput) gitCommitMsgInput.value = '';
     updateGitWorkspace();
-    alert(`로컬 커밋이 정상적으로 생성되었습니다:\n[${commitId.substring(7,13)}] ${msg}`);
+    alert(`로컬 커밋이 정상적으로 생성되었습니다:\n[${commitId.substring(7, 13)}] ${msg}`);
   });
 }
 
-// Visual PR Difference Preview Mode inside G6
 function previewProposalDiff(prop) {
   const previewNodes = [];
   const previewEdges = [];
-  
-  // Deep copy base official tree
+
   const baseNodes = JSON.parse(JSON.stringify(baseGraphData.nodes));
   const baseEdges = JSON.parse(JSON.stringify(baseGraphData.edges));
-  
-  // Extract all changes from commits in the proposal
+
   const nodeChanges = {};
   const edgeChanges = {};
-  
+
   prop.commits.forEach(commit => {
     commit.changes.forEach(change => {
       if (change.type === 'node') {
@@ -2514,8 +2619,7 @@ function previewProposalDiff(prop) {
       }
     });
   });
-  
-  // Process base nodes
+
   baseNodes.forEach(node => {
     const change = nodeChanges[node.id];
     if (change) {
@@ -2530,16 +2634,14 @@ function previewProposalDiff(prop) {
       previewNodes.push(node);
     }
   });
-  
-  // Proposed added nodes
+
   Object.values(nodeChanges).forEach(change => {
     if (change.action === 'add') {
       const addedNode = { ...change.data, diffStatus: 'add' };
       previewNodes.push(addedNode);
     }
   });
-  
-  // Process base edges
+
   baseEdges.forEach(edge => {
     const change = edgeChanges[edge.id];
     if (change && change.action === 'delete') {
@@ -2549,34 +2651,32 @@ function previewProposalDiff(prop) {
       previewEdges.push(edge);
     }
   });
-  
-  // Proposed added edges
+
   Object.values(edgeChanges).forEach(change => {
     if (change.action === 'add') {
       const addedEdge = { ...change.data, diffStatus: 'add' };
       previewEdges.push(addedEdge);
     }
   });
-  
-  // Set UI warning banner
+
   let banner = document.getElementById('gitDiffBanner');
   if (!banner) {
     banner = document.createElement('div');
     banner.id = 'gitDiffBanner';
     banner.className = 'git-diff-banner';
-    document.querySelector('.canvas-area').appendChild(banner);
+    document.querySelector('.canvas-area')?.appendChild(banner);
   }
-  banner.innerHTML = `
-    <span><i class="fa-solid fa-eye"></i> <b>기여 제안 프리뷰 모드:</b> ${prop.contributor.name}님의 제안을 보고 있습니다.</span>
-    <button id="btnExitDiffPreview" class="btn btn-compact btn-save"><i class="fa-solid fa-xmark"></i> 프리뷰 종료</button>
-  `;
-  banner.classList.add('show');
-  
-  document.getElementById('btnExitDiffPreview').addEventListener('click', () => {
-    exitDiffPreview();
-  });
-  
-  // Update G6 graph with preview data
+  if (banner) {
+    banner.innerHTML = `
+      <span><i class="fa-solid fa-eye"></i> <b>기여 제안 프리뷰 모드:</b> ${prop.contributor.name}님의 제안을 보고 있습니다.</span>
+      <button id="btnExitDiffPreview" class="btn btn-compact btn-save"><i class="fa-solid fa-xmark"></i> 프리뷰 종료</button>
+    `;
+    banner.classList.add('show');
+    document.getElementById('btnExitDiffPreview')?.addEventListener('click', () => {
+      exitDiffPreview();
+    });
+  }
+
   const formattedNodes = previewNodes.map(n => ({
     id: n.id,
     label: n.label,
@@ -2598,7 +2698,7 @@ function previewProposalDiff(prop) {
     diffStatus: e.diffStatus
   }));
 
-  graph.changeData({ nodes: formattedNodes, edges: formattedEdges });
+  if (graph) graph.changeData({ nodes: formattedNodes, edges: formattedEdges });
 }
 
 function exitDiffPreview() {
@@ -2606,5 +2706,5 @@ function exitDiffPreview() {
   if (banner) {
     banner.classList.remove('show');
   }
-  updateGraphData(); // returns to normal graphData
+  updateGraphData();
 }

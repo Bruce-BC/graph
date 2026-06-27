@@ -38,10 +38,7 @@
       <span class="poe-tooltip-title" id="tt-title">Node Title</span>
     </div>
     <div class="poe-tooltip-body" id="tt-stats"></div>
-    <div class="poe-tooltip-footer" id="tt-unalloc">
-      <div>Unallocating this node will give you:</div>
-      <div id="tt-unalloc-stats"></div>
-    </div>
+
     <div class="poe-tooltip-id" id="tt-node-id" style="text-align:right; font-size:12px; color:#6a5e4c; padding-top: 6px; font-family: 'Fontin', sans-serif;"></div>
   </div>
 
@@ -148,12 +145,12 @@
     </div>
   </div>
 
-  <!-- Edge Edit Popup -->
+  <!-- Edge Edit Popup (right-click on existing edge) -->
   <div id="edgeEditPopup" style="display:none;position:fixed;z-index:11500;background:#1a1410;
-       border:1px solid #8a6a2e;border-radius:8px;padding:14px;min-width:260px;
+       border:1px solid #8a6a2e;border-radius:8px;padding:14px;min-width:270px;
        box-shadow:0 8px 40px rgba(0,0,0,0.9);">
     <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;">
-      <span style="font-size:13px;color:#c8a96e;font-weight:bold;">엣지 곡률 설정</span>
+      <span style="font-size:13px;color:#c8a96e;font-weight:bold;">엣지 설정</span>
       <button onclick="closeEdgeEditPopup()" style="background:none;border:none;color:#666;cursor:pointer;font-size:15px;">✕</button>
     </div>
     <div style="font-size:11px;color:#6a5e4c;margin-bottom:8px;" id="edgeEditInfoText"></div>
@@ -166,8 +163,36 @@
              oninput="document.getElementById('edgeCurvatureVal').innerText = this.value; window.updateEdgeCurvaturePreview && window.updateEdgeCurvaturePreview(this.value);">
     </div>
     <div style="display:flex;gap:8px;justify-content:flex-end;">
+      <button onclick="deleteHighlightedEdge()" class="btn" style="font-size:12px;padding:4px 12px;color:#f87171;border-color:#f87171;">🗑 삭제</button>
       <button onclick="closeEdgeEditPopup()" class="btn" style="font-size:12px;padding:4px 12px;">취소</button>
       <button onclick="submitEdgeEdit()" class="btn btn-primary" style="font-size:12px;padding:4px 12px;">저장</button>
+    </div>
+  </div>
+
+  <!-- Edge Connect Curvature Popup (appears after connecting two nodes) -->
+  <div id="edgeConnectCurvaturePopup" style="display:none;position:fixed;z-index:11600;background:#1a1410;
+       border:1px solid #4a8a4e;border-radius:8px;padding:14px;min-width:270px;
+       box-shadow:0 8px 40px rgba(0,0,0,0.9);">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;">
+      <span style="font-size:13px;color:#6aaa6e;font-weight:bold;">✅ 엣지 추가됨 — 곡률 설정</span>
+      <button onclick="skipEdgeConnectCurvature()" style="background:none;border:none;color:#666;cursor:pointer;font-size:15px;">✕</button>
+    </div>
+    
+    <div id="edgeConnectOverlapWarning" style="display:none; background:#2a1a1a; border:1px solid #ff5555; color:#ff8888; font-size:11px; padding:6px; border-radius:4px; margin-bottom:10px;">
+    </div>
+
+    <div style="font-size:11px;color:#6a5e4c;margin-bottom:10px;" id="edgeConnectInfoText"></div>
+    <div style="margin-bottom:12px;">
+      <label style="font-size:12px;color:#e8d098;display:flex;justify-content:space-between;">
+        곡률: <span id="edgeConnectCurvatureVal" style="color:#a89068;">0</span>
+      </label>
+      <input type="range" id="edgeConnectCurvatureSlider" min="-1" max="1" step="0.05" value="0"
+             style="width:100%;margin-top:5px;accent-color:#6aaa6e;"
+             oninput="document.getElementById('edgeConnectCurvatureVal').innerText = this.value; window.updateNewEdgeCurvaturePreview && window.updateNewEdgeCurvaturePreview(this.value);">
+    </div>
+    <div style="display:flex;gap:8px;justify-content:flex-end;">
+      <button onclick="skipEdgeConnectCurvature()" class="btn" style="font-size:12px;padding:4px 12px;">직선으로 유지</button>
+      <button onclick="saveEdgeConnectCurvature()" class="btn btn-primary" style="font-size:12px;padding:4px 12px;">곡률 저장</button>
     </div>
   </div>
 
@@ -329,6 +354,16 @@
 
       <div class="drawer-divider"></div>
 
+      <!-- Reset Progress -->
+      <div class="drawer-group admin-only hidden">
+        <label><i class="fa-solid fa-rotate-left"></i> 초기화 (Admin)</label>
+        <button id="btnResetProgress" class="btn btn-danger" style="width:100%; justify-content:center; margin-top:8px;">
+          <i class="fa-solid fa-trash-can"></i> 스킬트리 누적 효과 초기화
+        </button>
+      </div>
+
+      <div class="drawer-divider"></div>
+
       <!-- Data Import / Export Buttons inside drawer -->
       <div class="drawer-group">
         <label><i class="fa-solid fa-file-import"></i> 가져오기 / 내보내기</label>
@@ -426,24 +461,19 @@
         <div class="legend-divider"></div>
         <div class="legend-instructions">
           <p><i class="fa-solid fa-circle-info"></i> <b>클릭</b>: 노드 할당/해제 토글</p>
-          <p><i class="fa-solid fa-circle-info"></i> <b>Shift + 클릭</b>: 다중 선택</p>
+          <p><i class="fa-solid fa-circle-info"></i> <b>우클릭</b>: 캔버스/노드/엣지 관리 메뉴</p>
+          <p><i class="fa-solid fa-circle-info"></i> <b>Shift + 클릭</b>: 노드 다중 선택</p>
+          <p><i class="fa-solid fa-circle-info"></i> <b>[Enter]</b>: 선택 노드 다중 할당 (Admin)</p>
+          <p><i class="fa-solid fa-circle-info"></i> <b>[Del]/[Backspace]</b>: 할당 해제 / 선택 엣지 삭제 (Admin)</p>
           <p><i class="fa-solid fa-circle-info"></i> <b>[Space]</b>: 화면 초기화 (중앙 이동)</p>
-          <p><i class="fa-solid fa-circle-info"></i> <b>[Esc]</b>: 선택 해제</p>
-          <p><i class="fa-solid fa-circle-info"></i> <b>[F]</b>: 검색창 포커스</p>
-          <p><i class="fa-solid fa-circle-info"></i> <b>[Del] / [Backspace]</b>: 선택 노드 할당 해제</p>
-          <p><i class="fa-solid fa-circle-info"></i> <b>[Ctrl+S] / [Cmd+S]</b>: 현재 상태 저장</p>
-          <p><i class="fa-solid fa-circle-info"></i> <b>마우스 휠</b>: 줌 인/아웃</p>
-          <p><i class="fa-solid fa-circle-info"></i> <b>드래그</b>: 화면 이동</p>
+          <p><i class="fa-solid fa-circle-info"></i> <b>[Esc]</b>: 선택/메뉴 해제</p>
+          <p><i class="fa-solid fa-circle-info"></i> <b>[Ctrl+F]/[Cmd+F]</b>: 노드 검색창</p>
+          <p><i class="fa-solid fa-circle-info"></i> <b>[Ctrl+S]/[Cmd+S]</b>: 데이터 저장 (Admin)</p>
+          <p><i class="fa-solid fa-circle-info"></i> <b>마우스 휠/드래그</b>: 줌/화면 이동</p>
         </div>
       </div>
       
-      <!-- Character Stats Panel (Set Effects) -->
-      <div class="character-stats-panel">
-        <div class="stats-header">누적 스킬 효과 (Set Effects)</div>
-        <div id="character-stats-list" class="stats-list">
-           <div class="empty-stats">활성화된 스킬이 없습니다.</div>
-        </div>
-      </div>
+      <!-- Character Stats Panel (Set Effects) moved to empty-state -->
 
       <!-- Admin Floating Toolbar -->
       <div id="adminToolbar" style="display:none;position:absolute;top:12px;left:50%;transform:translateX(-50%);z-index:500;display:flex;gap:8px;background:rgba(15,10,5,0.85);border:1px solid #8a6a2e;border-radius:8px;padding:8px 14px;backdrop-filter:blur(6px);">
@@ -457,12 +487,14 @@
 
     <!-- Sidebar Control Panel -->
     <aside class="sidebar-panel">
-      <!-- Default state: Node not selected -->
-      <div id="empty-state" class="sidebar-section active">
-        <div class="empty-message">
-          <i class="fa-solid fa-crosshairs empty-icon"></i>
-          <h3>노드를 선택하거나 생성하세요</h3>
-          <p>지도상에서 노드를 클릭하여 코멘트를 수정하고 상태를 변경하거나, 빈 영역을 더블클릭하여 새 노드를 추가하세요.</p>
+      <!-- Empty State (Now shows cumulative stats by default) -->
+      <div id="empty-state" class="sidebar-section active character-stats-panel">
+        <div class="stats-header" style="display:flex; justify-content:space-between; align-items:center; border-bottom: 1px solid var(--panel-border); padding-bottom: 8px; margin-bottom: 10px;">
+          <span><i class="fa-solid fa-chart-pie"></i> 누적 스킬 효과 (Set Effects)</span>
+          <button id="btnToggleStats" class="btn btn-compact" style="font-size:11px; padding:2px 6px;"><i class="fa-solid fa-eye-slash"></i> 숨기기</button>
+        </div>
+        <div id="character-stats-list" class="stats-list" style="flex: 1; overflow-y: auto;">
+           <div class="empty-stats">활성화된 스킬이 없습니다.</div>
         </div>
       </div>
 
@@ -499,8 +531,7 @@
           </div>
         </div>
 
-        <div class="form-row">
-          <div class="form-group half">
+          <div class="form-group">
             <label for="nodeShape">노드 모양</label>
             <select id="nodeShape" class="form-control">
               <option value="circle">원형 (Circle)</option>
@@ -509,22 +540,6 @@
               <option value="diamond">마름모 (Diamond)</option>
             </select>
           </div>
-          <div class="form-group half">
-            <label>서브노드 관리</label>
-            <button id="btnToggleSubnodes" class="btn btn-save btn-block" style="padding: 10px 0;"><i class="fa-solid fa-list-check"></i> 목록 펼치기/접기</button>
-          </div>
-        </div>
-
-        <!-- Subnodes list container (Collapsible) -->
-        <div id="subnodes-container" class="subnodes-list-area hidden">
-          <div class="subnodes-header">
-            <h3>서브노드(체크포인트) 목록</h3>
-            <button id="btnAddSubnode" class="btn btn-save" style="padding: 2px 8px; font-size: 11px;"><i class="fa-solid fa-plus"></i> 추가</button>
-          </div>
-          <div id="subnodes-list-body" class="subnodes-list-body">
-            <!-- Dynamically populated subnode elements -->
-          </div>
-        </div>
 
         <!-- Rich Comment / Markdown Area -->
         <div class="form-group flex-fill" style="margin-top: 10px;">

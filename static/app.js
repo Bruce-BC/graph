@@ -1490,10 +1490,10 @@ if (btnToggleStats) {
     const list = document.getElementById('character-stats-list');
     if (list.style.display === 'none') {
       list.style.display = 'flex';
-      btnToggleStats.innerHTML = '<i class="fa-solid fa-eye-slash"></i> 숨기기';
+      btnToggleStats.innerHTML = '<i class="fa-solid fa-chevron-up"></i>';
     } else {
       list.style.display = 'none';
-      btnToggleStats.innerHTML = '<i class="fa-solid fa-eye"></i> 보이기';
+      btnToggleStats.innerHTML = '<i class="fa-solid fa-chevron-down"></i>';
     }
   });
 }

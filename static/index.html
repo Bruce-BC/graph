@@ -473,7 +473,16 @@
         </div>
       </div>
       
-      <!-- Character Stats Panel (Set Effects) moved to empty-state -->
+      <!-- Character Stats Panel (Set Effects) -->
+      <div class="character-stats-panel">
+        <div class="stats-header" style="display:flex; justify-content:space-between; align-items:center;">
+          <span>누적 스킬 효과</span>
+          <button id="btnToggleStats" class="btn btn-compact" style="font-size:11px; padding:2px 6px;"><i class="fa-solid fa-chevron-up"></i></button>
+        </div>
+        <div id="character-stats-list" class="stats-list">
+           <div class="empty-stats">활성화된 스킬이 없습니다.</div>
+        </div>
+      </div>
 
       <!-- Admin Floating Toolbar -->
       <div id="adminToolbar" style="display:none;position:absolute;top:12px;left:50%;transform:translateX(-50%);z-index:500;display:flex;gap:8px;background:rgba(15,10,5,0.85);border:1px solid #8a6a2e;border-radius:8px;padding:8px 14px;backdrop-filter:blur(6px);">
@@ -487,14 +496,12 @@
 
     <!-- Sidebar Control Panel -->
     <aside class="sidebar-panel">
-      <!-- Empty State (Now shows cumulative stats by default) -->
-      <div id="empty-state" class="sidebar-section active character-stats-panel">
-        <div class="stats-header" style="display:flex; justify-content:space-between; align-items:center; border-bottom: 1px solid var(--panel-border); padding-bottom: 8px; margin-bottom: 10px;">
-          <span><i class="fa-solid fa-chart-pie"></i> 누적 스킬 효과 (Set Effects)</span>
-          <button id="btnToggleStats" class="btn btn-compact" style="font-size:11px; padding:2px 6px;"><i class="fa-solid fa-eye-slash"></i> 숨기기</button>
-        </div>
-        <div id="character-stats-list" class="stats-list" style="flex: 1; overflow-y: auto;">
-           <div class="empty-stats">활성화된 스킬이 없습니다.</div>
+      <!-- Empty State -->
+      <div id="empty-state" class="sidebar-section active">
+        <div style="text-align: center; color: var(--text-secondary); margin-top: 50px;">
+          <i class="fa-solid fa-crosshairs" style="font-size: 48px; margin-bottom: 20px; opacity: 0.5;"></i>
+          <h3>노드를 선택하거나 생성하세요</h3>
+          <p>지도상에서 노드를 클릭하여 코멘트를 수정하고 상태를 변경하거나, 빈 영역을 더블클릭하여 새 노드를 추가하세요.</p>
         </div>
       </div>
 

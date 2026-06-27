@@ -417,11 +417,23 @@ input:checked + .slider:before {
 
 /* Character Stats Panel (Set Effects) */
 .character-stats-panel {
+  position: absolute;
+  top: 25px;
+  left: 25px;
+  width: 320px;
+  background-color: var(--panel-bg);
+  border: 1px solid var(--panel-border);
+  border-radius: 8px;
+  padding: 15px;
+  max-height: calc(100% - 50px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+  pointer-events: auto;
+  z-index: 5;
+  backdrop-filter: blur(10px);
   display: flex;
   flex-direction: column;
-  height: 100%;
   color: var(--text-primary);
-  padding: 0;
+  transition: max-height 0.3s ease;
 }
 
 .stats-header {

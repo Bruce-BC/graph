@@ -219,7 +219,10 @@ async def google_login(request: Request, body: dict):
 
 # WIKI / COLLABORATIVE CORE APIS
 @app.get("/api/graph")
-def get_graph():
+def get_graph(response: Response):
+    response.headers["Cache-Control"] = "no-cache, no-store, must-revalidate"
+    response.headers["Pragma"] = "no-cache"
+    response.headers["Expires"] = "0"
     data = load_data()
     status_map = load_status()
     overrides = load_structure_overrides()

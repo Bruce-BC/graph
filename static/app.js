@@ -162,16 +162,32 @@ function checkMasteryAutoActivation() {
         }
       });
       
-      const targetStatus = allCompleted ? 'Completed' : 'Locked';
-      if (mastery.status !== targetStatus) {
-        mastery.status = targetStatus;
-        if (graph) {
-          const item = graph.findById(mastery.id);
-          if (item) {
-            graph.setItemState(item, 'status', targetStatus);
+      if (allCompleted) {
+        if (mastery.status !== 'Completed') {
+          mastery.status = 'Completed';
+          if (graph) {
+            const item = graph.findById(mastery.id);
+            if (item) {
+              graph.setItemState(item, 'status', 'Completed');
+            }
           }
+          changed = true;
         }
-        changed = true;
+      } else {
+        // If not all completed, we no longer force it locked.
+        // This allows users to manually toggle the Mastery on if they want.
+        // Or if they disconnect a subnode, they might have to manually turn off the mastery.
+        // If we want it to auto-deactivate, we can uncomment this:
+        /*
+        if (mastery.status !== 'Locked') {
+          mastery.status = 'Locked';
+          if (graph) {
+            const item = graph.findById(mastery.id);
+            if (item) graph.setItemState(item, 'status', 'Locked');
+          }
+          changed = true;
+        }
+        */
       }
     }
   });
@@ -1356,7 +1372,6 @@ function initGraph() {
         }
         return;
       }
-
       if (isLinkSubnodeMode && selectedNode && selectedNode.isMastery) {
         if (model.id !== selectedNode.id) {
           if (!selectedNode.subnodes) selectedNode.subnodes = [];
@@ -1404,6 +1419,7 @@ function initGraph() {
           clearSelection();
         }
       } else {
+        // Allow manual toggling for all nodes including Mastery nodes
         const newStatus = model.status === 'Completed' ? 'Locked' : 'Completed';
         model.status = newStatus;
 

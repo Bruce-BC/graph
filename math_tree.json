@@ -6987,7 +6987,9 @@
       "name": "Elemental Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryElementalDamage.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Elemental Mastery Power"
+      ],
       "comment": "# ⚔️ Elemental Mastery\n\n**스킬 ID**: 44298\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": -8302.22,
       "y": -2419.3,
@@ -7110,7 +7112,9 @@
       "name": "Sword Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryGroupSword.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Sword Mastery Power"
+      ],
       "comment": "# ⚔️ Sword Mastery\n\n**스킬 ID**: 63184\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": -8289.29,
       "y": 3504.75,
@@ -7489,7 +7493,9 @@
       "name": "Axe Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryGroupAxe.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Axe Mastery Power"
+      ],
       "comment": "# ⚔️ Axe Mastery\n\n**스킬 ID**: 24224\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": -8285.5,
       "y": 2423.75,
@@ -7883,7 +7889,9 @@
       "name": "Staff Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryGroupStaff.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Staff Mastery Power"
+      ],
       "comment": "# ⚔️ Staff Mastery\n\n**스킬 ID**: 62416\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": -8133.71,
       "y": -1435.31,
@@ -8207,7 +8215,9 @@
       "name": "Warcry Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_WarcryMastery.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Warcry Mastery Power"
+      ],
       "comment": "# ⚔️ Warcry Mastery\n\n**스킬 ID**: 60992\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": -8114.3,
       "y": 811.555,
@@ -8509,7 +8519,9 @@
       "name": "Mace Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryGroupMace.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Mace Mastery Power"
+      ],
       "comment": "# ⚔️ Mace Mastery\n\n**스킬 ID**: 14832\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": -8112.84,
       "y": 1342.17,
@@ -9224,7 +9236,9 @@
       "name": "Retaliation Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_PassiveStunMastery.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Retaliation Mastery Power"
+      ],
       "comment": "# ⚔️ Retaliation Mastery\n\n**스킬 ID**: 26037\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": -7961.5,
       "y": 3076.05,
@@ -9344,7 +9358,9 @@
       "name": "Minion Offence Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MinionMastery.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Minion Offence Mastery Power"
+      ],
       "comment": "# ⚔️ Minion Offence Mastery\n\n**스킬 ID**: 43647\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": -7953.34,
       "y": -3869.58,
@@ -9882,7 +9898,9 @@
       "name": "Shield Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryGroupShield.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Shield Mastery Power"
+      ],
       "comment": "# ⚔️ Shield Mastery\n\n**스킬 ID**: 16810\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": -7670.75,
       "y": 4000.99,
@@ -10206,7 +10224,9 @@
       "name": "Recovery Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryRecovery.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Recovery Mastery Power"
+      ],
       "comment": "# ⚔️ Recovery Mastery\n\n**스킬 ID**: 27235\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": -7403.27,
       "y": -3010.79,
@@ -10228,7 +10248,9 @@
       "name": "Link Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MinionMastery.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Link Mastery Power"
+      ],
       "comment": "# ⚔️ Link Mastery\n\n**스킬 ID**: 48144\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": -7403.27,
       "y": -1834.61,
@@ -10548,7 +10570,9 @@
       "name": "Mace Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryGroupMace.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Mace Mastery Power"
+      ],
       "comment": "# ⚔️ Mace Mastery\n\n**스킬 ID**: 31292\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": -7386.21,
       "y": -5366.31,
@@ -10668,7 +10692,9 @@
       "name": "Accuracy Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryGroupAccuracy.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Accuracy Mastery Power"
+      ],
       "comment": "# ⚔️ Accuracy Mastery\n\n**스킬 ID**: 27157\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": -7352.58,
       "y": -1073.94,
@@ -10738,7 +10764,9 @@
       "name": "Bleeding Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_BloodMastery.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Bleeding Mastery Power"
+      ],
       "comment": "# ⚔️ Bleeding Mastery\n\n**스킬 ID**: 43601\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": -7345.25,
       "y": 2011.3,
@@ -10882,7 +10910,9 @@
       "name": "Impale Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_ImpaleMasterySymbol.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Impale Mastery Power"
+      ],
       "comment": "# ⚔️ Impale Mastery\n\n**스킬 ID**: 52074\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": -7345.25,
       "y": 2836.3,
@@ -11001,7 +11031,9 @@
       "name": "Fire Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryGroupFire.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Fire Mastery Power"
+      ],
       "comment": "# ⚔️ Fire Mastery\n\n**스킬 ID**: 38320\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": -7335.75,
       "y": 4904.96,
@@ -11168,7 +11200,9 @@
       "name": "Totem Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_AttackTotemMastery.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Totem Mastery Power"
+      ],
       "comment": "# ⚔️ Totem Mastery\n\n**스킬 ID**: 38377\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": -7313.92,
       "y": -311.685,
@@ -11315,7 +11349,9 @@
       "name": "Rage Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_RageMastery.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Rage Mastery Power"
+      ],
       "comment": "# ⚔️ Rage Mastery\n\n**스킬 ID**: 9471\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": -7276.56,
       "y": 372.995,
@@ -11482,7 +11518,9 @@
       "name": "Critical Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryGroupCrit.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Critical Mastery Power"
+      ],
       "comment": "# ⚔️ Critical Mastery\n\n**스킬 ID**: 33823\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": -7250.82,
       "y": 892.555,
@@ -11602,7 +11640,9 @@
       "name": "Totem Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_AttackTotemMastery.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Totem Mastery Power"
+      ],
       "comment": "# ⚔️ Totem Mastery\n\n**스킬 ID**: 34487\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": -7196.51,
       "y": -4864.57,
@@ -11876,7 +11916,9 @@
       "name": "Mana Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryGroupMana.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Mana Mastery Power"
+      ],
       "comment": "# ⚔️ Mana Mastery\n\n**스킬 ID**: 44948\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": -7163.5,
       "y": -3686.79,
@@ -11923,7 +11965,9 @@
       "name": "Recovery Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryRecovery.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Recovery Mastery Power"
+      ],
       "comment": "# ⚔️ Recovery Mastery\n\n**스킬 ID**: 53517\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": -7045.5,
       "y": 1345.86,
@@ -12068,7 +12112,9 @@
       "name": "Armour Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryGroupArmour.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Armour Mastery Power"
+      ],
       "comment": "# ⚔️ Armour Mastery\n\n**스킬 ID**: 64406\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": -6982.69,
       "y": 3147.9,
@@ -12163,7 +12209,9 @@
       "name": "Banner Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_PassiveStunMastery.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Banner Mastery Power"
+      ],
       "comment": "# ⚔️ Banner Mastery\n\n**스킬 ID**: 32242\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": -6982.69,
       "y": 3823.5,
@@ -12261,7 +12309,9 @@
       "name": "Life Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryGroupLife.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Life Mastery Power"
+      ],
       "comment": "# ⚔️ Life Mastery\n\n**스킬 ID**: 4139\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": -6915.5,
       "y": 1795.43,
@@ -12717,7 +12767,9 @@
       "name": "Armour and Energy Shield Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryGroupArmour.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Armour and Energy Shield Mastery Power"
+      ],
       "comment": "# ⚔️ Armour and Energy Shield Mastery\n\n**스킬 ID**: 37641\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": -6828.96,
       "y": -734.625,
@@ -12815,7 +12867,9 @@
       "name": "Armour and Energy Shield Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryGroupEnergyShield.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Armour and Energy Shield Mastery Power"
+      ],
       "comment": "# ⚔️ Armour and Energy Shield Mastery\n\n**스킬 ID**: 30393\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": -6820.83,
       "y": -3264.82,
@@ -12910,7 +12964,9 @@
       "name": "Life Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryGroupLife.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Life Mastery Power"
+      ],
       "comment": "# ⚔️ Life Mastery\n\n**스킬 ID**: 41415\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": -6820.83,
       "y": -1575.6,
@@ -12932,7 +12988,9 @@
       "name": "Physical Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryPhysicalDamage.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Physical Mastery Power"
+      ],
       "comment": "# ⚔️ Physical Mastery\n\n**스킬 ID**: 52220\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": -6748.04,
       "y": 469.705,
@@ -13246,7 +13304,9 @@
       "name": "Mana Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryGroupMana.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Mana Mastery Power"
+      ],
       "comment": "# ⚔️ Mana Mastery\n\n**스킬 ID**: 2841\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": -6705.94,
       "y": 3423.75,
@@ -13364,7 +13424,9 @@
       "name": "Fire Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryGroupFire.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Fire Mastery Power"
+      ],
       "comment": "# ⚔️ Fire Mastery\n\n**스킬 ID**: 11505\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": -6704.71,
       "y": -6037.94,
@@ -13484,7 +13546,9 @@
       "name": "Reservation Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryAuras.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Reservation Mastery Power"
+      ],
       "comment": "# ⚔️ Reservation Mastery\n\n**스킬 ID**: 47197\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": -6666.6,
       "y": -4474.34,
@@ -13677,7 +13741,9 @@
       "name": "Retaliation Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_PassiveStunMastery.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Retaliation Mastery Power"
+      ],
       "comment": "# ⚔️ Retaliation Mastery\n\n**스킬 ID**: 58728\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": -6498.31,
       "y": 1345.86,
@@ -13772,7 +13838,9 @@
       "name": "Armour Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryGroupArmour.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Armour Mastery Power"
+      ],
       "comment": "# ⚔️ Armour Mastery\n\n**스킬 ID**: 48717\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": -6470.02,
       "y": 4400.8,
@@ -13891,7 +13959,9 @@
       "name": "Block Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryGroupShield.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Block Mastery Power"
+      ],
       "comment": "# ⚔️ Block Mastery\n\n**스킬 ID**: 22480\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": -6469.34,
       "y": 5399.76,
@@ -13913,7 +13983,9 @@
       "name": "Warcry Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_WarcryMastery.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Warcry Mastery Power"
+      ],
       "comment": "# ⚔️ Warcry Mastery\n\n**스킬 ID**: 35977\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": -6459.46,
       "y": 2775.83,
@@ -14079,7 +14151,9 @@
       "name": "Brand Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryBrand.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Brand Mastery Power"
+      ],
       "comment": "# ⚔️ Brand Mastery\n\n**스킬 ID**: 40439\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": -6235.44,
       "y": -3583.34,
@@ -14250,7 +14324,9 @@
       "name": "Warcry Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_WarcryMastery.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Warcry Mastery Power"
+      ],
       "comment": "# ⚔️ Warcry Mastery\n\n**스킬 ID**: 25031\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": -6215.38,
       "y": 6072.29,
@@ -14564,7 +14640,9 @@
       "name": "Protection Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryPoison.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Protection Mastery Power"
+      ],
       "comment": "# ⚔️ Protection Mastery\n\n**스킬 ID**: 42792\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": -6195.83,
       "y": 469.705,
@@ -14783,7 +14861,9 @@
       "name": "Life Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryGroupLife.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Life Mastery Power"
+      ],
       "comment": "# ⚔️ Life Mastery\n\n**스킬 ID**: 32241\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": -6186.4,
       "y": -4863.83,
@@ -14855,7 +14935,9 @@
       "name": "Staff Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryGroupStaff.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Staff Mastery Power"
+      ],
       "comment": "# ⚔️ Staff Mastery\n\n**스킬 ID**: 48349\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": -6150.77,
       "y": -6644.11,
@@ -15198,7 +15280,9 @@
       "name": "Life Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryGroupLife.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Life Mastery Power"
+      ],
       "comment": "# ⚔️ Life Mastery\n\n**스킬 ID**: 48505\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": -6075.53,
       "y": -300.175,
@@ -15295,7 +15379,9 @@
       "name": "Leech Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryGroupLifeMana.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Leech Mastery Power"
+      ],
       "comment": "# ⚔️ Leech Mastery\n\n**스킬 ID**: 28862\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": -6074.46,
       "y": 3794.65,
@@ -15339,7 +15425,9 @@
       "name": "Rage Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_RageMastery.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Rage Mastery Power"
+      ],
       "comment": "# ⚔️ Rage Mastery\n\n**스킬 ID**: 7528\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": -6019.42,
       "y": 4582.0,
@@ -15605,7 +15693,9 @@
       "name": "Retaliation Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_PassiveStunMastery.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Retaliation Mastery Power"
+      ],
       "comment": "# ⚔️ Retaliation Mastery\n\n**스킬 ID**: 55017\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": -5995.21,
       "y": -1100.35,
@@ -15700,7 +15790,9 @@
       "name": "Critical Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryGroupCrit.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Critical Mastery Power"
+      ],
       "comment": "# ⚔️ Critical Mastery\n\n**스킬 ID**: 16123\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": -5850.88,
       "y": -5700.01,
@@ -15794,7 +15886,9 @@
       "name": "Attributes Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_WarcryMastery.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Attributes Mastery Power"
+      ],
       "comment": "# ⚔️ Attributes Mastery\n\n**스킬 ID**: 28284\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": -5830.3,
       "y": 4985.94,
@@ -15889,7 +15983,9 @@
       "name": "Block Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryGroupShield.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Block Mastery Power"
+      ],
       "comment": "# ⚔️ Block Mastery\n\n**스킬 ID**: 38921\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": -5751.73,
       "y": -4474.34,
@@ -16442,7 +16538,9 @@
       "name": "Block Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryGroupShield.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Block Mastery Power"
+      ],
       "comment": "# ⚔️ Block Mastery\n\n**스킬 ID**: 5368\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": -5659.23,
       "y": 4062.83,
@@ -16677,7 +16775,9 @@
       "name": "Fire Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryGroupFire.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Fire Mastery Power"
+      ],
       "comment": "# ⚔️ Fire Mastery\n\n**스킬 ID**: 63268\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": -5515.19,
       "y": -5096.28,
@@ -16852,7 +16952,9 @@
       "name": "Mace Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryGroupMace.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Mace Mastery Power"
+      ],
       "comment": "# ⚔️ Mace Mastery\n\n**스킬 ID**: 27931\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": -5460.9,
       "y": 5527.0,
@@ -17019,7 +17121,9 @@
       "name": "Bleeding Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_BloodMastery.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Bleeding Mastery Power"
+      ],
       "comment": "# ⚔️ Bleeding Mastery\n\n**스킬 ID**: 22295\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": -5460.9,
       "y": 6614.78,
@@ -17041,7 +17145,9 @@
       "name": "Minion Offence Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryGroupMinions.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Minion Offence Mastery Power"
+      ],
       "comment": "# ⚔️ Minion Offence Mastery\n\n**스킬 ID**: 14505\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": -5429.29,
       "y": -6118.94,
@@ -17744,7 +17850,9 @@
       "name": "Staff Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryGroupStaff.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Staff Mastery Power"
+      ],
       "comment": "# ⚔️ Staff Mastery\n\n**스킬 ID**: 6968\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": -5264.32,
       "y": -1040.84,
@@ -17890,7 +17998,9 @@
       "name": "Shield Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryGroupShield.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Shield Mastery Power"
+      ],
       "comment": "# ⚔️ Shield Mastery\n\n**스킬 ID**: 25535\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": -5264.32,
       "y": -584.845,
@@ -18261,7 +18371,9 @@
       "name": "Fire Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryGroupFire.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Fire Mastery Power"
+      ],
       "comment": "# ⚔️ Fire Mastery\n\n**스킬 ID**: 48267\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": -5241.52,
       "y": 546.555,
@@ -18431,7 +18543,9 @@
       "name": "Mace Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryGroupMace.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Mace Mastery Power"
+      ],
       "comment": "# ⚔️ Mace Mastery\n\n**스킬 ID**: 59013\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": -5241.52,
       "y": 1023.92,
@@ -18528,7 +18642,9 @@
       "name": "Damage Over Time Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_BloodMastery.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Damage Over Time Mastery Power"
+      ],
       "comment": "# ⚔️ Damage Over Time Mastery\n\n**스킬 ID**: 22067\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": -5127.19,
       "y": 3807.59,
@@ -18601,7 +18717,9 @@
       "name": "Axe Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryGroupAxe.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Axe Mastery Power"
+      ],
       "comment": "# ⚔️ Axe Mastery\n\n**스킬 ID**: 58540\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": -5125.15,
       "y": 4488.44,
@@ -18911,7 +19029,9 @@
       "name": "Retaliation Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_PassiveStunMastery.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Retaliation Mastery Power"
+      ],
       "comment": "# ⚔️ Retaliation Mastery\n\n**스킬 ID**: 41744\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": -5041.83,
       "y": 7475.71,
@@ -19117,7 +19237,9 @@
       "name": "Link Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MinionMastery.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Link Mastery Power"
+      ],
       "comment": "# ⚔️ Link Mastery\n\n**스킬 ID**: 9213\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": -4925.05,
       "y": -7237.92,
@@ -19139,7 +19261,9 @@
       "name": "Stun Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_PassiveStunMastery.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Stun Mastery Power"
+      ],
       "comment": "# ⚔️ Stun Mastery\n\n**스킬 ID**: 37698\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": -4886.51,
       "y": -4619.33,
@@ -19308,7 +19432,9 @@
       "name": "Minion Offence Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryGroupMinions.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Minion Offence Mastery Power"
+      ],
       "comment": "# ⚔️ Minion Offence Mastery\n\n**스킬 ID**: 54849\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": -4886.51,
       "y": -4085.77,
@@ -19381,7 +19507,9 @@
       "name": "Caster Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_AreaofEffectSpellsMastery.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Caster Mastery Power"
+      ],
       "comment": "# ⚔️ Caster Mastery\n\n**스킬 ID**: 25313\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": -4875.57,
       "y": -5500.25,
@@ -19770,7 +19898,9 @@
       "name": "Fortify Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_FortifyMasterySymbol.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Fortify Mastery Power"
+      ],
       "comment": "# ⚔️ Fortify Mastery\n\n**스킬 ID**: 59335\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": -4863.65,
       "y": 5908.21,
@@ -19864,7 +19994,9 @@
       "name": "Recovery Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryRecovery.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Recovery Mastery Power"
+      ],
       "comment": "# ⚔️ Recovery Mastery\n\n**스킬 ID**: 61529\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": -4863.65,
       "y": 6347.25,
@@ -19886,7 +20018,9 @@
       "name": "Stun Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_PassiveStunMastery.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Stun Mastery Power"
+      ],
       "comment": "# ⚔️ Stun Mastery\n\n**스킬 ID**: 62023\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": -4853.15,
       "y": 4880.85,
@@ -20125,7 +20259,9 @@
       "name": "Life Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryGroupLife.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Life Mastery Power"
+      ],
       "comment": "# ⚔️ Life Mastery\n\n**스킬 ID**: 25011\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": -4782.65,
       "y": 5426.23,
@@ -20147,7 +20283,9 @@
       "name": "Attack Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_AttackBlindMastery.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Attack Mastery Power"
+      ],
       "comment": "# ⚔️ Attack Mastery\n\n**스킬 ID**: 10245\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": -4777.5,
       "y": -871.355,
@@ -20314,7 +20452,9 @@
       "name": "Warcry Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_WarcryMastery.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Warcry Mastery Power"
+      ],
       "comment": "# ⚔️ Warcry Mastery\n\n**스킬 ID**: 8460\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": -4750.09,
       "y": 546.555,
@@ -20557,7 +20697,9 @@
       "name": "Armour Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryGroupArmour.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Armour Mastery Power"
+      ],
       "comment": "# ⚔️ Armour Mastery\n\n**스킬 ID**: 52462\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": -4736.79,
       "y": -329.645,
@@ -20652,7 +20794,9 @@
       "name": "Attack Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_AttackBlindMastery.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Attack Mastery Power"
+      ],
       "comment": "# ⚔️ Attack Mastery\n\n**스킬 ID**: 52875\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": -4712.84,
       "y": 4007.44,
@@ -21521,7 +21665,9 @@
       "name": "Shield Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryGroupShield.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Shield Mastery Power"
+      ],
       "comment": "# ⚔️ Shield Mastery\n\n**스킬 ID**: 45558\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": -4390.35,
       "y": -6640.4,
@@ -21764,7 +21910,9 @@
       "name": "Elemental Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryElementalDamage.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Elemental Mastery Power"
+      ],
       "comment": "# ⚔️ Elemental Mastery\n\n**스킬 ID**: 5726\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": -4354.9,
       "y": -4815.69,
@@ -21812,7 +21960,9 @@
       "name": "Minion Defence Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MinionMastery.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Minion Defence Mastery Power"
+      ],
       "comment": "# ⚔️ Minion Defence Mastery\n\n**스킬 ID**: 48290\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": -4354.9,
       "y": -4086.61,
@@ -21954,7 +22104,9 @@
       "name": "Attack Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_AttackBlindMastery.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Attack Mastery Power"
+      ],
       "comment": "# ⚔️ Attack Mastery\n\n**스킬 ID**: 56595\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": -4341.21,
       "y": 6923.56,
@@ -22144,7 +22296,9 @@
       "name": "Armour Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryGroupArmour.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Armour Mastery Power"
+      ],
       "comment": "# ⚔️ Armour Mastery\n\n**스킬 ID**: 54340\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": -4260.48,
       "y": 4509.09,
@@ -22240,7 +22394,9 @@
       "name": "Stun Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_PassiveStunMastery.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Stun Mastery Power"
+      ],
       "comment": "# ⚔️ Stun Mastery\n\n**스킬 ID**: 53216\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": -4251.69,
       "y": 5410.96,
@@ -22405,7 +22561,9 @@
       "name": "Two Hand Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryGroupTwoHands.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Two Hand Mastery Power"
+      ],
       "comment": "# ⚔️ Two Hand Mastery\n\n**스킬 ID**: 25934\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": -4213.85,
       "y": 3944.28,
@@ -22730,7 +22888,9 @@
       "name": "Accuracy Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryGroupAccuracy.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Accuracy Mastery Power"
+      ],
       "comment": "# ⚔️ Accuracy Mastery\n\n**스킬 ID**: 38595\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": -4145.92,
       "y": -980.045,
@@ -22752,7 +22912,9 @@
       "name": "Staff Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryGroupStaff.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Staff Mastery Power"
+      ],
       "comment": "# ⚔️ Staff Mastery\n\n**스킬 ID**: 5230\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": -4119.19,
       "y": -5843.48,
@@ -22945,7 +23107,9 @@
       "name": "Minion Offence Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryGroupMinions.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Minion Offence Mastery Power"
+      ],
       "comment": "# ⚔️ Minion Offence Mastery\n\n**스킬 ID**: 61992\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": -4061.73,
       "y": -494.755,
@@ -23163,7 +23327,9 @@
       "name": "Fire Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryGroupFire.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Fire Mastery Power"
+      ],
       "comment": "# ⚔️ Fire Mastery\n\n**스킬 ID**: 37911\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": -3923.35,
       "y": 6271.4,
@@ -23354,7 +23520,9 @@
       "name": "Banner Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_PassiveStunMastery.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Banner Mastery Power"
+      ],
       "comment": "# ⚔️ Banner Mastery\n\n**스킬 ID**: 35321\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": -3882.88,
       "y": 5786.8,
@@ -23450,7 +23618,9 @@
       "name": "Curse Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryCurse.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Curse Mastery Power"
+      ],
       "comment": "# ⚔️ Curse Mastery\n\n**스킬 ID**: 50540\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": -3878.75,
       "y": -7968.17,
@@ -24061,7 +24231,9 @@
       "name": "Rage Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_RageMastery.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Rage Mastery Power"
+      ],
       "comment": "# ⚔️ Rage Mastery\n\n**스킬 ID**: 40698\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": -3773.12,
       "y": 4942.86,
@@ -24156,7 +24328,9 @@
       "name": "Sword Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryGroupSword.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Sword Mastery Power"
+      ],
       "comment": "# ⚔️ Sword Mastery\n\n**스킬 ID**: 26697\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": -3751.33,
       "y": 7723.0,
@@ -24519,7 +24693,9 @@
       "name": "Reservation Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryAuras.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Reservation Mastery Power"
+      ],
       "comment": "# ⚔️ Reservation Mastery\n\n**스킬 ID**: 64128\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": -3691.22,
       "y": 7146.75,
@@ -24541,7 +24717,9 @@
       "name": "Staff Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryGroupStaff.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Staff Mastery Power"
+      ],
       "comment": "# ⚔️ Staff Mastery\n\n**스킬 ID**: 39332\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": -3667.95,
       "y": -7117.4,
@@ -24809,7 +24987,9 @@
       "name": "Protection Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryPoison.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Protection Mastery Power"
+      ],
       "comment": "# ⚔️ Protection Mastery\n\n**스킬 ID**: 17127\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": -3613.0,
       "y": -4066.11,
@@ -24856,7 +25036,9 @@
       "name": "Energy Shield Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryGroupEnergyShield.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Energy Shield Mastery Power"
+      ],
       "comment": "# ⚔️ Energy Shield Mastery\n\n**스킬 ID**: 3471\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": -3536.19,
       "y": -5333.88,
@@ -25271,7 +25453,9 @@
       "name": "Protection Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryPoison.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Protection Mastery Power"
+      ],
       "comment": "# ⚔️ Protection Mastery\n\n**스킬 ID**: 12503\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": -3388.33,
       "y": -4921.85,
@@ -25319,7 +25503,9 @@
       "name": "Minion Offence Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MinionMastery.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Minion Offence Mastery Power"
+      ],
       "comment": "# ⚔️ Minion Offence Mastery\n\n**스킬 ID**: 39416\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": -3374.09,
       "y": -7993.44,
@@ -25630,7 +25816,9 @@
       "name": "Protection Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryPoison.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Protection Mastery Power"
+      ],
       "comment": "# ⚔️ Protection Mastery\n\n**스킬 ID**: 33657\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": -3312.55,
       "y": 4255.75,
@@ -25802,7 +25990,9 @@
       "name": "Axe Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryGroupAxe.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Axe Mastery Power"
+      ],
       "comment": "# ⚔️ Axe Mastery\n\n**스킬 ID**: 4424\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": -3294.84,
       "y": 7723.0,
@@ -25824,7 +26014,9 @@
       "name": "Attack Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_AttackBlindMastery.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Attack Mastery Power"
+      ],
       "comment": "# ⚔️ Attack Mastery\n\n**스킬 ID**: 8556\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": -3245.22,
       "y": 6293.76,
@@ -25994,7 +26186,9 @@
       "name": "Accuracy Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryGroupAccuracy.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Accuracy Mastery Power"
+      ],
       "comment": "# ⚔️ Accuracy Mastery\n\n**스킬 ID**: 35221\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": -3224.83,
       "y": 4940.36,
@@ -26088,7 +26282,9 @@
       "name": "Wand Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryGroupWand.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Wand Mastery Power"
+      ],
       "comment": "# ⚔️ Wand Mastery\n\n**스킬 ID**: 35038\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": -3160.96,
       "y": -7409.31,
@@ -26260,7 +26456,9 @@
       "name": "Damage Over Time Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_BloodMastery.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Damage Over Time Mastery Power"
+      ],
       "comment": "# ⚔️ Damage Over Time Mastery\n\n**스킬 ID**: 2828\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": -3160.96,
       "y": -6684.88,
@@ -26354,7 +26552,9 @@
       "name": "Physical Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryPhysicalDamage.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Physical Mastery Power"
+      ],
       "comment": "# ⚔️ Physical Mastery\n\n**스킬 ID**: 12169\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": -3103.98,
       "y": 7114.86,
@@ -26449,7 +26649,9 @@
       "name": "Damage Over Time Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_BloodMastery.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Damage Over Time Mastery Power"
+      ],
       "comment": "# ⚔️ Damage Over Time Mastery\n\n**스킬 ID**: 17945\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": -3037.77,
       "y": -4544.11,
@@ -26641,7 +26843,9 @@
       "name": "Brand Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryBrand.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Brand Mastery Power"
+      ],
       "comment": "# ⚔️ Brand Mastery\n\n**스킬 ID**: 61343\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": -2875.77,
       "y": -5458.98,
@@ -26952,7 +27156,9 @@
       "name": "Two Hand Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryGroupTwoHands.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Two Hand Mastery Power"
+      ],
       "comment": "# ⚔️ Two Hand Mastery\n\n**스킬 ID**: 35118\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": -2783.94,
       "y": 8219.25,
@@ -27298,7 +27504,9 @@
       "name": "Energy Shield Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryGroupEnergyShield.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Energy Shield Mastery Power"
+      ],
       "comment": "# ⚔️ Energy Shield Mastery\n\n**스킬 ID**: 27307\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": -2703.05,
       "y": -6978.28,
@@ -27346,7 +27554,9 @@
       "name": "Two Hand Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryGroupTwoHands.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Two Hand Mastery Power"
+      ],
       "comment": "# ⚔️ Two Hand Mastery\n\n**스킬 ID**: 6912\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": -2688.66,
       "y": 3779.86,
@@ -27499,7 +27709,9 @@
       "name": "Critical Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryGroupCrit.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Critical Mastery Power"
+      ],
       "comment": "# ⚔️ Critical Mastery\n\n**스킬 ID**: 51583\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": -2635.19,
       "y": 6935.25,
@@ -27695,7 +27907,9 @@
       "name": "Life Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryGroupLife.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Life Mastery Power"
+      ],
       "comment": "# ⚔️ Life Mastery\n\n**스킬 ID**: 43818\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": -2628.79,
       "y": -3732.47,
@@ -27888,7 +28102,9 @@
       "name": "Chaos Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryChaos.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Chaos Mastery Power"
+      ],
       "comment": "# ⚔️ Chaos Mastery\n\n**스킬 ID**: 23547\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": -2565.74,
       "y": -8125.04,
@@ -28009,7 +28225,9 @@
       "name": "Curse Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryCurse.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Curse Mastery Power"
+      ],
       "comment": "# ⚔️ Curse Mastery\n\n**스킬 ID**: 61785\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": -2562.75,
       "y": -6027.56,
@@ -28152,7 +28370,9 @@
       "name": "Bleeding Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_BloodMastery.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Bleeding Mastery Power"
+      ],
       "comment": "# ⚔️ Bleeding Mastery\n\n**스킬 ID**: 63710\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": -2461.59,
       "y": 5479.8,
@@ -28465,7 +28685,9 @@
       "name": "Impale Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_ImpaleMasterySymbol.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Impale Mastery Power"
+      ],
       "comment": "# ⚔️ Impale Mastery\n\n**스킬 ID**: 48982\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": -2461.59,
       "y": 6255.8,
@@ -28584,7 +28806,9 @@
       "name": "Energy Shield Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryGroupEnergyShield.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Energy Shield Mastery Power"
+      ],
       "comment": "# ⚔️ Energy Shield Mastery\n\n**스킬 ID**: 10729\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": -2428.03,
       "y": -5082.88,
@@ -28705,7 +28929,9 @@
       "name": "Flask Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryFlasks.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Flask Mastery Power"
+      ],
       "comment": "# ⚔️ Flask Mastery\n\n**스킬 ID**: 18750\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": -2370.83,
       "y": -4539.58,
@@ -29171,7 +29397,9 @@
       "name": "Link Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MinionMastery.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Link Mastery Power"
+      ],
       "comment": "# ⚔️ Link Mastery\n\n**스킬 ID**: 12244\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": -2311.98,
       "y": -243.095,
@@ -29218,7 +29446,9 @@
       "name": "Mana Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryGroupMana.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Mana Mastery Power"
+      ],
       "comment": "# ⚔️ Mana Mastery\n\n**스킬 ID**: 8732\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": -2311.98,
       "y": 257.205,
@@ -29362,7 +29592,9 @@
       "name": "Banner Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_PassiveStunMastery.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Banner Mastery Power"
+      ],
       "comment": "# ⚔️ Banner Mastery\n\n**스킬 ID**: 43307\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": -2221.21,
       "y": 7200.25,
@@ -29482,7 +29714,9 @@
       "name": "Brand Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryBrand.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Brand Mastery Power"
+      ],
       "comment": "# ⚔️ Brand Mastery\n\n**스킬 ID**: 21143\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": -2201.7,
       "y": -7186.59,
@@ -29579,7 +29813,9 @@
       "name": "Lightning Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryGroupLightning.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Lightning Mastery Power"
+      ],
       "comment": "# ⚔️ Lightning Mastery\n\n**스킬 ID**: 240\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": -2201.7,
       "y": -6675.31,
@@ -29674,7 +29910,9 @@
       "name": "Bleeding Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_BloodMastery.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Bleeding Mastery Power"
+      ],
       "comment": "# ⚔️ Bleeding Mastery\n\n**스킬 ID**: 37956\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": -2184.36,
       "y": 4590.01,
@@ -29696,7 +29934,9 @@
       "name": "Warcry Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_WarcryMastery.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Warcry Mastery Power"
+      ],
       "comment": "# ⚔️ Warcry Mastery\n\n**스킬 ID**: 62015\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": -2184.36,
       "y": 5022.54,
@@ -29890,7 +30130,9 @@
       "name": "Impale Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_ImpaleMasterySymbol.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Impale Mastery Power"
+      ],
       "comment": "# ⚔️ Impale Mastery\n\n**스킬 ID**: 31400\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": -2164.23,
       "y": 7871.94,
@@ -30006,7 +30248,9 @@
       "name": "Totem Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_AttackTotemMastery.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Totem Mastery Power"
+      ],
       "comment": "# ⚔️ Totem Mastery\n\n**스킬 ID**: 26608\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": -2065.84,
       "y": -5674.58,
@@ -30267,7 +30511,9 @@
       "name": "Rage Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_RageMastery.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Rage Mastery Power"
+      ],
       "comment": "# ⚔️ Rage Mastery\n\n**스킬 ID**: 52061\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": -1920.09,
       "y": 6852.19,
@@ -30769,7 +31015,9 @@
       "name": "Physical Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryPhysicalDamage.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Physical Mastery Power"
+      ],
       "comment": "# ⚔️ Physical Mastery\n\n**스킬 ID**: 12239\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": -1903.4,
       "y": -634.955,
@@ -30913,7 +31161,9 @@
       "name": "Minion Offence Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MinionMastery.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Minion Offence Mastery Power"
+      ],
       "comment": "# ⚔️ Minion Offence Mastery\n\n**스킬 ID**: 34552\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": -1861.16,
       "y": -4771.42,
@@ -31011,7 +31261,9 @@
       "name": "Shield Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryGroupShield.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Shield Mastery Power"
+      ],
       "comment": "# ⚔️ Shield Mastery\n\n**스킬 ID**: 38436\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": -1851.8,
       "y": 4017.26,
@@ -31251,7 +31503,9 @@
       "name": "Retaliation Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_PassiveStunMastery.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Retaliation Mastery Power"
+      ],
       "comment": "# ⚔️ Retaliation Mastery\n\n**스킬 ID**: 4327\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": -1810.14,
       "y": 5487.4,
@@ -31394,7 +31648,9 @@
       "name": "Fortify Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_FortifyMasterySymbol.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Fortify Mastery Power"
+      ],
       "comment": "# ⚔️ Fortify Mastery\n\n**스킬 ID**: 51974\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": -1810.14,
       "y": 6219.85,
@@ -31537,7 +31793,9 @@
       "name": "Mana Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryGroupMana.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Mana Mastery Power"
+      ],
       "comment": "# ⚔️ Mana Mastery\n\n**스킬 ID**: 65395\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": -1693.96,
       "y": 4836.34,
@@ -31559,7 +31817,9 @@
       "name": "Caster Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_AreaofEffectSpellsMastery.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Caster Mastery Power"
+      ],
       "comment": "# ⚔️ Caster Mastery\n\n**스킬 ID**: 27733\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": -1653.82,
       "y": -7186.59,
@@ -31826,7 +32086,9 @@
       "name": "Leech Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryGroupLifeMana.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Leech Mastery Power"
+      ],
       "comment": "# ⚔️ Leech Mastery\n\n**스킬 ID**: 35859\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": -1652.42,
       "y": 7871.94,
@@ -31921,7 +32183,9 @@
       "name": "Caster Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_AreaofEffectSpellsMastery.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Caster Mastery Power"
+      ],
       "comment": "# ⚔️ Caster Mastery\n\n**스킬 ID**: 28680\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": -1637.17,
       "y": -6342.73,
@@ -32141,7 +32405,9 @@
       "name": "Mace Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryGroupMace.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Mace Mastery Power"
+      ],
       "comment": "# ⚔️ Mace Mastery\n\n**스킬 ID**: 11596\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": -1499.71,
       "y": 7200.25,
@@ -32287,7 +32553,9 @@
       "name": "Mana Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryGroupMana.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Mana Mastery Power"
+      ],
       "comment": "# ⚔️ Mana Mastery\n\n**스킬 ID**: 63559\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": -1498.91,
       "y": -1815.14,
@@ -32385,7 +32653,9 @@
       "name": "Elemental Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryElementalDamage.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Elemental Mastery Power"
+      ],
       "comment": "# ⚔️ Elemental Mastery\n\n**스킬 ID**: 5348\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": -1476.2,
       "y": -1241.14,
@@ -32600,7 +32870,9 @@
       "name": "Life Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryGroupLife.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Life Mastery Power"
+      ],
       "comment": "# ⚔️ Life Mastery\n\n**스킬 ID**: 12382\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": -1402.81,
       "y": 818.705,
@@ -32745,7 +33017,9 @@
       "name": "Attack Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_AttackBlindMastery.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Attack Mastery Power"
+      ],
       "comment": "# ⚔️ Attack Mastery\n\n**스킬 ID**: 8629\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": -1377.82,
       "y": 1939.77,
@@ -32767,7 +33041,9 @@
       "name": "Charge Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_EnduranceFrenzyChargeMastery.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Charge Mastery Power"
+      ],
       "comment": "# ⚔️ Charge Mastery\n\n**스킬 ID**: 34723\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": -1372.71,
       "y": -7926.98,
@@ -32985,7 +33261,9 @@
       "name": "Life Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryGroupLife.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Life Mastery Power"
+      ],
       "comment": "# ⚔️ Life Mastery\n\n**스킬 ID**: 12125\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": -1351.78,
       "y": -6767.07,
@@ -33007,7 +33285,9 @@
       "name": "Warcry Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_WarcryMastery.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Warcry Mastery Power"
+      ],
       "comment": "# ⚔️ Warcry Mastery\n\n**스킬 ID**: 26154\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": -1320.39,
       "y": 6242.57,
@@ -33319,7 +33599,9 @@
       "name": "Curse Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryCurse.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Curse Mastery Power"
+      ],
       "comment": "# ⚔️ Curse Mastery\n\n**스킬 ID**: 22959\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": -1274.4,
       "y": -49.185,
@@ -33684,7 +33966,9 @@
       "name": "Life Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryGroupLife.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Life Mastery Power"
+      ],
       "comment": "# ⚔️ Life Mastery\n\n**스킬 ID**: 62588\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": -1059.19,
       "y": 6702.11,
@@ -33778,7 +34062,9 @@
       "name": "Minion Defence Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MinionMastery.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Minion Defence Mastery Power"
+      ],
       "comment": "# ⚔️ Minion Defence Mastery\n\n**스킬 ID**: 22970\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": -834.765,
       "y": -1999.44,
@@ -33972,7 +34258,9 @@
       "name": "Mana Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryGroupMana.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Mana Mastery Power"
+      ],
       "comment": "# ⚔️ Mana Mastery\n\n**스킬 ID**: 53188\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": -812.165,
       "y": -6767.07,
@@ -34232,7 +34520,9 @@
       "name": "Duration Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryDuration.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Duration Mastery Power"
+      ],
       "comment": "# ⚔️ Duration Mastery\n\n**스킬 ID**: 41522\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": -757.605,
       "y": -1241.14,
@@ -34570,7 +34860,9 @@
       "name": "Fire Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryGroupFire.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Fire Mastery Power"
+      ],
       "comment": "# ⚔️ Fire Mastery\n\n**스킬 ID**: 34927\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": -742.375,
       "y": -8082.92,
@@ -34816,7 +35108,9 @@
       "name": "Shield Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryGroupShield.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Shield Mastery Power"
+      ],
       "comment": "# ⚔️ Shield Mastery\n\n**스킬 ID**: 37795\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": -660.625,
       "y": 8005.26,
@@ -35014,7 +35308,9 @@
       "name": "Mana Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryGroupMana.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Mana Mastery Power"
+      ],
       "comment": "# ⚔️ Mana Mastery\n\n**스킬 ID**: 25186\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": -657.365,
       "y": 1947.74,
@@ -35207,7 +35503,9 @@
       "name": "Totem Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_AttackTotemMastery.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Totem Mastery Power"
+      ],
       "comment": "# ⚔️ Totem Mastery\n\n**스킬 ID**: 65154\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": -591.635,
       "y": 1260.79,
@@ -35428,7 +35726,9 @@
       "name": "Armour and Evasion Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryGroupEvasion.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Armour and Evasion Mastery Power"
+      ],
       "comment": "# ⚔️ Armour and Evasion Mastery\n\n**스킬 ID**: 19750\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": -568.365,
       "y": 6699.85,
@@ -35527,7 +35827,9 @@
       "name": "Armour Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryGroupArmour.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Armour Mastery Power"
+      ],
       "comment": "# ⚔️ Armour Mastery\n\n**스킬 ID**: 45358\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": -514.755,
       "y": 7214.26,
@@ -35717,7 +36019,9 @@
       "name": "Recovery Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryRecovery.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Recovery Mastery Power"
+      ],
       "comment": "# ⚔️ Recovery Mastery\n\n**스킬 ID**: 27193\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": -469.405,
       "y": -7150.35,
@@ -35787,7 +36091,9 @@
       "name": "Caster Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_AreaofEffectSpellsMastery.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Caster Mastery Power"
+      ],
       "comment": "# ⚔️ Caster Mastery\n\n**스킬 ID**: 32509\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": -419.445,
       "y": -6345.12,
@@ -36956,7 +37262,9 @@
       "name": "Lightning Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryGroupLightning.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Lightning Mastery Power"
+      ],
       "comment": "# ⚔️ Lightning Mastery\n\n**스킬 ID**: 58816\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": -4.175,
       "y": -8128.6,
@@ -38769,7 +39077,9 @@
       "name": "Energy Shield Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryGroupEnergyShield.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Energy Shield Mastery Power"
+      ],
       "comment": "# ⚔️ Energy Shield Mastery\n\n**스킬 ID**: 18240\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": 3.435,
       "y": -1647.64,
@@ -39544,7 +39854,9 @@
       "name": "Charge Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_EnduranceFrenzyChargeMastery.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Charge Mastery Power"
+      ],
       "comment": "# ⚔️ Charge Mastery\n\n**스킬 ID**: 4707\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": 4.605,
       "y": 8295.38,
@@ -39998,7 +40310,9 @@
       "name": "Damage Over Time Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_BloodMastery.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Damage Over Time Mastery Power"
+      ],
       "comment": "# ⚔️ Damage Over Time Mastery\n\n**스킬 ID**: 57949\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": 490.135,
       "y": 7237.6,
@@ -40238,7 +40552,9 @@
       "name": "Reservation Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryAuras.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Reservation Mastery Power"
+      ],
       "comment": "# ⚔️ Reservation Mastery\n\n**스킬 ID**: 39836\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": 525.375,
       "y": -7139.07,
@@ -40385,7 +40701,9 @@
       "name": "Mana Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryGroupMana.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Mana Mastery Power"
+      ],
       "comment": "# ⚔️ Mana Mastery\n\n**스킬 ID**: 13862\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": 528.555,
       "y": -6345.12,
@@ -40531,7 +40849,9 @@
       "name": "Mana Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryGroupMana.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Mana Mastery Power"
+      ],
       "comment": "# ⚔️ Mana Mastery\n\n**스킬 ID**: 48859\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": 566.045,
       "y": 6703.04,
@@ -40731,7 +41051,9 @@
       "name": "Dual Wielding Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryGroupDualWield.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Dual Wielding Mastery Power"
+      ],
       "comment": "# ⚔️ Dual Wielding Mastery\n\n**스킬 ID**: 51761\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": 595.755,
       "y": 8005.26,
@@ -40753,7 +41075,9 @@
       "name": "Duration Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryDuration.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Duration Mastery Power"
+      ],
       "comment": "# ⚔️ Duration Mastery\n\n**스킬 ID**: 29993\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": 597.435,
       "y": 1260.79,
@@ -41190,7 +41514,9 @@
       "name": "Flask Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryFlasks.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Flask Mastery Power"
+      ],
       "comment": "# ⚔️ Flask Mastery\n\n**스킬 ID**: 45019\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": 664.085,
       "y": 1939.77,
@@ -41456,7 +41782,9 @@
       "name": "Cold Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryGroupCold.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Cold Mastery Power"
+      ],
       "comment": "# ⚔️ Cold Mastery\n\n**스킬 ID**: 60170\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": 722.345,
       "y": -8082.92,
@@ -41478,7 +41806,9 @@
       "name": "Link Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MinionMastery.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Link Mastery Power"
+      ],
       "comment": "# ⚔️ Link Mastery\n\n**스킬 ID**: 24334\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": 723.915,
       "y": -1241.14,
@@ -41769,7 +42099,9 @@
       "name": "Mana Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryGroupMana.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Mana Mastery Power"
+      ],
       "comment": "# ⚔️ Mana Mastery\n\n**스킬 ID**: 48007\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": 764.515,
       "y": -2024.88,
@@ -42101,7 +42433,9 @@
       "name": "Two Hand Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryGroupTwoHands.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Two Hand Mastery Power"
+      ],
       "comment": "# ⚔️ Two Hand Mastery\n\n**스킬 ID**: 39338\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": 1030.04,
       "y": 6528.03,
@@ -42365,7 +42699,9 @@
       "name": "Curse Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryCurse.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Curse Mastery Power"
+      ],
       "comment": "# ⚔️ Curse Mastery\n\n**스킬 ID**: 23796\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": 1063.6,
       "y": -7049.3,
@@ -42609,7 +42945,9 @@
       "name": "Attack Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_AttackBlindMastery.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Attack Mastery Power"
+      ],
       "comment": "# ⚔️ Attack Mastery\n\n**스킬 ID**: 28863\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": 1126.55,
       "y": 7085.9,
@@ -42706,7 +43044,9 @@
       "name": "Wand Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryGroupWand.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Wand Mastery Power"
+      ],
       "comment": "# ⚔️ Wand Mastery\n\n**스킬 ID**: 56128\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": 1146.06,
       "y": -6404.42,
@@ -42899,7 +43239,9 @@
       "name": "Impale Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_ImpaleMasterySymbol.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Impale Mastery Power"
+      ],
       "comment": "# ⚔️ Impale Mastery\n\n**스킬 ID**: 47059\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": 1173.43,
       "y": 6120.28,
@@ -43044,7 +43386,9 @@
       "name": "Life Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryGroupLife.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Life Mastery Power"
+      ],
       "comment": "# ⚔️ Life Mastery\n\n**스킬 ID**: 38235\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": 1316.69,
       "y": -48.685,
@@ -43192,7 +43536,9 @@
       "name": "Flask Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryFlasks.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Flask Mastery Power"
+      ],
       "comment": "# ⚔️ Flask Mastery\n\n**스킬 ID**: 46665\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": 1384.69,
       "y": 1939.77,
@@ -43339,7 +43685,9 @@
       "name": "Evasion Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryGroupEvasion.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+15% Evasion Rating"
+      ],
       "comment": "# ⚔️ Evasion Mastery\n\n**스킬 ID**: 50757\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": 1416.43,
       "y": 822.605,
@@ -43487,7 +43835,9 @@
       "name": "Reservation Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryAuras.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Reservation Mastery Power"
+      ],
       "comment": "# ⚔️ Reservation Mastery\n\n**스킬 ID**: 6507\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": 1443.51,
       "y": -1241.14,
@@ -43533,7 +43883,9 @@
       "name": "Mine Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MineMastery.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Mine Mastery Power"
+      ],
       "comment": "# ⚔️ Mine Mastery\n\n**스킬 ID**: 59926\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": 1464.21,
       "y": -1815.14,
@@ -43751,7 +44103,9 @@
       "name": "Minion Defence Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MinionMastery.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Minion Defence Mastery Power"
+      ],
       "comment": "# ⚔️ Minion Defence Mastery\n\n**스킬 ID**: 26393\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": 1502.02,
       "y": -7229.07,
@@ -44372,7 +44726,9 @@
       "name": "Dual Wielding Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryGroupDualWield.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Dual Wielding Mastery Power"
+      ],
       "comment": "# ⚔️ Dual Wielding Mastery\n\n**스킬 ID**: 52018\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": 1653.19,
       "y": 4745.61,
@@ -44544,7 +44900,9 @@
       "name": "Bow Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryGroupBow.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Bow Mastery Power"
+      ],
       "comment": "# ⚔️ Bow Mastery\n\n**스킬 ID**: 24552\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": 1708.76,
       "y": 5471.17,
@@ -44566,7 +44924,9 @@
       "name": "Attack Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_AttackBlindMastery.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Attack Mastery Power"
+      ],
       "comment": "# ⚔️ Attack Mastery\n\n**스킬 ID**: 45372\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": 1708.76,
       "y": 6256.98,
@@ -44806,7 +45166,9 @@
       "name": "Minion Defence Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MinionMastery.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Minion Defence Mastery Power"
+      ],
       "comment": "# ⚔️ Minion Defence Mastery\n\n**스킬 ID**: 9083\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": 1833.43,
       "y": -4782.4,
@@ -44903,7 +45265,9 @@
       "name": "Recovery Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryRecovery.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Recovery Mastery Power"
+      ],
       "comment": "# ⚔️ Recovery Mastery\n\n**스킬 ID**: 24481\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": 1833.43,
       "y": -3921.79,
@@ -45024,7 +45388,9 @@
       "name": "Block Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryGroupShield.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Block Mastery Power"
+      ],
       "comment": "# ⚔️ Block Mastery\n\n**스킬 ID**: 21324\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": 1848.44,
       "y": 6937.13,
@@ -45363,7 +45729,9 @@
       "name": "Banner Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_PassiveStunMastery.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Banner Mastery Power"
+      ],
       "comment": "# ⚔️ Banner Mastery\n\n**스킬 ID**: 55281\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": 1848.61,
       "y": 8219.25,
@@ -45458,7 +45826,9 @@
       "name": "Critical Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryGroupCrit.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Critical Mastery Power"
+      ],
       "comment": "# ⚔️ Critical Mastery\n\n**스킬 ID**: 35085\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": 1871.28,
       "y": -603.265,
@@ -45550,7 +45920,9 @@
       "name": "Damage Over Time Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_BloodMastery.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Damage Over Time Mastery Power"
+      ],
       "comment": "# ⚔️ Damage Over Time Mastery\n\n**스킬 ID**: 41273\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": 2007.62,
       "y": -5502.27,
@@ -46099,7 +46471,9 @@
       "name": "Lightning Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryGroupLightning.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Lightning Mastery Power"
+      ],
       "comment": "# ⚔️ Lightning Mastery\n\n**스킬 ID**: 63482\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": 2089.86,
       "y": -7229.07,
@@ -46270,7 +46644,9 @@
       "name": "Energy Shield Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryGroupEnergyShield.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Energy Shield Mastery Power"
+      ],
       "comment": "# ⚔️ Energy Shield Mastery\n\n**스킬 ID**: 6338\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": 2089.86,
       "y": -6731.19,
@@ -46292,7 +46668,9 @@
       "name": "Attack Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_AttackBlindMastery.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Attack Mastery Power"
+      ],
       "comment": "# ⚔️ Attack Mastery\n\n**스킬 ID**: 55348\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": 2101.84,
       "y": 4491.59,
@@ -46418,7 +46796,9 @@
       "name": "Minion Offence Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryGroupMinions.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Minion Offence Mastery Power"
+      ],
       "comment": "# ⚔️ Minion Offence Mastery\n\n**스킬 ID**: 47242\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": 2117.76,
       "y": -7873.3,
@@ -46634,7 +47014,9 @@
       "name": "Minion Defence Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MinionMastery.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Minion Defence Mastery Power"
+      ],
       "comment": "# ⚔️ Minion Defence Mastery\n\n**스킬 ID**: 41225\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": 2175.82,
       "y": -5958.94,
@@ -46830,7 +47212,9 @@
       "name": "Caster Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_AreaofEffectSpellsMastery.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Caster Mastery Power"
+      ],
       "comment": "# ⚔️ Caster Mastery\n\n**스킬 ID**: 40196\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": 2324.51,
       "y": -4517.73,
@@ -47000,7 +47384,9 @@
       "name": "Fire Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryGroupFire.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Fire Mastery Power"
+      ],
       "comment": "# ⚔️ Fire Mastery\n\n**스킬 ID**: 19749\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": 2343.57,
       "y": 4936.94,
@@ -47022,7 +47408,9 @@
       "name": "Trap Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryTraps.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Trap Mastery Power"
+      ],
       "comment": "# ⚔️ Trap Mastery\n\n**스킬 ID**: 17906\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": 2357.17,
       "y": -238.985,
@@ -47190,7 +47578,9 @@
       "name": "Charge Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_EnduranceFrenzyChargeMastery.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Charge Mastery Power"
+      ],
       "comment": "# ⚔️ Charge Mastery\n\n**스킬 ID**: 33678\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": 2357.17,
       "y": 255.495,
@@ -47335,7 +47725,9 @@
       "name": "Leech Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryGroupLifeMana.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Leech Mastery Power"
+      ],
       "comment": "# ⚔️ Leech Mastery\n\n**스킬 ID**: 25446\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": 2389.17,
       "y": 5526.83,
@@ -47453,7 +47845,9 @@
       "name": "Impale Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_ImpaleMasterySymbol.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Impale Mastery Power"
+      ],
       "comment": "# ⚔️ Impale Mastery\n\n**스킬 ID**: 49677\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": 2403.46,
       "y": 7085.9,
@@ -47572,7 +47966,9 @@
       "name": "Curse Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryCurse.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Curse Mastery Power"
+      ],
       "comment": "# ⚔️ Curse Mastery\n\n**스킬 ID**: 62506\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": 2432.77,
       "y": -5024.78,
@@ -47748,7 +48144,9 @@
       "name": "Bow Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryGroupBow.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Bow Mastery Power"
+      ],
       "comment": "# ⚔️ Bow Mastery\n\n**스킬 ID**: 25349\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": 2446.13,
       "y": 3673.31,
@@ -47871,7 +48269,9 @@
       "name": "Axe Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryGroupAxe.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Axe Mastery Power"
+      ],
       "comment": "# ⚔️ Axe Mastery\n\n**스킬 ID**: 28039\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": 2524.35,
       "y": 7767.05,
@@ -48014,7 +48414,9 @@
       "name": "Cold Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryGroupCold.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Cold Mastery Power"
+      ],
       "comment": "# ⚔️ Cold Mastery\n\n**스킬 ID**: 17380\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": 2529.85,
       "y": -5467.4,
@@ -48132,7 +48534,9 @@
       "name": "Attributes Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_WarcryMastery.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Attributes Mastery Power"
+      ],
       "comment": "# ⚔️ Attributes Mastery\n\n**스킬 ID**: 4492\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": 2610.89,
       "y": -8000.83,
@@ -48277,7 +48681,9 @@
       "name": "Armour and Evasion Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryGroupEvasion.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Armour and Evasion Mastery Power"
+      ],
       "comment": "# ⚔️ Armour and Evasion Mastery\n\n**스킬 ID**: 62235\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": 2692.79,
       "y": 6264.12,
@@ -48523,7 +48929,9 @@
       "name": "Life Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryGroupLife.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Life Mastery Power"
+      ],
       "comment": "# ⚔️ Life Mastery\n\n**스킬 ID**: 25281\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": 2724.09,
       "y": -3655.52,
@@ -48831,7 +49239,9 @@
       "name": "Fire Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryGroupFire.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Fire Mastery Power"
+      ],
       "comment": "# ⚔️ Fire Mastery\n\n**스킬 ID**: 40271\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": 2860.54,
       "y": -6834.73,
@@ -48927,7 +49337,9 @@
       "name": "Leech Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryGroupEnergyShieldMana.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Leech Mastery Power"
+      ],
       "comment": "# ⚔️ Leech Mastery\n\n**스킬 ID**: 55230\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": 2890.2,
       "y": -7275.12,
@@ -48949,7 +49361,9 @@
       "name": "Wand Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryGroupWand.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Wand Mastery Power"
+      ],
       "comment": "# ⚔️ Wand Mastery\n\n**스킬 ID**: 48411\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": 2946.27,
       "y": -5900.27,
@@ -49321,7 +49735,9 @@
       "name": "Dual Wielding Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryGroupDualWield.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Dual Wielding Mastery Power"
+      ],
       "comment": "# ⚔️ Dual Wielding Mastery\n\n**스킬 ID**: 50071\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": 2983.07,
       "y": -4559.5,
@@ -49392,7 +49808,9 @@
       "name": "Attack Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_AttackBlindMastery.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Attack Mastery Power"
+      ],
       "comment": "# ⚔️ Attack Mastery\n\n**스킬 ID**: 33037\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": 3103.76,
       "y": 7085.9,
@@ -49510,7 +49928,9 @@
       "name": "Totem Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_AttackTotemMastery.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Totem Mastery Power"
+      ],
       "comment": "# ⚔️ Totem Mastery\n\n**스킬 ID**: 55152\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": 3103.76,
       "y": 7767.05,
@@ -49654,7 +50074,9 @@
       "name": "Tincture Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryGroupMana.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Tincture Mastery Power"
+      ],
       "comment": "# ⚔️ Tincture Mastery\n\n**스킬 ID**: 44330\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": 3165.88,
       "y": 4078.63,
@@ -49897,7 +50319,9 @@
       "name": "Accuracy Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryGroupAccuracy.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Accuracy Mastery Power"
+      ],
       "comment": "# ⚔️ Accuracy Mastery\n\n**스킬 ID**: 42533\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": 3187.88,
       "y": 4855.94,
@@ -50041,7 +50465,9 @@
       "name": "Minion Offence Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryGroupMinions.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Minion Offence Mastery Power"
+      ],
       "comment": "# ⚔️ Minion Offence Mastery\n\n**스킬 ID**: 32278\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": 3268.3,
       "y": -4958.32,
@@ -50209,7 +50635,9 @@
       "name": "Blind Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_AttackBlindMastery.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Blind Mastery Power"
+      ],
       "comment": "# ⚔️ Blind Mastery\n\n**스킬 ID**: 59501\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": 3340.44,
       "y": 6424.04,
@@ -50303,7 +50731,9 @@
       "name": "Critical Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryGroupCrit.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Critical Mastery Power"
+      ],
       "comment": "# ⚔️ Critical Mastery\n\n**스킬 ID**: 9586\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": 3345.06,
       "y": -6591.0,
@@ -50423,7 +50853,9 @@
       "name": "Wand Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryGroupWand.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Wand Mastery Power"
+      ],
       "comment": "# ⚔️ Wand Mastery\n\n**스킬 ID**: 53828\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": 3375.98,
       "y": -8293.26,
@@ -50837,7 +51269,9 @@
       "name": "Cold Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryGroupCold.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Cold Mastery Power"
+      ],
       "comment": "# ⚔️ Cold Mastery\n\n**스킬 ID**: 38207\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": 3379.59,
       "y": -7182.02,
@@ -51053,7 +51487,9 @@
       "name": "Caster Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_AreaofEffectSpellsMastery.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Caster Mastery Power"
+      ],
       "comment": "# ⚔️ Caster Mastery\n\n**스킬 ID**: 14113\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": 3503.29,
       "y": -5410.9,
@@ -51199,7 +51635,9 @@
       "name": "Protection Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryPoison.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Protection Mastery Power"
+      ],
       "comment": "# ⚔️ Protection Mastery\n\n**스킬 ID**: 12873\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": 3581.96,
       "y": -3994.62,
@@ -51396,7 +51834,9 @@
       "name": "Evasion Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryGroupEvasion.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+15% Evasion Rating"
+      ],
       "comment": "# ⚔️ Evasion Mastery\n\n**스킬 ID**: 3883\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": 3652.18,
       "y": 5027.19,
@@ -51540,7 +51980,9 @@
       "name": "Protection Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryPoison.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Protection Mastery Power"
+      ],
       "comment": "# ⚔️ Protection Mastery\n\n**스킬 ID**: 31818\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": 3653.51,
       "y": 3914.75,
@@ -51680,7 +52122,9 @@
       "name": "Reservation Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryAuras.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Reservation Mastery Power"
+      ],
       "comment": "# ⚔️ Reservation Mastery\n\n**스킬 ID**: 46495\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": 3767.38,
       "y": 5789.29,
@@ -51775,7 +52219,9 @@
       "name": "Sword Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryGroupSword.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Sword Mastery Power"
+      ],
       "comment": "# ⚔️ Sword Mastery\n\n**스킬 ID**: 10204\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": 3793.25,
       "y": 7205.75,
@@ -52018,7 +52464,9 @@
       "name": "Reservation Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryAuras.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Reservation Mastery Power"
+      ],
       "comment": "# ⚔️ Reservation Mastery\n\n**스킬 ID**: 53615\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": 3864.8,
       "y": 604.095,
@@ -52697,7 +53145,9 @@
       "name": "Mark Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MarkMastery.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Mark Mastery Power"
+      ],
       "comment": "# ⚔️ Mark Mastery\n\n**스킬 ID**: 58563\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": 3914.07,
       "y": 7769.12,
@@ -52967,7 +53417,9 @@
       "name": "Chaos Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryChaos.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Chaos Mastery Power"
+      ],
       "comment": "# ⚔️ Chaos Mastery\n\n**스킬 ID**: 21801\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": 3948.22,
       "y": -741.835,
@@ -53062,7 +53514,9 @@
       "name": "Damage Over Time Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_BloodMastery.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Damage Over Time Mastery Power"
+      ],
       "comment": "# ⚔️ Damage Over Time Mastery\n\n**스킬 ID**: 60834\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": 3950.84,
       "y": -251.485,
@@ -53235,7 +53689,9 @@
       "name": "Bow Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryGroupBow.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Bow Mastery Power"
+      ],
       "comment": "# ⚔️ Bow Mastery\n\n**스킬 ID**: 37502\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": 3956.96,
       "y": 4676.27,
@@ -53257,7 +53713,9 @@
       "name": "Stun Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_PassiveStunMastery.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Stun Mastery Power"
+      ],
       "comment": "# ⚔️ Stun Mastery\n\n**스킬 ID**: 6588\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": 3987.22,
       "y": -5763.84,
@@ -53520,7 +53978,9 @@
       "name": "Life Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryGroupLife.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Life Mastery Power"
+      ],
       "comment": "# ⚔️ Life Mastery\n\n**스킬 ID**: 3042\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": 4178.25,
       "y": 6313.4,
@@ -53615,7 +54075,9 @@
       "name": "Mine Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MineMastery.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Mine Mastery Power"
+      ],
       "comment": "# ⚔️ Mine Mastery\n\n**스킬 ID**: 53738\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": 4216.21,
       "y": -6723.62,
@@ -53738,7 +54200,9 @@
       "name": "Mine Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MineMastery.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Mine Mastery Power"
+      ],
       "comment": "# ⚔️ Mine Mastery\n\n**스킬 ID**: 10166\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": 4219.9,
       "y": -3837.32,
@@ -53858,7 +54322,9 @@
       "name": "Cold Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryGroupCold.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Cold Mastery Power"
+      ],
       "comment": "# ⚔️ Cold Mastery\n\n**스킬 ID**: 7023\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": 4260.04,
       "y": 6936.23,
@@ -54125,7 +54591,9 @@
       "name": "Flask Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryFlasks.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Flask Mastery Power"
+      ],
       "comment": "# ⚔️ Flask Mastery\n\n**스킬 ID**: 9458\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": 4299.25,
       "y": 4126.36,
@@ -54819,7 +55287,9 @@
       "name": "Recovery Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryRecovery.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Recovery Mastery Power"
+      ],
       "comment": "# ⚔️ Recovery Mastery\n\n**스킬 ID**: 10141\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": 4625.56,
       "y": 298.865,
@@ -54964,7 +55434,9 @@
       "name": "Dagger Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryGroupDagger.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Dagger Mastery Power"
+      ],
       "comment": "# ⚔️ Dagger Mastery\n\n**스킬 ID**: 62853\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": 4647.34,
       "y": -793.395,
@@ -55084,7 +55556,9 @@
       "name": "Flask Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryFlasks.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Flask Mastery Power"
+      ],
       "comment": "# ⚔️ Flask Mastery\n\n**스킬 ID**: 41016\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": 4647.34,
       "y": 782.685,
@@ -55131,7 +55605,9 @@
       "name": "Leech Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryGroupEnergyShieldMana.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Leech Mastery Power"
+      ],
       "comment": "# ⚔️ Leech Mastery\n\n**스킬 ID**: 43495\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": 4651.31,
       "y": -250.355,
@@ -55324,7 +55800,9 @@
       "name": "Flask Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryFlasks.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Flask Mastery Power"
+      ],
       "comment": "# ⚔️ Flask Mastery\n\n**스킬 ID**: 46761\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": 4713.27,
       "y": 3779.82,
@@ -55507,7 +55985,9 @@
       "name": "Dagger Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryGroupDagger.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Dagger Mastery Power"
+      ],
       "comment": "# ⚔️ Dagger Mastery\n\n**스킬 ID**: 15409\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": 4742.38,
       "y": -3686.89,
@@ -55627,7 +56107,9 @@
       "name": "Lightning Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryGroupLightning.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Lightning Mastery Power"
+      ],
       "comment": "# ⚔️ Lightning Mastery\n\n**스킬 ID**: 14122\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": 4798.76,
       "y": -7267.94,
@@ -55649,7 +56131,9 @@
       "name": "Tincture Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryGroupMana.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Tincture Mastery Power"
+      ],
       "comment": "# ⚔️ Tincture Mastery\n\n**스킬 ID**: 38622\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": 4800.31,
       "y": 4689.07,
@@ -55894,7 +56378,9 @@
       "name": "Caster Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_AreaofEffectSpellsMastery.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Caster Mastery Power"
+      ],
       "comment": "# ⚔️ Caster Mastery\n\n**스킬 ID**: 17411\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": 4808.28,
       "y": -6363.58,
@@ -55916,7 +56402,9 @@
       "name": "Attributes Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_WarcryMastery.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Attributes Mastery Power"
+      ],
       "comment": "# ⚔️ Attributes Mastery\n\n**스킬 ID**: 8370\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": 4808.31,
       "y": 6046.6,
@@ -56110,7 +56598,9 @@
       "name": "Elemental Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryElementalDamage.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Elemental Mastery Power"
+      ],
       "comment": "# ⚔️ Elemental Mastery\n\n**스킬 ID**: 13387\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": 4864.82,
       "y": -4754.52,
@@ -56424,7 +56914,9 @@
       "name": "Tincture Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryGroupMana.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Tincture Mastery Power"
+      ],
       "comment": "# ⚔️ Tincture Mastery\n\n**스킬 ID**: 44206\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": 5030.42,
       "y": 359.695,
@@ -56519,7 +57011,9 @@
       "name": "Spell Suppression Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryGroupEnergyShieldMana.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Spell Suppression Mastery Power"
+      ],
       "comment": "# ⚔️ Spell Suppression Mastery\n\n**스킬 ID**: 20730\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": 5050.25,
       "y": 5189.05,
@@ -57029,7 +57523,9 @@
       "name": "Bleeding Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_BloodMastery.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Bleeding Mastery Power"
+      ],
       "comment": "# ⚔️ Bleeding Mastery\n\n**스킬 ID**: 40170\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": 5190.54,
       "y": 6907.0,
@@ -57099,7 +57595,9 @@
       "name": "Reservation Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryAuras.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Reservation Mastery Power"
+      ],
       "comment": "# ⚔️ Reservation Mastery\n\n**스킬 ID**: 55491\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": 5238.98,
       "y": -6076.21,
@@ -57245,7 +57743,9 @@
       "name": "Evasion and Energy Shield Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryGroupEnergyShield.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Evasion and Energy Shield Mastery Power"
+      ],
       "comment": "# ⚔️ Evasion and Energy Shield Mastery\n\n**스킬 ID**: 11032\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": 5251.84,
       "y": -407.825,
@@ -57385,7 +57885,9 @@
       "name": "Poison Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryPoison.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Poison Mastery Power"
+      ],
       "comment": "# ⚔️ Poison Mastery\n\n**스킬 ID**: 38579\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": 5309.23,
       "y": 4658.6,
@@ -57926,7 +58428,9 @@
       "name": "Mine Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MineMastery.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Mine Mastery Power"
+      ],
       "comment": "# ⚔️ Mine Mastery\n\n**스킬 ID**: 89\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": 5373.1,
       "y": -4318.71,
@@ -58121,7 +58625,9 @@
       "name": "Spell Suppression Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryGroupEnergyShieldMana.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Spell Suppression Mastery Power"
+      ],
       "comment": "# ⚔️ Spell Suppression Mastery\n\n**스킬 ID**: 54413\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": 5394.8,
       "y": -5242.17,
@@ -58215,7 +58721,9 @@
       "name": "Mark Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MarkMastery.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Mark Mastery Power"
+      ],
       "comment": "# ⚔️ Mark Mastery\n\n**스킬 ID**: 56865\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": 5429.0,
       "y": 4207.29,
@@ -58385,7 +58893,9 @@
       "name": "Evasion Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryGroupEvasion.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+15% Evasion Rating"
+      ],
       "comment": "# ⚔️ Evasion Mastery\n\n**스킬 ID**: 65528\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": 5451.69,
       "y": 432.095,
@@ -58505,7 +59015,9 @@
       "name": "Claw Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryGroupClaw.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Claw Mastery Power"
+      ],
       "comment": "# ⚔️ Claw Mastery\n\n**스킬 ID**: 53365\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": 5473.85,
       "y": -3627.79,
@@ -58767,7 +59279,9 @@
       "name": "Curse Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryCurse.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Curse Mastery Power"
+      ],
       "comment": "# ⚔️ Curse Mastery\n\n**스킬 ID**: 6570\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": 5485.88,
       "y": -7160.88,
@@ -58885,7 +59399,9 @@
       "name": "Leech Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryGroupLifeMana.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Leech Mastery Power"
+      ],
       "comment": "# ⚔️ Leech Mastery\n\n**스킬 ID**: 40383\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": 5526.25,
       "y": 5412.58,
@@ -59046,7 +59562,9 @@
       "name": "Claw Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryGroupClaw.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Claw Mastery Power"
+      ],
       "comment": "# ⚔️ Claw Mastery\n\n**스킬 ID**: 12518\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": 5539.65,
       "y": -793.395,
@@ -59240,7 +59758,9 @@
       "name": "Dual Wielding Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryGroupDualWield.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Dual Wielding Mastery Power"
+      ],
       "comment": "# ⚔️ Dual Wielding Mastery\n\n**스킬 ID**: 8872\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": 5684.5,
       "y": 6907.0,
@@ -59527,7 +60047,9 @@
       "name": "Claw Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryGroupClaw.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Claw Mastery Power"
+      ],
       "comment": "# ⚔️ Claw Mastery\n\n**스킬 ID**: 4788\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": 5739.58,
       "y": 3785.17,
@@ -59575,7 +60097,9 @@
       "name": "Poison Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryPoison.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Poison Mastery Power"
+      ],
       "comment": "# ⚔️ Poison Mastery\n\n**스킬 ID**: 60210\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": 5741.38,
       "y": -6061.34,
@@ -59867,7 +60391,9 @@
       "name": "Projectile Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryProjectiles.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Projectile Mastery Power"
+      ],
       "comment": "# ⚔️ Projectile Mastery\n\n**스킬 ID**: 47212\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": 5889.17,
       "y": 5087.11,
@@ -59889,7 +60415,9 @@
       "name": "Projectile Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryProjectiles.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Projectile Mastery Power"
+      ],
       "comment": "# ⚔️ Projectile Mastery\n\n**스킬 ID**: 56023\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": 5892.88,
       "y": 6475.33,
@@ -60452,7 +60980,9 @@
       "name": "Evasion Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryGroupEvasion.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+15% Evasion Rating"
+      ],
       "comment": "# ⚔️ Evasion Mastery\n\n**스킬 ID**: 41163\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": 6051.17,
       "y": 5947.19,
@@ -60596,7 +61126,9 @@
       "name": "Leech Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryGroupLifeMana.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Leech Mastery Power"
+      ],
       "comment": "# ⚔️ Leech Mastery\n\n**스킬 ID**: 6384\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": 6116.13,
       "y": 4586.13,
@@ -60793,7 +61325,9 @@
       "name": "Damage Over Time Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_BloodMastery.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Damage Over Time Mastery Power"
+      ],
       "comment": "# ⚔️ Damage Over Time Mastery\n\n**스킬 ID**: 47294\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": 6161.55,
       "y": -4159.59,
@@ -60916,7 +61450,9 @@
       "name": "Energy Shield Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryGroupEnergyShield.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Energy Shield Mastery Power"
+      ],
       "comment": "# ⚔️ Energy Shield Mastery\n\n**스킬 ID**: 857\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": 6166.98,
       "y": -4894.82,
@@ -60938,7 +61474,9 @@
       "name": "Trap Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryTraps.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Trap Mastery Power"
+      ],
       "comment": "# ⚔️ Trap Mastery\n\n**스킬 ID**: 37616\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": 6222.09,
       "y": -3627.79,
@@ -61057,7 +61595,9 @@
       "name": "Trap Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryTraps.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Trap Mastery Power"
+      ],
       "comment": "# ⚔️ Trap Mastery\n\n**스킬 ID**: 44540\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": 6248.55,
       "y": -5716.25,
@@ -61201,7 +61741,9 @@
       "name": "Physical Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryPhysicalDamage.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Physical Mastery Power"
+      ],
       "comment": "# ⚔️ Physical Mastery\n\n**스킬 ID**: 20675\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": 6292.06,
       "y": -778.435,
@@ -61423,7 +61965,9 @@
       "name": "Bow Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryGroupBow.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Bow Mastery Power"
+      ],
       "comment": "# ⚔️ Bow Mastery\n\n**스킬 ID**: 27865\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": 6292.06,
       "y": -278.035,
@@ -61519,7 +62063,9 @@
       "name": "Stun Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_PassiveStunMastery.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Stun Mastery Power"
+      ],
       "comment": "# ⚔️ Stun Mastery\n\n**스킬 ID**: 19725\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": 6293.55,
       "y": 245.085,
@@ -61541,7 +62087,9 @@
       "name": "Elemental Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryElementalDamage.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Elemental Mastery Power"
+      ],
       "comment": "# ⚔️ Elemental Mastery\n\n**스킬 ID**: 34317\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": 6293.55,
       "y": 602.755,
@@ -61781,7 +62329,9 @@
       "name": "Flask Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryFlasks.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Flask Mastery Power"
+      ],
       "comment": "# ⚔️ Flask Mastery\n\n**스킬 ID**: 9393\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": 6408.53,
       "y": 5574.58,
@@ -61878,7 +62428,9 @@
       "name": "Cold Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryGroupCold.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Cold Mastery Power"
+      ],
       "comment": "# ⚔️ Cold Mastery\n\n**스킬 ID**: 44179\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": 6504.09,
       "y": 3271.25,
@@ -62071,7 +62623,9 @@
       "name": "Blind Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryGroupEvasion.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Blind Mastery Power"
+      ],
       "comment": "# ⚔️ Blind Mastery\n\n**스킬 ID**: 38568\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": 6511.65,
       "y": 989.835,
@@ -62190,7 +62744,9 @@
       "name": "Chaos Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryChaos.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Chaos Mastery Power"
+      ],
       "comment": "# ⚔️ Chaos Mastery\n\n**스킬 ID**: 42361\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": 6609.3,
       "y": -6224.5,
@@ -62212,7 +62768,9 @@
       "name": "Elemental Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryElementalDamage.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Elemental Mastery Power"
+      ],
       "comment": "# ⚔️ Elemental Mastery\n\n**스킬 ID**: 48660\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": 6693.21,
       "y": 3983.05,
@@ -62456,7 +63014,9 @@
       "name": "Critical Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryGroupCrit.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Critical Mastery Power"
+      ],
       "comment": "# ⚔️ Critical Mastery\n\n**스킬 ID**: 63861\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": 6711.3,
       "y": -5042.82,
@@ -62695,7 +63255,9 @@
       "name": "Leech Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryGroupLifeMana.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Leech Mastery Power"
+      ],
       "comment": "# ⚔️ Leech Mastery\n\n**스킬 ID**: 16141\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": 6805.63,
       "y": -4419.19,
@@ -62935,7 +63497,9 @@
       "name": "Evasion Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryGroupEvasion.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+15% Evasion Rating"
+      ],
       "comment": "# ⚔️ Evasion Mastery\n\n**스킬 ID**: 27371\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": 6836.94,
       "y": 1557.78,
@@ -63030,7 +63594,9 @@
       "name": "Life Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryGroupLife.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Life Mastery Power"
+      ],
       "comment": "# ⚔️ Life Mastery\n\n**스킬 ID**: 44316\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": 6836.94,
       "y": 2693.91,
@@ -63153,7 +63719,9 @@
       "name": "Evasion and Energy Shield Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryGroupEnergyShield.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Evasion and Energy Shield Mastery Power"
+      ],
       "comment": "# ⚔️ Evasion and Energy Shield Mastery\n\n**스킬 ID**: 1215\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": 6872.67,
       "y": -3422.68,
@@ -63225,7 +63793,9 @@
       "name": "Leech Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryGroupEnergyShieldMana.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Leech Mastery Power"
+      ],
       "comment": "# ⚔️ Leech Mastery\n\n**스킬 ID**: 7488\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": 6872.67,
       "y": -1007.92,
@@ -63344,7 +63914,9 @@
       "name": "Mana Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryGroupMana.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Mana Mastery Power"
+      ],
       "comment": "# ⚔️ Mana Mastery\n\n**스킬 ID**: 10495\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": 6925.46,
       "y": -2949.8,
@@ -63630,7 +64202,9 @@
       "name": "Life Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryGroupLife.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Life Mastery Power"
+      ],
       "comment": "# ⚔️ Life Mastery\n\n**스킬 ID**: 292\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": 6925.46,
       "y": -1523.45,
@@ -63701,7 +64275,9 @@
       "name": "Lightning Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryGroupLightning.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Lightning Mastery Power"
+      ],
       "comment": "# ⚔️ Lightning Mastery\n\n**스킬 ID**: 37532\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": 7120.69,
       "y": -4006.48,
@@ -63747,7 +64323,9 @@
       "name": "Physical Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryPhysicalDamage.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Physical Mastery Power"
+      ],
       "comment": "# ⚔️ Physical Mastery\n\n**스킬 ID**: 64042\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": 7133.0,
       "y": -5923.23,
@@ -63993,7 +64571,9 @@
       "name": "Poison Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryPoison.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Poison Mastery Power"
+      ],
       "comment": "# ⚔️ Poison Mastery\n\n**스킬 ID**: 1205\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": 7145.53,
       "y": 3423.75,
@@ -64112,7 +64692,9 @@
       "name": "Spell Suppression Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryGroupEnergyShieldMana.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Spell Suppression Mastery Power"
+      ],
       "comment": "# ⚔️ Spell Suppression Mastery\n\n**스킬 ID**: 49820\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": 7180.42,
       "y": 1008.58,
@@ -64279,7 +64861,9 @@
       "name": "Cold Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryGroupCold.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Cold Mastery Power"
+      ],
       "comment": "# ⚔️ Cold Mastery\n\n**스킬 ID**: 54887\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": 7202.4,
       "y": -5285.82,
@@ -64399,7 +64983,9 @@
       "name": "Mark Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MarkMastery.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Mark Mastery Power"
+      ],
       "comment": "# ⚔️ Mark Mastery\n\n**스킬 ID**: 62759\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": 7219.81,
       "y": 4667.13,
@@ -64495,7 +65081,9 @@
       "name": "Flask Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryFlasks.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Flask Mastery Power"
+      ],
       "comment": "# ⚔️ Flask Mastery\n\n**스킬 ID**: 20736\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": 7253.25,
       "y": -243.625,
@@ -64517,7 +65105,9 @@
       "name": "Tincture Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryGroupMana.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Tincture Mastery Power"
+      ],
       "comment": "# ⚔️ Tincture Mastery\n\n**스킬 ID**: 15697\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": 7258.01,
       "y": 267.535,
@@ -64731,7 +65321,9 @@
       "name": "Critical Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryGroupCrit.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Critical Mastery Power"
+      ],
       "comment": "# ⚔️ Critical Mastery\n\n**스킬 ID**: 31039\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": 7267.19,
       "y": 1791.65,
@@ -64829,7 +65421,9 @@
       "name": "Accuracy Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryGroupAccuracy.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Accuracy Mastery Power"
+      ],
       "comment": "# ⚔️ Accuracy Mastery\n\n**스킬 ID**: 58302\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": 7267.19,
       "y": 2473.92,
@@ -64926,7 +65520,9 @@
       "name": "Dagger Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryGroupDagger.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Dagger Mastery Power"
+      ],
       "comment": "# ⚔️ Dagger Mastery\n\n**스킬 ID**: 31197\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": 7286.55,
       "y": -769.775,
@@ -65068,7 +65664,9 @@
       "name": "Attack Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_AttackBlindMastery.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Attack Mastery Power"
+      ],
       "comment": "# ⚔️ Attack Mastery\n\n**스킬 ID**: 49391\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": 7407.03,
       "y": 669.295,
@@ -65163,7 +65761,9 @@
       "name": "Recovery Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryRecovery.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Recovery Mastery Power"
+      ],
       "comment": "# ⚔️ Recovery Mastery\n\n**스킬 ID**: 10414\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": 7407.61,
       "y": -2872.02,
@@ -65261,7 +65861,9 @@
       "name": "Accuracy Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryGroupAccuracy.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Accuracy Mastery Power"
+      ],
       "comment": "# ⚔️ Accuracy Mastery\n\n**스킬 ID**: 26148\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": 7407.61,
       "y": -1725.33,
@@ -65475,7 +66077,9 @@
       "name": "Totem Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_AttackTotemMastery.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Totem Mastery Power"
+      ],
       "comment": "# ⚔️ Totem Mastery\n\n**스킬 ID**: 48508\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": 7684.0,
       "y": 4234.94,
@@ -65648,7 +66252,9 @@
       "name": "Mine Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MineMastery.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Mine Mastery Power"
+      ],
       "comment": "# ⚔️ Mine Mastery\n\n**스킬 ID**: 27872\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": 7797.69,
       "y": -4559.48,
@@ -66037,7 +66643,9 @@
       "name": "Mana Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryGroupMana.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Mana Mastery Power"
+      ],
       "comment": "# ⚔️ Mana Mastery\n\n**스킬 ID**: 3571\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": 8003.21,
       "y": 1686.6,
@@ -66059,7 +66667,9 @@
       "name": "Tincture Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryGroupMana.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Tincture Mastery Power"
+      ],
       "comment": "# ⚔️ Tincture Mastery\n\n**스킬 ID**: 56519\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": 8003.21,
       "y": 2581.71,
@@ -66344,7 +66954,9 @@
       "name": "Mark Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MarkMastery.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Mark Mastery Power"
+      ],
       "comment": "# ⚔️ Mark Mastery\n\n**스킬 ID**: 32657\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": 8151.34,
       "y": -1088.96,
@@ -66592,7 +67204,9 @@
       "name": "Dagger Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryGroupDagger.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Dagger Mastery Power"
+      ],
       "comment": "# ⚔️ Dagger Mastery\n\n**스킬 ID**: 7634\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": 8153.54,
       "y": -2692.15,
@@ -66839,7 +67453,9 @@
       "name": "Claw Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryGroupClaw.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Claw Mastery Power"
+      ],
       "comment": "# ⚔️ Claw Mastery\n\n**스킬 ID**: 19050\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": 8153.54,
       "y": -1747.19,
@@ -66886,7 +67502,9 @@
       "name": "Poison Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryPoison.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Poison Mastery Power"
+      ],
       "comment": "# ⚔️ Poison Mastery\n\n**스킬 ID**: 28903\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": 8172.15,
       "y": -588.985,
@@ -67006,7 +67624,9 @@
       "name": "Trap Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryTraps.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Trap Mastery Power"
+      ],
       "comment": "# ⚔️ Trap Mastery\n\n**스킬 ID**: 10429\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": 8197.29,
       "y": -3636.07,
@@ -67300,7 +67920,9 @@
       "name": "Sword Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryGroupSword.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Sword Mastery Power"
+      ],
       "comment": "# ⚔️ Sword Mastery\n\n**스킬 ID**: 31291\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": 8291.0,
       "y": 3504.79,
@@ -67593,7 +68215,9 @@
       "name": "Projectile Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryProjectiles.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Projectile Mastery Power"
+      ],
       "comment": "# ⚔️ Projectile Mastery\n\n**스킬 ID**: 5826\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": 8533.09,
       "y": 939.335,
@@ -68003,7 +68627,9 @@
       "name": "Bow Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_MasteryGroupBow.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Bow Mastery Power"
+      ],
       "comment": "# ⚔️ Bow Mastery\n\n**스킬 ID**: 6427\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": 8533.09,
       "y": 2149.06,
@@ -78984,7 +79610,9 @@
       "name": "Axe and Sword Damage Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_AltMasteryGroupSwordAndAxe.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Axe and Sword Damage Mastery Power"
+      ],
       "comment": "# ⚔️ Axe and Sword Damage Mastery\n\n**스킬 ID**: 44810\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": 0.0,
       "y": 0.0,
@@ -79031,7 +79659,9 @@
       "name": "Mace and Staff Damage Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_AltMasteryGroupMaceAndStaff.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Mace and Staff Damage Mastery Power"
+      ],
       "comment": "# ⚔️ Mace and Staff Damage Mastery\n\n**스킬 ID**: 43130\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": 0.0,
       "y": 0.0,
@@ -79078,7 +79708,9 @@
       "name": "Dagger and Claw Damage Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_AltDaggerClawDamageMastery.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Dagger and Claw Damage Mastery Power"
+      ],
       "comment": "# ⚔️ Dagger and Claw Damage Mastery\n\n**스킬 ID**: 42783\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": 0.0,
       "y": 0.0,
@@ -79125,7 +79757,9 @@
       "name": "Bow Damage Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_AltMasteryGroupBow.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Bow Damage Mastery Power"
+      ],
       "comment": "# ⚔️ Bow Damage Mastery\n\n**스킬 ID**: 54935\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": 0.0,
       "y": 0.0,
@@ -79171,7 +79805,9 @@
       "name": "Wand Damage Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_AltMasteryGroupWand.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Wand Damage Mastery Power"
+      ],
       "comment": "# ⚔️ Wand Damage Mastery\n\n**스킬 ID**: 38334\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": 0.0,
       "y": 0.0,
@@ -79217,7 +79853,9 @@
       "name": "Damage with Two Handed Melee Weapons Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_AltMasteryGroupTwoHands.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Damage with Two Handed Melee Weapons Mastery Power"
+      ],
       "comment": "# ⚔️ Damage with Two Handed Melee Weapons Mastery\n\n**스킬 ID**: 52606\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": 0.0,
       "y": 0.0,
@@ -79263,7 +79901,9 @@
       "name": "Attack Damage while Dual Wielding Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_AltMasteryGroupDualWield.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Attack Damage while Dual Wielding Mastery Power"
+      ],
       "comment": "# ⚔️ Attack Damage while Dual Wielding Mastery\n\n**스킬 ID**: 44100\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": 0.0,
       "y": 0.0,
@@ -79309,7 +79949,9 @@
       "name": "Attack Damage while holding a Shield Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_AltMasteryGroupShield.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Attack Damage while holding a Shield Mastery Power"
+      ],
       "comment": "# ⚔️ Attack Damage while holding a Shield Mastery\n\n**스킬 ID**: 25429\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": 0.0,
       "y": 0.0,
@@ -79355,7 +79997,9 @@
       "name": "Attack Damage Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_AltAttackDamageMastery.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Attack Damage Mastery Power"
+      ],
       "comment": "# ⚔️ Attack Damage Mastery\n\n**스킬 ID**: 54888\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": 0.0,
       "y": 0.0,
@@ -79401,7 +80045,9 @@
       "name": "Spell Damage Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_AltMasteryGroupCast.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Spell Damage Mastery Power"
+      ],
       "comment": "# ⚔️ Spell Damage Mastery\n\n**스킬 ID**: 21841\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": 0.0,
       "y": 0.0,
@@ -79447,7 +80093,9 @@
       "name": "Elemental Damage Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_AltMasteryElementalDamage.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Elemental Damage Mastery Power"
+      ],
       "comment": "# ⚔️ Elemental Damage Mastery\n\n**스킬 ID**: 44078\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": 0.0,
       "y": 0.0,
@@ -79493,7 +80141,9 @@
       "name": "Physical Damage Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_AltMasteryPhysicalDamage.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Physical Damage Mastery Power"
+      ],
       "comment": "# ⚔️ Physical Damage Mastery\n\n**스킬 ID**: 58618\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": 0.0,
       "y": 0.0,
@@ -79539,7 +80189,9 @@
       "name": "Fire Damage Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_AltMasteryGroupFire.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Fire Damage Mastery Power"
+      ],
       "comment": "# ⚔️ Fire Damage Mastery\n\n**스킬 ID**: 43904\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": 0.0,
       "y": 0.0,
@@ -79585,7 +80237,9 @@
       "name": "Lightning Damage Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_AltMasteryGroupLightning.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Lightning Damage Mastery Power"
+      ],
       "comment": "# ⚔️ Lightning Damage Mastery\n\n**스킬 ID**: 15015\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": 0.0,
       "y": 0.0,
@@ -79631,7 +80285,9 @@
       "name": "Cold Damage Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_AltMasteryGroupCold.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Cold Damage Mastery Power"
+      ],
       "comment": "# ⚔️ Cold Damage Mastery\n\n**스킬 ID**: 37977\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": 0.0,
       "y": 0.0,
@@ -79677,7 +80333,9 @@
       "name": "Chaos Damage Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_AltMasteryChaos.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Chaos Damage Mastery Power"
+      ],
       "comment": "# ⚔️ Chaos Damage Mastery\n\n**스킬 ID**: 12117\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": 0.0,
       "y": 0.0,
@@ -79723,7 +80381,9 @@
       "name": "Minion Damage Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_AltMasteryGroupMinions.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Minion Damage Mastery Power"
+      ],
       "comment": "# ⚔️ Minion Damage Mastery\n\n**스킬 ID**: 16351\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": 0.0,
       "y": 0.0,
@@ -79769,7 +80429,9 @@
       "name": "Fire Damage over Time Multiplier Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_AltFireDamageMastery.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Fire Damage over Time Multiplier Mastery Power"
+      ],
       "comment": "# ⚔️ Fire Damage over Time Multiplier Mastery\n\n**스킬 ID**: 57049\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": 0.0,
       "y": 0.0,
@@ -79815,7 +80477,9 @@
       "name": "Chaos Damage over Time Multiplier Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_AltChaosDamageMastery.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Chaos Damage over Time Multiplier Mastery Power"
+      ],
       "comment": "# ⚔️ Chaos Damage over Time Multiplier Mastery\n\n**스킬 ID**: 40036\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": 0.0,
       "y": 0.0,
@@ -79861,7 +80525,9 @@
       "name": "Physical Damage over Time Multiplier Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_AltBloodMastery.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Physical Damage over Time Multiplier Mastery Power"
+      ],
       "comment": "# ⚔️ Physical Damage over Time Multiplier Mastery\n\n**스킬 ID**: 20314\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": 0.0,
       "y": 0.0,
@@ -79907,7 +80573,9 @@
       "name": "Cold Damage over Time Multiplier Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_AltColdDamageMastery.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Cold Damage over Time Multiplier Mastery Power"
+      ],
       "comment": "# ⚔️ Cold Damage over Time Multiplier Mastery\n\n**스킬 ID**: 40966\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": 0.0,
       "y": 0.0,
@@ -79953,7 +80621,9 @@
       "name": "Damage over Time Multiplier Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_AltDamageOverTimeMultiplierMastery.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Damage over Time Multiplier Mastery Power"
+      ],
       "comment": "# ⚔️ Damage over Time Multiplier Mastery\n\n**스킬 ID**: 48978\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": 0.0,
       "y": 0.0,
@@ -79999,7 +80669,9 @@
       "name": "Effect of Non-Damaging Ailments Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_AltNonDamagingAilmentsMastery.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Effect of Non-Damaging Ailments Mastery Power"
+      ],
       "comment": "# ⚔️ Effect of Non-Damaging Ailments Mastery\n\n**스킬 ID**: 45462\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": 0.0,
       "y": 0.0,
@@ -80045,7 +80717,9 @@
       "name": "Aura Effect Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_AltMasteryAuras.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Aura Effect Mastery Power"
+      ],
       "comment": "# ⚔️ Aura Effect Mastery\n\n**스킬 ID**: 2054\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": 0.0,
       "y": 0.0,
@@ -80091,7 +80765,9 @@
       "name": "Curse Effect Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_AltMasteryCurse.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Curse Effect Mastery Power"
+      ],
       "comment": "# ⚔️ Curse Effect Mastery\n\n**스킬 ID**: 32642\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": 0.0,
       "y": 0.0,
@@ -80137,7 +80813,9 @@
       "name": "Damage while you have a Herald Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_AltDamageWithHeraldMastery.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Damage while you have a Herald Mastery Power"
+      ],
       "comment": "# ⚔️ Damage while you have a Herald Mastery\n\n**스킬 ID**: 33431\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": 0.0,
       "y": 0.0,
@@ -80183,7 +80861,9 @@
       "name": "Minion Damage while you have a Herald Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_AltMinionDamageHeraldMastery.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Minion Damage while you have a Herald Mastery Power"
+      ],
       "comment": "# ⚔️ Minion Damage while you have a Herald Mastery\n\n**스킬 ID**: 37971\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": 0.0,
       "y": 0.0,
@@ -80229,7 +80909,9 @@
       "name": "Warcry Buff Effect Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_AltWarcryMastery.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Warcry Buff Effect Mastery Power"
+      ],
       "comment": "# ⚔️ Warcry Buff Effect Mastery\n\n**스킬 ID**: 10118\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": 0.0,
       "y": 0.0,
@@ -80275,7 +80957,9 @@
       "name": "Critical Chance Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_AltMasteryGroupCrit.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Critical Chance Mastery Power"
+      ],
       "comment": "# ⚔️ Critical Chance Mastery\n\n**스킬 ID**: 2510\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": 0.0,
       "y": 0.0,
@@ -80321,7 +81005,9 @@
       "name": "Minion Life Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_AltMasteryGroupMinions.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Minion Life Mastery Power"
+      ],
       "comment": "# ⚔️ Minion Life Mastery\n\n**스킬 ID**: 14933\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": 0.0,
       "y": 0.0,
@@ -80367,7 +81053,9 @@
       "name": "Area Damage Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_AltAreaDamageMastery.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Area Damage Mastery Power"
+      ],
       "comment": "# ⚔️ Area Damage Mastery\n\n**스킬 ID**: 63454\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": 0.0,
       "y": 0.0,
@@ -80413,7 +81101,9 @@
       "name": "Projectile Damage Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_AltMasteryProjectiles.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Projectile Damage Mastery Power"
+      ],
       "comment": "# ⚔️ Projectile Damage Mastery\n\n**스킬 ID**: 7883\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": 0.0,
       "y": 0.0,
@@ -80460,7 +81150,9 @@
       "name": "Trap and Mine Damage Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_AltMasteryTraps.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Trap and Mine Damage Mastery Power"
+      ],
       "comment": "# ⚔️ Trap and Mine Damage Mastery\n\n**스킬 ID**: 45474\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": 0.0,
       "y": 0.0,
@@ -80506,7 +81198,9 @@
       "name": "Totem Damage Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_AltMasteryTotem.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Totem Damage Mastery Power"
+      ],
       "comment": "# ⚔️ Totem Damage Mastery\n\n**스킬 ID**: 16808\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": 0.0,
       "y": 0.0,
@@ -80552,7 +81246,9 @@
       "name": "Brand Damage Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_AltMasteryBrand.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Brand Damage Mastery Power"
+      ],
       "comment": "# ⚔️ Brand Damage Mastery\n\n**스킬 ID**: 49424\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": 0.0,
       "y": 0.0,
@@ -80598,7 +81294,9 @@
       "name": "Channelling Skill Damage Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_AltMasteryChannelling.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Channelling Skill Damage Mastery Power"
+      ],
       "comment": "# ⚔️ Channelling Skill Damage Mastery\n\n**스킬 ID**: 10576\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": 0.0,
       "y": 0.0,
@@ -80644,7 +81342,9 @@
       "name": "Flask Duration Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_AltMasteryFlasks.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Flask Duration Mastery Power"
+      ],
       "comment": "# ⚔️ Flask Duration Mastery\n\n**스킬 ID**: 27397\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": 0.0,
       "y": 0.0,
@@ -80691,7 +81391,9 @@
       "name": "Life and Mana recovery from Flasks Mastery",
       "icon": "mastery_Art_2DArt_SkillIcons_passives_AltMasteryFlasks.png.png",
       "status": "Locked",
-      "stats": [],
+      "stats": [
+        "+10% Life and Mana recovery from Flasks Mastery Power"
+      ],
       "comment": "# ⚔️ Life and Mana recovery from Flasks Mastery\n\n**스킬 ID**: 45259\n\n### 📊 스킬 효과\n*속성 없음*\n",
       "x": 0.0,
       "y": 0.0,

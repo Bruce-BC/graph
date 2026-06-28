@@ -59,6 +59,28 @@ let subnodesVisible = true; // Subnode satellites visibility flag
 let subnodesRotationEnabled = false;
 let subnodesRotationSpeed = 1.0;
 
+// Add Node / Cluster Modal Elements
+const addNodeModal = document.getElementById('addNodeModal');
+const btnCloseAddNodeModal = document.getElementById('btnCloseAddNodeModal');
+const btnCancelAddNode = document.getElementById('btnCancelAddNode');
+const btnConfirmAddNode = document.getElementById('btnConfirmAddNode');
+const addNodeStandardInputs = document.getElementById('addNodeStandardInputs');
+const addNodeClusterInputs = document.getElementById('addNodeClusterInputs');
+const addNodeLabel = document.getElementById('addNodeLabel');
+const addClusterLabel = document.getElementById('addClusterLabel');
+const addClusterCount = document.getElementById('addClusterCount');
+const addClusterIcon = document.getElementById('addClusterIcon');
+
+// Mastery Sidebar Elements
+const masteryStatsGroup = document.getElementById('masteryStatsGroup');
+const masteryStatsInput = document.getElementById('masteryStatsInput');
+const dependentSubnodesGroup = document.getElementById('dependentSubnodesGroup');
+const dependentSubnodesList = document.getElementById('dependentSubnodesList');
+const subnodeStatusCount = document.getElementById('subnodeStatusCount');
+const btnLinkSubnodeMode = document.getElementById('btnLinkSubnodeMode');
+
+let isLinkSubnodeMode = false;
+
 // Theme Color Settings mapping
 const themeColors = {
   poe: {
@@ -124,6 +146,95 @@ async function fetchGraphData() {
   } catch (error) {
     console.error('Failed to load tech tree data:', error);
   }
+}
+
+// Mastery System Logic
+function checkMasteryAutoActivation() {
+  let changed = false;
+  graphData.nodes.forEach(mastery => {
+    if (mastery.isMastery && mastery.subnodes && mastery.subnodes.length > 0) {
+      // Check if all subnodes are completed
+      let allCompleted = true;
+      mastery.subnodes.forEach(subId => {
+        const sub = graphData.nodes.find(n => n.id === subId);
+        if (!sub || sub.status !== 'Completed') {
+          allCompleted = false;
+        }
+      });
+      
+      const targetStatus = allCompleted ? 'Completed' : 'Locked';
+      if (mastery.status !== targetStatus) {
+        mastery.status = targetStatus;
+        if (graph) {
+          const item = graph.findById(mastery.id);
+          if (item) {
+            graph.setItemState(item, 'status', targetStatus);
+          }
+        }
+        changed = true;
+      }
+    }
+  });
+  
+  if (changed && selectedNode && selectedNode.isMastery) {
+    renderDependentSubnodesList(); // refresh count
+  }
+}
+
+function renderDependentSubnodesList() {
+  if (!dependentSubnodesList || !subnodeStatusCount) return;
+  dependentSubnodesList.innerHTML = '';
+  
+  if (!selectedNode || !selectedNode.isMastery) return;
+  
+  const subs = selectedNode.subnodes || [];
+  let completedCount = 0;
+  
+  if (subs.length === 0) {
+    dependentSubnodesList.innerHTML = '<div style="font-size:11px; color:#888; text-align:center; padding:10px;">등록된 서브노드가 없습니다.</div>';
+    subnodeStatusCount.textContent = `0/0 연결됨`;
+    return;
+  }
+  
+  subs.forEach((subId, idx) => {
+    const subNode = graphData.nodes.find(n => n.id === subId);
+    if (!subNode) return;
+    
+    if (subNode.status === 'Completed') completedCount++;
+    
+    const div = document.createElement('div');
+    div.style.cssText = 'display:flex; justify-content:space-between; align-items:center; font-size:11px; padding:3px 5px; border-bottom:1px solid #2a2a2a;';
+    
+    const nameSpan = document.createElement('span');
+    nameSpan.style.color = '#ccc';
+    nameSpan.textContent = subNode.label || subId;
+    
+    const statusSpan = document.createElement('span');
+    statusSpan.textContent = subNode.status === 'Completed' ? '완료' : '미완료';
+    statusSpan.style.color = subNode.status === 'Completed' ? 'var(--status-completed)' : 'var(--text-secondary)';
+    
+    const delBtn = document.createElement('button');
+    delBtn.innerHTML = '<i class="fa-solid fa-xmark"></i>';
+    delBtn.style.cssText = 'background:none; border:none; color:#f87171; cursor:pointer; font-size:10px; margin-left:5px;';
+    delBtn.onclick = () => {
+      selectedNode.subnodes.splice(idx, 1);
+      renderDependentSubnodesList();
+      checkMasteryAutoActivation();
+      updateCharacterStats();
+    };
+    
+    const rightBox = document.createElement('div');
+    rightBox.style.display = 'flex';
+    rightBox.style.alignItems = 'center';
+    rightBox.appendChild(statusSpan);
+    rightBox.appendChild(delBtn);
+    
+    div.appendChild(nameSpan);
+    div.appendChild(rightBox);
+    dependentSubnodesList.appendChild(div);
+  });
+  
+  subnodeStatusCount.textContent = `${completedCount}/${subs.length} 연결됨`;
 }
 
 // Update Character Stats Panel (Set Effects)
@@ -315,80 +426,157 @@ let pendingAddNodePos = null;
 function openAddNodePopup(x, y) {
   pendingAddNodePos = { x, y };
   window.selectedIconNode = null;
-  const previewImg = document.getElementById('addNodeIconImg');
-  const placeholder = document.getElementById('addNodeIconPlaceholder');
-  if (previewImg) { previewImg.src = ''; previewImg.style.display = 'none'; }
-  if (placeholder) placeholder.style.display = 'inline';
-
-  const popup = document.getElementById('addNodePopup');
-  const posText = document.getElementById('addNodePosText');
-  const input = document.getElementById('addNodeLabelInput');
-  if (!popup) return;
-
-  posText.textContent = `위치: (${Math.round(x)}, ${Math.round(y)})`;
-  input.value = '';
-  popup.style.display = 'block';
-
-  const vw = window.innerWidth, vh = window.innerHeight;
-  popup.style.left = Math.max(16, (vw - 300) / 2) + 'px';
-  popup.style.top = Math.max(16, (vh - 200) / 2) + 'px';
-
-  setTimeout(() => input.focus(), 50);
+  
+  if (addNodeModal) {
+    addNodeModal.classList.remove('hidden');
+    // reset inputs
+    addNodeLabel.value = '';
+    addClusterLabel.value = '';
+    document.querySelector('input[name="addNodeType"][value="single"]').checked = true;
+    addNodeStandardInputs.classList.remove('hidden');
+    addNodeClusterInputs.classList.add('hidden');
+    setTimeout(() => addNodeLabel.focus(), 50);
+  }
 }
 
 window.closeAddNodePopup = function () {
-  const popup = document.getElementById('addNodePopup');
-  if (popup) popup.style.display = 'none';
+  if (addNodeModal) addNodeModal.classList.add('hidden');
   pendingAddNodePos = null;
 };
 
-window.submitAddNode = async function () {
-  if (!pendingAddNodePos) return;
-  const input = document.getElementById('addNodeLabelInput');
-  const label = input.value.trim();
-  if (!label) {
-    showToast('노드 이름을 입력하세요.', 'error');
-    return;
-  }
-
-  let iconToUse = window.selectedIconNode || 'normalActive_Art_2DArt_SkillIcons_passives_AtlasTrees_AulBloodlineNode.png.png';
-  const { x, y } = pendingAddNodePos;
-  const newNode = {
-    id: `custom_${Date.now()}`,
-    label: label,
-    name: label,
-    importance: 'Medium',
-    status: 'Locked',
-    comment: `# ${label}\n\n설명을 추가하세요.`,
-    x: x,
-    y: y,
-    shape: 'circle',
-    icon: iconToUse,
-    group: '',
-    orbit: 0,
-    orbit_index: 0,
-    subnodes: [],
-    stats: []
-  };
-
-  try {
-    const res = await fetch('/api/graph/structure', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ action: 'add_node', data: newNode })
+// Add Node Modal Events
+if (addNodeModal) {
+  document.querySelectorAll('input[name="addNodeType"]').forEach(radio => {
+    radio.addEventListener('change', (e) => {
+      if (e.target.value === 'single') {
+        addNodeStandardInputs.classList.remove('hidden');
+        addNodeClusterInputs.classList.add('hidden');
+      } else {
+        addNodeStandardInputs.classList.add('hidden');
+        addNodeClusterInputs.classList.remove('hidden');
+      }
     });
-    if (res.ok) {
-      showToast(`✅ "${label}" 노드가 추가됐습니다.`, 'success');
+  });
+
+  btnCancelAddNode.addEventListener('click', closeAddNodePopup);
+  btnCloseAddNodeModal.addEventListener('click', closeAddNodePopup);
+
+  btnConfirmAddNode.addEventListener('click', async () => {
+    if (!pendingAddNodePos) return;
+    const type = document.querySelector('input[name="addNodeType"]:checked').value;
+    
+    let nodesToCreate = [];
+    const { x, y } = pendingAddNodePos;
+    const groupId = `group_${Date.now()}`;
+
+    if (type === 'single') {
+      const label = addNodeLabel.value.trim();
+      if (!label) { showToast('노드 이름을 입력하세요.', 'error'); return; }
+      nodesToCreate.push({
+        id: `custom_${Date.now()}`,
+        label: label,
+        name: label,
+        importance: 'Medium',
+        status: 'Locked',
+        comment: `# ${label}\n\n설명을 추가하세요.`,
+        x: x, y: y,
+        shape: 'circle',
+        icon: 'normalActive_Art_2DArt_SkillIcons_passives_AtlasTrees_AulBloodlineNode.png.png',
+        group: '', orbit: 0, orbit_index: 0,
+        subnodes: [], stats: []
+      });
+    } else {
+      // Cluster creation
+      const label = addClusterLabel.value.trim();
+      if (!label) { showToast('마스터리 이름을 입력하세요.', 'error'); return; }
+      const count = parseInt(addClusterCount.value) || 3;
+      const icon = addClusterIcon.value || 'mastery_Art_2DArt_SkillIcons_passives_MasteryGroupEvasion.png.png';
+      
+      const masteryId = `mastery_${Date.now()}`;
+      let subnodeIds = [];
+      
+      // Calculate subnode positions (orbit 3, radius ~335)
+      const radius = 335;
+      for(let i = 0; i < count; i++) {
+        const angle = (i / count) * 2 * Math.PI - Math.PI / 2; // start from top
+        const sx = x + radius * Math.cos(angle);
+        const sy = y + radius * Math.sin(angle);
+        const sId = `sub_${Date.now()}_${i}`;
+        subnodeIds.push(sId);
+        
+        nodesToCreate.push({
+          id: sId,
+          label: `${label} 서브노드 ${i+1}`,
+          name: `${label} 서브노드 ${i+1}`,
+          importance: 'Medium',
+          status: 'Locked',
+          comment: `# ${label} 서브노드 ${i+1}\n\n설명을 추가하세요.`,
+          x: sx, y: sy,
+          shape: 'circle',
+          icon: 'normalActive_Art_2DArt_SkillIcons_passives_AtlasTrees_AulBloodlineNode.png.png',
+          group: groupId, orbit: 3, orbit_index: i,
+          subnodes: [], stats: [],
+          mastery_parent: masteryId
+        });
+      }
+      
+      nodesToCreate.push({
+        id: masteryId,
+        label: label,
+        name: label,
+        importance: 'High',
+        status: 'Locked',
+        comment: `# ${label}\n\n이 마스터리는 서브노드가 모두 완료되면 자동으로 활성화됩니다.`,
+        x: x, y: y,
+        shape: 'circle',
+        icon: icon,
+        group: groupId, orbit: 0, orbit_index: 0,
+        subnodes: subnodeIds, stats: [],
+        isMastery: true
+      });
+    }
+
+    try {
+      btnConfirmAddNode.disabled = true;
+      for (const node of nodesToCreate) {
+        const res = await fetch('/api/graph/structure', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ action: 'add_node', data: node })
+        });
+        if (!res.ok) throw new Error('노드 생성 실패');
+      }
+      
+      // If cluster, create edges to the mastery node
+      if (type === 'cluster') {
+        const masteryNode = nodesToCreate.find(n => n.isMastery);
+        for (const sub of nodesToCreate.filter(n => !n.isMastery)) {
+          await fetch('/api/graph/structure', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              action: 'add_edge',
+              data: {
+                id: `edge_${sub.id}_${masteryNode.id}`,
+                source: sub.id,
+                target: masteryNode.id,
+                type: 'line'
+              }
+            })
+          });
+        }
+      }
+      
+      showToast(`✅ 성공적으로 추가되었습니다.`, 'success');
       closeAddNodePopup();
       await fetchGraphData();
-    } else {
-      const d = await res.json();
-      showToast('노드 추가 실패: ' + (d.detail || '오류'), 'error');
+    } catch (err) {
+      showToast('생성 중 오류: ' + err.message, 'error');
+    } finally {
+      btnConfirmAddNode.disabled = false;
     }
-  } catch (err) {
-    showToast('네트워크 오류: ' + err.message, 'error');
-  }
-};
+  });
+}
 
 function adminAddNodeAtPos(x, y) {
   openAddNodePopup(x, y);
@@ -825,6 +1013,7 @@ function showPrSidebar() {
   document.querySelectorAll('.sidebar-section').forEach(s => s.classList.remove('active'));
   const prSection = document.getElementById('pr-sidebar-section');
   if (prSection) { prSection.style.display = 'block'; prSection.classList.add('active'); }
+  if (sidebarPanel) sidebarPanel.style.display = 'flex';
   loadPrSidebar();
 }
 
@@ -1157,6 +1346,37 @@ function initGraph() {
         return;
       }
 
+      if (isLinkSubnodeMode && selectedNode && selectedNode.isMastery) {
+        if (model.id !== selectedNode.id) {
+          if (!selectedNode.subnodes) selectedNode.subnodes = [];
+          if (!selectedNode.subnodes.includes(model.id)) {
+            selectedNode.subnodes.push(model.id);
+            if (model.mastery_parent !== selectedNode.id) model.mastery_parent = selectedNode.id;
+            
+            // Add a visual edge if they want
+            const edgeExists = graphData.edges.some(e => 
+              (e.source === model.id && e.target === selectedNode.id) || 
+              (e.source === selectedNode.id && e.target === model.id)
+            );
+            
+            if (!edgeExists) {
+              const newEdge = { id: `edge_${model.id}_${selectedNode.id}`, source: model.id, target: selectedNode.id, type: 'line' };
+              graphData.edges.push(newEdge);
+              if(graph && typeof graph.addItem === 'function') graph.addItem('edge', newEdge);
+            }
+            
+            showToast(`✅ "${model.label}" 노드를 서브노드로 등록했습니다.`, 'success');
+            renderDependentSubnodesList();
+          } else {
+            showToast('이미 등록된 서브노드입니다.', 'error');
+          }
+        }
+        isLinkSubnodeMode = false;
+        btnLinkSubnodeMode.classList.remove('active');
+        btnLinkSubnodeMode.innerHTML = '<i class="fa-solid fa-link"></i> 새로운 서브노드 연결하기';
+        return;
+      }
+
       const isMultiSelect = evt.originalEvent.shiftKey || evt.originalEvent.metaKey || evt.originalEvent.ctrlKey;
       if (isMultiSelect) {
         const idx = selectedNodes.indexOf(model.id);
@@ -1180,6 +1400,9 @@ function initGraph() {
         if (dataNode) dataNode.status = newStatus;
 
         graph.setItemState(item, 'status', newStatus);
+        
+        // Auto-Activation Logic
+        checkMasteryAutoActivation();
 
         selectedNodes = [model.id];
         selectNode(model.id, false);
@@ -1615,6 +1838,23 @@ function selectNode(id, appendMode = false) {
   selectShape.value = selectedNode.shape || 'circle';
   textComment.value = selectedNode.comment || '';
 
+  // Mastery Logic UI
+  if (selectedNode.isMastery) {
+    masteryStatsGroup.classList.remove('hidden');
+    dependentSubnodesGroup.classList.remove('hidden');
+    masteryStatsInput.value = (selectedNode.stats || []).join('\n');
+    renderDependentSubnodesList();
+  } else {
+    masteryStatsGroup.classList.add('hidden');
+    dependentSubnodesGroup.classList.add('hidden');
+  }
+
+  isLinkSubnodeMode = false;
+  if (btnLinkSubnodeMode) {
+    btnLinkSubnodeMode.classList.remove('active');
+    btnLinkSubnodeMode.innerHTML = '<i class="fa-solid fa-link"></i> 새로운 서브노드 연결하기';
+  }
+
   renderSubnodesList();
   showEditTab();
 }
@@ -1687,17 +1927,74 @@ textComment.addEventListener('paste', async (e) => {
 btnApply.addEventListener('click', () => {
   if (!selectedNode) return;
 
-  selectedNode.label = inputLabel.value.trim() || '이름 없음';
-  selectedNode.importance = selectImportance.value;
-  selectedNode.status = selectStatus.value;
-  selectedNode.shape = selectShape.value;
-  selectedNode.comment = textComment.value;
+  const label = inputLabel.value.trim() || '이름 없음';
+  const importance = selectImportance.value;
+  const status = selectStatus.value;
+  const shape = selectShape.value;
+  const comment = textComment.value;
+
+  if (selectedNodes.length === 1) {
+    const node = selectedNode;
+    node.label = label;
+    node.name = label;
+    node.importance = importance;
+    node.status = status;
+    node.comment = comment;
+    node.shape = shape;
+
+    if (node.isMastery) {
+      const statsText = masteryStatsInput.value.trim();
+      node.stats = statsText ? statsText.split('\n').map(s => s.trim()).filter(s => s) : [];
+    }
+  } else if (selectedNodes.length > 1) {
+    selectedNodes.forEach(nid => {
+      const n = graphData.nodes.find(dn => dn.id === nid);
+      if (n) {
+        n.importance = importance;
+        n.status = status;
+        n.shape = shape;
+        // Don't override label/comment for bulk edit
+      }
+    });
+  }
+
+  // Update in visual graph
+  selectedNodes.forEach(nid => {
+    const item = graph.findById(nid);
+    if (item) {
+      const n = graphData.nodes.find(dn => dn.id === nid);
+      if (n) {
+        graph.updateItem(item, {
+          label: n.label,
+          style: { fill: n.shape === 'rect' ? '#222' : undefined } // force re-render style if needed
+        });
+        graph.setItemState(item, 'status', n.status);
+      }
+    }
+  });
+  
+  checkMasteryAutoActivation();
 
   editorTitle.textContent = selectedNode.label;
 
   updateGraphData();
   alert('노드 수정 내용이 일시 저장되었습니다. (전체 저장을 눌러 영구 저장하세요)');
 });
+
+if (btnLinkSubnodeMode) {
+  btnLinkSubnodeMode.addEventListener('click', () => {
+    if (!selectedNode || !selectedNode.isMastery) return;
+    isLinkSubnodeMode = !isLinkSubnodeMode;
+    if (isLinkSubnodeMode) {
+      btnLinkSubnodeMode.classList.add('active');
+      btnLinkSubnodeMode.innerHTML = '<i class="fa-solid fa-check"></i> 캔버스에서 등록할 서브노드 클릭...';
+      showToast('마스터리에 연결할 서브노드를 캔버스에서 차례로 클릭하세요.', 'info');
+    } else {
+      btnLinkSubnodeMode.classList.remove('active');
+      btnLinkSubnodeMode.innerHTML = '<i class="fa-solid fa-link"></i> 새로운 서브노드 연결하기';
+    }
+  });
+}
 
 btnDelete.addEventListener('click', () => {
   if (!selectedNode) return;
@@ -1929,7 +2226,6 @@ window.searchJumpTo = function (idx) {
 // Search keyboard binding setup
 document.addEventListener('DOMContentLoaded', () => {
   const input = document.getElementById('searchInput');
-  if (!input) return;
   input.addEventListener('input', (e) => renderSearchResults(e.target.value));
   input.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') { closeSearchOverlay(); return; }

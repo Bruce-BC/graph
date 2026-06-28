@@ -525,6 +525,26 @@
             </select>
           </div>
 
+          <!-- Mastery Stats (Only shown for masteries) -->
+          <div id="masteryStatsGroup" class="form-group hidden" style="margin-top:10px;">
+            <label>마스터리 고유 스탯 (줄바꿈 구분)</label>
+            <textarea id="masteryStatsInput" class="form-control" style="height:60px;" placeholder="예: +15% Evasion Rating"></textarea>
+          </div>
+
+          <!-- Dependent Subnodes (Only shown for masteries) -->
+          <div id="dependentSubnodesGroup" class="form-group hidden" style="margin-top:10px;">
+            <label style="display:flex; justify-content:space-between; align-items:center;">
+              <span><i class="fa-solid fa-link"></i> 종속 서브노드</span>
+              <span id="subnodeStatusCount" style="font-size:11px; color:var(--accent-color);">0/0 연결됨</span>
+            </label>
+            <div id="dependentSubnodesList" class="subnodes-list" style="margin-top:5px; max-height:100px; overflow-y:auto; border:1px solid var(--panel-border); border-radius:4px; padding:5px;">
+              <!-- Listed subnodes will go here -->
+            </div>
+            <button id="btnLinkSubnodeMode" class="btn btn-primary" style="width:100%; margin-top:5px;"><i class="fa-solid fa-link"></i> 새로운 서브노드 연결하기</button>
+            <p style="font-size:11px; color:var(--text-secondary); margin-top:5px;">모든 종속 서브노드가 '완료' 상태가 되면, 이 마스터리는 자동으로 활성화됩니다.</p>
+          </div>
+
+
         <!-- Rich Comment / Markdown Area -->
         <div class="form-group flex-fill" style="margin-top: 10px;">
           <div class="comment-header">
@@ -561,6 +581,59 @@
       </div>
     </aside>
   </main>
+
+  <!-- Add Node / Cluster Modal -->
+  <div id="addNodeModal" class="modal-backdrop hidden">
+    <div class="modal-content" style="max-width: 450px;">
+      <div class="modal-header">
+        <h3><i class="fa-solid fa-plus-circle"></i> 새 노드 추가</h3>
+        <button id="btnCloseAddNodeModal" class="btn-close"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label>생성 유형</label>
+          <div style="display:flex; gap:10px; margin-top:5px;">
+            <label style="display:flex; align-items:center; gap:5px;"><input type="radio" name="addNodeType" value="single" checked> 단일 노드</label>
+            <label style="display:flex; align-items:center; gap:5px;"><input type="radio" name="addNodeType" value="cluster"> 마스터리 클러스터 (프리셋)</label>
+          </div>
+        </div>
+        
+        <!-- Standard Node Inputs -->
+        <div id="addNodeStandardInputs">
+          <div class="form-group">
+            <label for="addNodeLabel">노드 이름</label>
+            <input type="text" id="addNodeLabel" class="form-control" placeholder="예: 미적분학">
+          </div>
+        </div>
+        
+        <!-- Cluster Inputs -->
+        <div id="addNodeClusterInputs" class="hidden">
+          <div class="form-group">
+            <label for="addClusterLabel">마스터리 이름</label>
+            <input type="text" id="addClusterLabel" class="form-control" placeholder="예: Evasion Mastery">
+          </div>
+          <div class="form-group">
+            <label for="addClusterCount">서브노드 개수</label>
+            <input type="number" id="addClusterCount" class="form-control" min="1" max="10" value="3">
+          </div>
+          <div class="form-group">
+            <label for="addClusterIcon">마스터리 아이콘</label>
+            <select id="addClusterIcon" class="form-control">
+              <option value="">아이콘 없음</option>
+              <option value="mastery_Art_2DArt_SkillIcons_passives_MasteryGroupEvasion.png.png">Evasion Mastery</option>
+              <option value="mastery_Art_2DArt_SkillIcons_passives_MasteryGroupLife.png.png">Life Mastery</option>
+              <option value="mastery_Art_2DArt_SkillIcons_passives_MasteryGroupMana.png.png">Mana Mastery</option>
+              <option value="mastery_Art_2DArt_SkillIcons_passives_MasteryGroupArmour.png.png">Armour Mastery</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button id="btnCancelAddNode" class="btn btn-save">취소</button>
+        <button id="btnConfirmAddNode" class="btn btn-primary">생성하기</button>
+      </div>
+    </div>
+  </div>
 
   <!-- Proposal Submit Modal -->
   <div id="proposalModal" class="modal-backdrop hidden">

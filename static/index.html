@@ -570,10 +570,13 @@
       <div id="pr-sidebar-section" class="sidebar-section" style="display:none;">
         <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid #3a2e1e; padding-bottom:8px; margin-bottom:10px;">
           <h3 style="margin:0; font-size:15px; font-weight:600; color:#e8d098;">PR List</h3>
-          <label style="font-size:11px; color:#8a6a2e; display:flex; align-items:center; gap:4px; cursor:pointer;">
-            <input type="checkbox" id="prShowNodeNameToggle" checked onchange="loadPrSidebar()"> 
-            노드 이름으로 보기
-          </label>
+          <div style="display:flex; align-items:center; gap: 10px;">
+            <label style="font-size:11px; color:#8a6a2e; display:flex; align-items:center; gap:4px; cursor:pointer;">
+              <input type="checkbox" id="prShowNodeNameToggle" checked onchange="loadPrSidebar()"> 
+              노드 이름으로 보기
+            </label>
+            <button onclick="closePrSidebar()" class="btn-close" style="font-size:14px; background:none; border:none; color:#e8d098; cursor:pointer;"><i class="fa-solid fa-xmark"></i></button>
+          </div>
         </div>
         <div id="prSidebarList" style="flex:1; overflow-y:auto; padding-right:5px; max-height:calc(100vh - 200px);">
           <p style="color:#666;font-size:13px;">로딩 중...</p>

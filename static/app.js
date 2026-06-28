@@ -1015,6 +1015,14 @@ function showPrSidebar() {
   if (prSection) { prSection.style.display = 'block'; prSection.classList.add('active'); }
   if (sidebarPanel) sidebarPanel.style.display = 'flex';
   loadPrSidebar();
+  setTimeout(triggerCanvasResize, 50);
+}
+
+window.closePrSidebar = function() {
+  const prSection = document.getElementById('pr-sidebar-section');
+  if (prSection) { prSection.style.display = 'none'; prSection.classList.remove('active'); }
+  if (sidebarPanel) sidebarPanel.style.display = 'none';
+  setTimeout(triggerCanvasResize, 50);
 }
 
 function clearPrHighlights() {
@@ -1073,10 +1081,13 @@ async function loadPrSidebar() {
     }
 
     const useName = document.getElementById('prShowNodeNameToggle')?.checked;
-    const getLabel = (id) => {
+    const getLabel = (id, prData) => {
       if (!id) return '?';
       if (!useName) return String(id);
-      const n = graphData?.nodes?.find(x => x.id == id);
+      let n = graphData?.nodes?.find(x => x.id == id);
+      if (!n && prData && prData.graphData && prData.graphData.nodes) {
+        n = prData.graphData.nodes.find(x => x.id == id);
+      }
       return n ? (n.label || String(id)) : String(id);
     };
 
@@ -1119,7 +1130,7 @@ async function loadPrSidebar() {
       const rows = [];
 
       for (const id of [...new Set(changes.addedNodes)]) {
-        const label = getLabel(id);
+        const label = getLabel(id, pr);
         rows.push(`<div style="display:flex;align-items:baseline;gap:5px;margin-top:5px;cursor:pointer;" onclick="event.stopPropagation(); window.focusPrItem('node', '${id}')">
           <span style="font-size:16px;line-height:1;">🟢</span>
           <span><b style="color:#4ade80;">노드 추가</b> &nbsp;<span style="background:#0f2010;border:1px solid #4ade8044;border-radius:3px;padding:1px 6px;font-size:11px;color:#a0e8a0;">${label}</span></span>
@@ -1127,7 +1138,7 @@ async function loadPrSidebar() {
       }
 
       for (const id of [...new Set(changes.removedNodes)]) {
-        const label = getLabel(id);
+        const label = getLabel(id, pr);
         rows.push(`<div style="display:flex;align-items:baseline;gap:5px;margin-top:5px;cursor:pointer;" onclick="event.stopPropagation(); window.focusPrItem('node', '${id}')">
           <span style="font-size:16px;line-height:1;">🔴</span>
           <span><b style="color:#f87171;">노드 삭제</b> &nbsp;<span style="background:#200f0f;border:1px solid #f8717144;border-radius:3px;padding:1px 6px;font-size:11px;color:#fca5a5;text-decoration:line-through;">${label}</span></span>
@@ -1136,7 +1147,7 @@ async function loadPrSidebar() {
 
       for (const item of changes.editedNodes) {
         const id = item.id || item;
-        const label = getLabel(id);
+        const label = getLabel(id, pr);
         const detail = item.from && item.to ? ` <span style="color:#888;">${item.from} → ${item.to}</span>` : '';
         rows.push(`<div style="display:flex;align-items:baseline;gap:5px;margin-top:5px;cursor:pointer;" onclick="event.stopPropagation(); window.focusPrItem('node', '${id}')">
           <span style="font-size:16px;line-height:1;">🟡</span>
@@ -1145,7 +1156,7 @@ async function loadPrSidebar() {
       }
 
       for (const fe of changes.fieldEdits) {
-        const label = getLabel(fe.id);
+        const label = getLabel(fe.id, pr);
         const fieldName = fe.field === 'label' ? '이름' : fe.field === 'comment' ? '설명' : fe.field;
         rows.push(`<div style="display:flex;align-items:baseline;gap:5px;margin-top:5px;cursor:pointer;" onclick="event.stopPropagation(); window.focusPrItem('node', '${fe.id}')">
           <span style="font-size:16px;line-height:1;">✏️</span>
@@ -1829,6 +1840,7 @@ function selectNode(id, appendMode = false) {
   }
 
   sidebarPanel.style.display = 'flex';
+  setTimeout(triggerCanvasResize, 50);
   editorState.classList.add('active');
 
   editorTitle.textContent = selectedNode.label;
@@ -1867,6 +1879,7 @@ function clearSelection() {
   }
   editorState.classList.remove('active');
   sidebarPanel.style.display = 'none';
+  setTimeout(triggerCanvasResize, 50);
 }
 
 function showEditTab() {
@@ -1974,6 +1987,7 @@ btnApply.addEventListener('click', () => {
   });
   
   checkMasteryAutoActivation();
+  updateCharacterStats();
 
   editorTitle.textContent = selectedNode.label;
 
@@ -2329,11 +2343,17 @@ window.addEventListener('keydown', async (e) => {
 });
 
 window.addEventListener('resize', () => {
-  if (graph && typeof graph.changeSize === 'function') {
-    const container = document.getElementById('g6-container');
-    if (container) graph.changeSize(container.scrollWidth, container.scrollHeight || 600);
-  }
+  triggerCanvasResize();
 });
+
+function triggerCanvasResize() {
+  if (graph && typeof graph.changeSize === 'function') {
+    const container = document.getElementById('tree-canvas');
+    if (container && container.parentElement) {
+      graph.changeSize(container.parentElement.clientWidth, container.parentElement.clientHeight || 800);
+    }
+  }
+}
 
 // App Initiation Entrypoint
 fetchGraphData();

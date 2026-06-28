@@ -44,8 +44,11 @@ const btnExportMenu = document.getElementById('btnExportMenu');
 const exportMenu = document.getElementById('exportMenu');
 const importFile = document.getElementById('importFile');
 
-// Subnode Collapsible Elements
-const btnToggleStats = document.getElementById('btnToggleStats');
+// Stats Panel Elements
+const statsPanelContainer = document.getElementById('statsPanelContainer');
+const statsPanelHeader = document.getElementById('statsPanelHeader');
+const btnMinimizeStats = document.getElementById('btnMinimizeStats');
+const btnMaximizeStats = document.getElementById('btnMaximizeStats');
 const btnResetProgress = document.getElementById('btnResetProgress');
 const subnodesListBody = document.getElementById('subnodes-list-body');
 const subnodeVisSelect = document.getElementById('subnodeVisSelect');
@@ -1485,15 +1488,74 @@ function renderSubnodesList() {
   });
 }
 
-if (btnToggleStats) {
-  btnToggleStats.addEventListener('click', () => {
+// --- Stats Panel Draggable & Window Controls ---
+if (statsPanelContainer && statsPanelHeader) {
+  let isDragging = false;
+  let currentX;
+  let currentY;
+  let initialX;
+  let initialY;
+  let xOffset = 0;
+  let yOffset = 0;
+
+  statsPanelHeader.addEventListener('mousedown', dragStart);
+  document.addEventListener('mouseup', dragEnd);
+  document.addEventListener('mousemove', drag);
+
+  function dragStart(e) {
+    if (e.target.closest('button')) return; // Ignore buttons
+    initialX = e.clientX - xOffset;
+    initialY = e.clientY - yOffset;
+    isDragging = true;
+  }
+
+  function dragEnd(e) {
+    if (!isDragging) return;
+    initialX = currentX;
+    initialY = currentY;
+    isDragging = false;
+  }
+
+  function drag(e) {
+    if (isDragging) {
+      e.preventDefault();
+      currentX = e.clientX - initialX;
+      currentY = e.clientY - initialY;
+      xOffset = currentX;
+      yOffset = currentY;
+      statsPanelContainer.style.transform = `translate3d(${currentX}px, ${currentY}px, 0)`;
+    }
+  }
+}
+
+if (btnMinimizeStats) {
+  btnMinimizeStats.addEventListener('click', () => {
     const list = document.getElementById('character-stats-list');
     if (list.style.display === 'none') {
       list.style.display = 'flex';
-      btnToggleStats.innerHTML = '<i class="fa-solid fa-chevron-up"></i>';
+      btnMinimizeStats.innerHTML = '<i class="fa-solid fa-minus"></i>';
+      statsPanelContainer.classList.remove('minimized');
     } else {
       list.style.display = 'none';
-      btnToggleStats.innerHTML = '<i class="fa-solid fa-chevron-down"></i>';
+      btnMinimizeStats.innerHTML = '<i class="fa-solid fa-window-restore"></i>';
+      statsPanelContainer.classList.add('minimized');
+    }
+  });
+}
+
+if (btnMaximizeStats) {
+  btnMaximizeStats.addEventListener('click', () => {
+    const list = document.getElementById('character-stats-list');
+    list.style.display = 'flex'; // Un-minimize if it was
+    btnMinimizeStats.innerHTML = '<i class="fa-solid fa-minus"></i>';
+    statsPanelContainer.classList.remove('minimized');
+    
+    if (statsPanelContainer.classList.contains('maximized')) {
+      statsPanelContainer.classList.remove('maximized');
+      btnMaximizeStats.innerHTML = '<i class="fa-solid fa-expand"></i>';
+    } else {
+      statsPanelContainer.classList.add('maximized');
+      btnMaximizeStats.innerHTML = '<i class="fa-solid fa-compress"></i>';
     }
   });
 }

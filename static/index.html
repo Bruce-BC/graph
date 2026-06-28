@@ -453,33 +453,18 @@
     <section class="canvas-area" style="overflow: hidden; position: relative;">
       <canvas id="tree-canvas" style="width:100%; height:100%; display:block;"></canvas>
       
-      <!-- Guide Banner / Legend -->
-      <div class="legend-panel">
-        <div class="legend-item"><span class="legend-color completed"></span>완료됨 (Completed)</div>
-        <div class="legend-item"><span class="legend-color in-progress"></span>진행중 (In Progress)</div>
-        <div class="legend-item"><span class="legend-color locked"></span>잠김 (Locked)</div>
-        <div class="legend-divider"></div>
-        <div class="legend-instructions">
-          <p><i class="fa-solid fa-circle-info"></i> <b>클릭</b>: 노드 할당/해제 토글</p>
-          <p><i class="fa-solid fa-circle-info"></i> <b>우클릭</b>: 캔버스/노드/엣지 관리 메뉴</p>
-          <p><i class="fa-solid fa-circle-info"></i> <b>Shift + 클릭</b>: 노드 다중 선택</p>
-          <p><i class="fa-solid fa-circle-info"></i> <b>[Enter]</b>: 선택 노드 다중 할당 (Admin)</p>
-          <p><i class="fa-solid fa-circle-info"></i> <b>[Del]/[Backspace]</b>: 할당 해제 / 선택 엣지 삭제 (Admin)</p>
-          <p><i class="fa-solid fa-circle-info"></i> <b>[Space]</b>: 화면 초기화 (중앙 이동)</p>
-          <p><i class="fa-solid fa-circle-info"></i> <b>[Esc]</b>: 선택/메뉴 해제</p>
-          <p><i class="fa-solid fa-circle-info"></i> <b>[Ctrl+F]/[Cmd+F]</b>: 노드 검색창</p>
-          <p><i class="fa-solid fa-circle-info"></i> <b>[Ctrl+S]/[Cmd+S]</b>: 데이터 저장 (Admin)</p>
-          <p><i class="fa-solid fa-circle-info"></i> <b>마우스 휠/드래그</b>: 줌/화면 이동</p>
-        </div>
-      </div>
+
       
       <!-- Character Stats Panel (Set Effects) -->
-      <div class="character-stats-panel" style="z-index: 1000; display: flex !important;">
-        <div class="stats-header" style="display:flex; justify-content:space-between; align-items:center;">
-          <span>누적 스킬 효과</span>
-          <button id="btnToggleStats" class="btn btn-compact" style="font-size:11px; padding:2px 6px;"><i class="fa-solid fa-chevron-up"></i></button>
+      <div id="statsPanelContainer" class="character-stats-panel" style="z-index: 1000; position: absolute; top: 80px; left: 25px;">
+        <div id="statsPanelHeader" class="stats-header" style="cursor: move; display:flex; justify-content:space-between; align-items:center;">
+          <span style="pointer-events: none;"><i class="fa-solid fa-chart-pie"></i> 누적 스킬 효과</span>
+          <div style="display:flex; gap: 4px;">
+            <button id="btnMinimizeStats" class="btn btn-compact" style="font-size:11px; padding:2px 6px;" title="최소화/기본 크기"><i class="fa-solid fa-minus"></i></button>
+            <button id="btnMaximizeStats" class="btn btn-compact" style="font-size:11px; padding:2px 6px;" title="최대화"><i class="fa-solid fa-expand"></i></button>
+          </div>
         </div>
-        <div id="character-stats-list" class="stats-list">
+        <div id="character-stats-list" class="stats-list" style="overflow-y: auto;">
            <div class="empty-stats">활성화된 스킬이 없습니다.</div>
         </div>
       </div>

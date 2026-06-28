@@ -433,7 +433,23 @@ input:checked + .slider:before {
   display: flex;
   flex-direction: column;
   color: var(--text-primary);
-  transition: max-height 0.3s ease;
+  transition: max-height 0.3s ease, height 0.3s ease;
+}
+
+.character-stats-panel.minimized {
+  max-height: 50px !important;
+  padding-bottom: 0 !important;
+  overflow: hidden;
+}
+
+.character-stats-panel.minimized .stats-header {
+  border-bottom: none;
+  margin-bottom: 0;
+}
+
+.character-stats-panel.maximized {
+  height: 80vh !important;
+  max-height: 80vh !important;
 }
 
 .stats-header {

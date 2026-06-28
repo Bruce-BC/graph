@@ -474,7 +474,7 @@
       </div>
       
       <!-- Character Stats Panel (Set Effects) -->
-      <div class="character-stats-panel">
+      <div class="character-stats-panel" style="z-index: 1000; display: flex !important;">
         <div class="stats-header" style="display:flex; justify-content:space-between; align-items:center;">
           <span>누적 스킬 효과</span>
           <button id="btnToggleStats" class="btn btn-compact" style="font-size:11px; padding:2px 6px;"><i class="fa-solid fa-chevron-up"></i></button>
@@ -495,15 +495,7 @@
     </section>
 
     <!-- Sidebar Control Panel -->
-    <aside class="sidebar-panel">
-      <!-- Empty State -->
-      <div id="empty-state" class="sidebar-section active">
-        <div style="text-align: center; color: var(--text-secondary); margin-top: 50px;">
-          <i class="fa-solid fa-crosshairs" style="font-size: 48px; margin-bottom: 20px; opacity: 0.5;"></i>
-          <h3>노드를 선택하거나 생성하세요</h3>
-          <p>지도상에서 노드를 클릭하여 코멘트를 수정하고 상태를 변경하거나, 빈 영역을 더블클릭하여 새 노드를 추가하세요.</p>
-        </div>
-      </div>
+    <aside class="sidebar-panel" id="sidebarPanel" style="display: none;">
 
       <!-- Node Editing Panel -->
       <div id="editor-state" class="sidebar-section">

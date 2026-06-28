@@ -22,7 +22,7 @@ let orbitTime = 0;
 let currentUser = { id: "guest", name: "Guest Reader", email: "", role: "guest" };
 
 // DOM Elements
-const emptyState = document.getElementById('empty-state');
+const sidebarPanel = document.getElementById('sidebarPanel');
 const editorState = document.getElementById('editor-state');
 const editorTitle = document.getElementById('editor-title');
 const inputLabel = document.getElementById('nodeLabel');
@@ -1543,7 +1543,7 @@ function selectNode(id, appendMode = false) {
     });
   }
 
-  emptyState.classList.remove('active');
+  sidebarPanel.style.display = 'flex';
   editorState.classList.add('active');
 
   editorTitle.textContent = selectedNode.label;
@@ -1564,7 +1564,7 @@ function clearSelection() {
     graph.getNodes().forEach(n => graph.clearItemStates(n));
   }
   editorState.classList.remove('active');
-  emptyState.classList.add('active');
+  sidebarPanel.style.display = 'none';
 }
 
 function showEditTab() {
